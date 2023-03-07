@@ -17,21 +17,7 @@ class ProblemsScreenState extends State<ProblemsScreen> {
     MyAppLocalizations localizations = MyAppLocalizations.of(context);
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
     void goToHome() {
-      Navigator.of(context).push(
-      PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 400),
-        pageBuilder: (_, __, ___) => const MyHomePage(),
-        transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-          return SlideTransition(
-            position: Tween<Offset>(
-              begin: const Offset(1.0, 0.0),
-              end: Offset.zero,
-            ).animate(animation),
-            child: child,
-          );
-        },
-      ),
-    );
+      changePage(context,const MyHomePage());
     }
     return ChangeNotifierProvider(
       create: (context) => DataModel(),
@@ -41,7 +27,7 @@ class ProblemsScreenState extends State<ProblemsScreen> {
             appBar: AppBar(
               title: Text(localizations.problems, 
                 style: const TextStyle(color: Colors.white),),
-                flexibleSpace: Image.asset(dataModel.pathBar,
+                flexibleSpace: Image.asset(pathBar,
                   fit: BoxFit.cover,),
             ),
             body: Column(
@@ -103,7 +89,7 @@ class ProblemsScreenState extends State<ProblemsScreen> {
             bottomNavigationBar:  Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(dataModel.pathBar),
+                  image: AssetImage(pathBar),
                   fit: BoxFit.cover,
                 ),
               ),

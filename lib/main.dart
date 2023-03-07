@@ -2,34 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:raz_mat/problems.dart';
+import 'package:raz_mat/viewmodels/problem_view_model.dart';
 import 'my_app_localizations.dart';
 import 'settings_screen.dart';
 import 'providers.dart';
+import '/view/problem_view.dart';
 
 void main() {
  runApp(
     ChangeNotifierProvider(
-      create: (context) => DataModel(),
-      child: const MyApp(),
+      create: (context) => ProblemViewModel(),
+      child: ChangeNotifierProvider( 
+        create: (context)=> DataModel(),
+        child: const MyApp(),
+      ),
     ),
   );
 }
-MaterialColor myColor = const MaterialColor(
-  0x00FFFFFF,
-  <int, Color>{
-    50: Color(0x00FFFFFF),
-    100: Color(0x00FFFFFF),
-    200: Color(0x00FFFFFF),
-    300: Color(0x00FFFFFF),
-    400: Color(0x00FFFFFF),
-    500: Color(0x00FFFFFF),
-    600: Color(0x00FFFFFF),
-    700: Color(0x00FFFFFF),
-    800: Color(0x00FFFFFF),
-    900: Color(0x00FFFFFF),
-  },
-);
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -62,43 +51,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   void goToSettings() {
-    Navigator.of(context).push(
-      PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 400),
-        pageBuilder: (_, __, ___) => const SettingsScreen(),
-        transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-          return SlideTransition(
-            position: Tween<Offset>(
-              begin: const Offset(1.0, 0.0),
-              end: Offset.zero,
-            ).animate(animation),
-            child: child,
-          );
-        },
-      ),
-    );
+    changePage(context, const SettingsScreen());
   }
   void goToProblems() {
-    Navigator.of(context).push(
-      PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 400),
-        pageBuilder: (_, __, ___) => const ProblemsScreen(),
-        transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-          return SlideTransition(
-            position: Tween<Offset>(
-              begin: const Offset(1.0, 0.0),
-              end: Offset.zero,
-            ).animate(animation),
-            child: child,
-          );
-        },
-      ),
-    );
+    changePage(context,const ProblemsScreen());
   }
   @override
   Widget build(BuildContext context) {
     MyAppLocalizations localizations = MyAppLocalizations.of(context);
-    DataModel dataModel = Provider.of<DataModel>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text(localizations.title,
@@ -106,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         automaticallyImplyLeading: false,
         flexibleSpace: Image.asset(
-          dataModel.pathBar,
+          pathBar,
           fit: BoxFit.cover,
         ),
       ),
@@ -221,9 +181,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),]
       ),
       bottomNavigationBar:  Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(dataModel.pathBar),
+            image: AssetImage(pathBar),
             fit: BoxFit.cover,
           ),
         ),

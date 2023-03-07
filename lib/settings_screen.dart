@@ -11,27 +11,12 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class SettingsScreenState extends State<SettingsScreen> {
-
   @override
   Widget build(BuildContext context) {
     MyAppLocalizations localizations = MyAppLocalizations.of(context);
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
     void goToHome() {
-      Navigator.of(context).push(
-      PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 400),
-        pageBuilder: (_, __, ___) => const MyHomePage(),
-        transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-          return SlideTransition(
-            position: Tween<Offset>(
-              begin: const Offset(1.0, 0.0),
-              end: Offset.zero,
-            ).animate(animation),
-            child: child,
-          );
-        },
-      ),
-    );
+      changePage(context,const MyHomePage());
     }
     return ChangeNotifierProvider(
       create: (context) => DataModel(),
@@ -41,7 +26,7 @@ class SettingsScreenState extends State<SettingsScreen> {
             appBar: AppBar(
               title: Text(localizations.settings, 
                 style: const TextStyle(color: Colors.white),),
-                flexibleSpace: Image.asset(dataModel.pathBar,
+                flexibleSpace: Image.asset(pathBar,
                   fit: BoxFit.cover,),
             ),
             body: Column(
@@ -91,9 +76,9 @@ class SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
             bottomNavigationBar:  Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(dataModel.pathBar),
+                  image: AssetImage(pathBar),
                   fit: BoxFit.cover,
                 ),
               ),
