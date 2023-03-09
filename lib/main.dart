@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:raz_mat/problems.dart';
-import 'package:raz_mat/viewmodels/problem_view_model.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:raz_mat/create.dart';
+import 'package:raz_mat/problems_screen.dart';
+import 'models/problema.dart';
 import 'my_app_localizations.dart';
-import 'settings_screen.dart';
 import 'providers.dart';
-import '/view/problem_view.dart';
 
-void main() {
- runApp(
-    ChangeNotifierProvider(
-      create: (context) => ProblemViewModel(),
-      child: ChangeNotifierProvider( 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
+  runApp(
+   ChangeNotifierProvider( 
         create: (context)=> DataModel(),
         child: const MyApp(),
       ),
-    ),
   );
 }
 class MyApp extends StatelessWidget {
@@ -34,6 +33,7 @@ class MyApp extends StatelessWidget {
         Locale('en', ''),
         Locale('es', ''),
       ],
+      // locale: const Locale('en', ''),
       theme: ThemeData(
         primarySwatch: myColor,
         
@@ -50,15 +50,68 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void goToSettings() {
-    changePage(context, const SettingsScreen());
+  late BannerAd _bannerAd;
+  bool _isBannerAdReady = false;
+  late final Container adContainer ;
+  @override
+  void initState() {
+    super.initState();
+    _createBannerAd();
   }
-  void goToProblems() {
-    changePage(context,const ProblemsScreen());
+  void _createBannerAd() async{
+    
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      int width = MediaQuery.of(context).size.width.toInt();  
+      _bannerAd = BannerAd(
+        adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+        size: AdSize(width: width, height: 60),
+        request: const AdRequest(),
+        listener: BannerAdListener(
+          onAdLoaded: (_) {
+            setState(() {
+              _isBannerAdReady = true;
+            });
+          },
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
+      _bannerAd.load();
+    });
   }
+  @override
+  void dispose() {
+    _bannerAd.dispose();
+    super.dispose();
+  }
+  void goToProblems(DataModel dataModel,MyAppLocalizations localizations ) {
+    checkInternetConnectivity(dataModel);
+    Problema p = createProblemSeries(localizations.statement,dataModel.difficulty);
+    dataModel.enunciado = p.enunciado;
+    dataModel.alternativas = p.alternativas;
+    dataModel.clave = p.clave;
+    dataModel.connected 
+    ? changePageScale(context,const ProblemsScreen())
+    : ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(localizations.disconnected),
+        action: SnackBarAction(
+          label: localizations.close,
+          textColor: Colors.white,
+          onPressed: () {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     MyAppLocalizations localizations = MyAppLocalizations.of(context);
+    DataModel dataModel = Provider.of<DataModel>(context, listen: false);
+    checkInternetConnectivity(dataModel);
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text(localizations.title,
@@ -70,7 +123,8 @@ class _MyHomePageState extends State<MyHomePage> {
           fit: BoxFit.cover,
         ),
       ),
-      body: Stack(
+      body: 
+      Stack(
         children: [
           Center(
           child: SizedBox(
@@ -78,6 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: MediaQuery.of(context).size.height * 0.7,
             child: ListView(
               children: [
+                const SizedBox(height: 20),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -92,7 +147,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   title: Text(localizations.topic1,
                     style: const TextStyle(fontSize: 20),
                     ),
-                  onTap: goToProblems                  
+                  onTap: (){
+                      goToProblems(dataModel,localizations);
+                    }           
                 ),
                 ),
                 const SizedBox(height: 10),
@@ -175,35 +232,61 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 ),
+
               ],
             ),
           ),
-      ),]
+      ),      
+      ],
       ),
       bottomNavigationBar:  Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(pathBar),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child:BottomAppBar(
-          color: Colors.transparent,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: kBottomNavigationBarHeight,
-                child: IconButton(
-                  icon: const Icon(Icons.settings,color: Colors.white),
-                  onPressed: goToSettings,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(pathBar),
+                  fit: BoxFit.cover,
                 ),
               ),
-            ],
+              child:BottomAppBar(
+                color: Colors.transparent,
+                child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/2,
+                    height: kBottomNavigationBarHeight,
+                    child: IconButton(
+                      icon: const Icon(Icons.home,color: Colors.white),
+                      onPressed: (){
+                        if (Navigator.canPop(context)) {
+                          Navigator.pop(context);
+                        }
+                      }
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/2,
+                    height: kBottomNavigationBarHeight,
+                    child: IconButton(
+                      icon: const Icon(Icons.settings,color: Colors.white),
+                      onPressed:(){
+                        goToSettings(context);
+                      }
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+          persistentFooterButtons: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 80,
+              alignment: Alignment.center,
+              child:_isBannerAdReady
+                ? AdWidget(ad: _bannerAd)
+                : const CircularProgressIndicator(),
+            ),
+          ],
     );
   }
 }

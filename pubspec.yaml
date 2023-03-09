@@ -39,6 +39,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.5
   universal_io: ^2.2.0
+  connectivity: ^3.0.6
+  tuple: ^2.0.1
+  google_mobile_ads: ^2.3.0
 
 dev_dependencies:
   flutter_test:

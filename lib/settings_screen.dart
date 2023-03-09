@@ -5,7 +5,7 @@ import 'main.dart';
 import 'providers.dart';
 
 class SettingsScreen extends StatefulWidget {
-   const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({Key? key}) : super(key: key);
   @override
   SettingsScreenState createState() => SettingsScreenState(); 
 }
@@ -15,9 +15,6 @@ class SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     MyAppLocalizations localizations = MyAppLocalizations.of(context);
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
-    void goToHome() {
-      changePage(context,const MyHomePage());
-    }
     return ChangeNotifierProvider(
       create: (context) => DataModel(),
       child:
@@ -88,11 +85,23 @@ class SettingsScreenState extends State<SettingsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   SizedBox(
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width/2,
                     height: kBottomNavigationBarHeight,
                     child: IconButton(
                       icon: const Icon(Icons.home,color: Colors.white),
-                      onPressed: goToHome,
+                      onPressed: (){
+                        goToHome(context);
+                      }
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/2,
+                    height: kBottomNavigationBarHeight,
+                    child: IconButton(
+                      icon: const Icon(Icons.settings,color: Colors.white),
+                      onPressed:(){
+                        Navigator.pop(context);
+                      }
                     ),
                   ),
                 ],

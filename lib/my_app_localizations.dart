@@ -14,7 +14,7 @@ class MyAppLocalizations {
       'title': 'Mathematical Reasoning',
       'settings': 'Settings',
       'problems':'Practice Problems',
-      'topic1':'Successions',
+      'topic1':'Series',
       'topic2':'Ages',
       'topic3':'Kinship Relations',
       'topic4':'Chronometry',
@@ -22,13 +22,17 @@ class MyAppLocalizations {
       'difficulty':'Difficulty',
       'easy': 'Easy',
       'normal':'Normal',
-      'hard':'Hard'
+      'hard':'Hard',
+      'disconnected':'There is no internet connection',
+      'close': 'Close',
+      'check': 'CHECK',
+      'statement':'Find the sum of the first _n_ terms of the arithmetic series _serie_',
     },
     'es': {
       'title': 'Razonamiento Matemático',
       'problems':'Problemas de Práctica',
       'settings': 'Opciones',
-      'topic1':'Sucesiones',
+      'topic1':'Series',
       'topic2':'Edades',
       'topic3':'Relaciones de Parentesco',
       'topic4':'Cronometría',
@@ -36,7 +40,11 @@ class MyAppLocalizations {
       'difficulty':'Dificultad',
       'easy': 'Fácil',
       'normal':'Normal',
-      'hard':'Difícil'
+      'hard':'Difícil',
+      'disconnected':'No hay conexión a internet',
+      'close': 'Cerrar',
+      'check': 'COMPROBAR',
+      'statement': 'Encuentra la suma de los primeros _n_ términos de la serie aritmética _serie_',
     },
   };
 
@@ -75,6 +83,18 @@ class MyAppLocalizations {
   }
   String get difficulty {
     return _localizedValues[locale.languageCode]!['difficulty']!;
+  }
+  String get disconnected {
+    return _localizedValues[locale.languageCode]!['disconnected']!;
+  }
+  String get close {
+    return _localizedValues[locale.languageCode]!['close']!;
+  }
+  String get statement {
+    return _localizedValues[locale.languageCode]!['statement']!;
+  }
+  String get check {
+    return _localizedValues[locale.languageCode]!['check']!;
   }
   Future<bool> load() async {
     return true;
