@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'my_app_localizations.dart';
-import 'main.dart';
-import 'providers.dart';
+import '../viewmodels/change_page.dart';
+import '../viewmodels/my_app_localizations.dart';
+import '../viewmodels/constants.dart';
+import '../viewmodels/providers.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);

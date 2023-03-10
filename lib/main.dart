@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:raz_mat/create.dart';
-import 'package:raz_mat/problems_screen.dart';
+import 'package:raz_mat/createProblemSeries.dart';
+import 'package:raz_mat/models/tipo.dart';
+import 'package:raz_mat/view/problems_screen.dart';
+import 'package:raz_mat/viewmodels/change_page.dart';
+import 'package:raz_mat/viewmodels/constants.dart';
 import 'models/problema.dart';
-import 'my_app_localizations.dart';
-import 'providers.dart';
+import 'viewmodels/my_app_localizations.dart';
+import 'viewmodels/providers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,47 +53,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late BannerAd _bannerAd;
-  bool _isBannerAdReady = false;
-  late final Container adContainer ;
-  @override
-  void initState() {
-    super.initState();
-    _createBannerAd();
-  }
-  void _createBannerAd() async{
-    
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      int width = MediaQuery.of(context).size.width.toInt();  
-      _bannerAd = BannerAd(
-        adUnitId: 'ca-app-pub-3940256099942544/6300978111',
-        size: AdSize(width: width, height: 60),
-        request: const AdRequest(),
-        listener: BannerAdListener(
-          onAdLoaded: (_) {
-            setState(() {
-              _isBannerAdReady = true;
-            });
-          },
-          onAdFailedToLoad: (ad, error) {
-            ad.dispose();
-          },
-        ),
-      );
-      _bannerAd.load();
-    });
-  }
-  @override
-  void dispose() {
-    _bannerAd.dispose();
-    super.dispose();
-  }
   void goToProblems(DataModel dataModel,MyAppLocalizations localizations ) {
     checkInternetConnectivity(dataModel);
-    Problema p = createProblemSeries(localizations.statement,dataModel.difficulty);
+    Tipo series = getTipo(localizations);
+    Problema p = createProblemSeries(series, dataModel.difficulty);
     dataModel.enunciado = p.enunciado;
     dataModel.alternativas = p.alternativas;
     dataModel.clave = p.clave;
+    dataModel.solucion = p.solucion;
     dataModel.connected 
     ? changePageScale(context,const ProblemsScreen())
     : ScaffoldMessenger.of(context).showSnackBar(
@@ -132,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: MediaQuery.of(context).size.height * 0.7,
             child: ListView(
               children: [
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -277,16 +247,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          persistentFooterButtons: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 80,
-              alignment: Alignment.center,
-              child:_isBannerAdReady
-                ? AdWidget(ad: _bannerAd)
-                : const CircularProgressIndicator(),
-            ),
-          ],
     );
   }
 }

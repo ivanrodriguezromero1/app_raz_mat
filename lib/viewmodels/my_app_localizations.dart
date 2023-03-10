@@ -26,7 +26,11 @@ class MyAppLocalizations {
       'disconnected':'There is no internet connection',
       'close': 'Close',
       'check': 'CHECK',
-      'statement':'Find the sum of the first _n_ terms of the arithmetic series _serie_',
+      'newProblem': 'NEW',
+      'statementSerieNth': 'Find the _n_ term of the arithmetic series: \r\n\n _series_',
+      'statementSerieSum':'Find the sum of the first _n_ terms of the arithmetic series: \r\n\n _serie_',
+      'solution':'SEE SOLUTION',
+      'titleSolution':'SOLUTION',
     },
     'es': {
       'title': 'Razonamiento Matemático',
@@ -44,7 +48,11 @@ class MyAppLocalizations {
       'disconnected':'No hay conexión a internet',
       'close': 'Cerrar',
       'check': 'COMPROBAR',
-      'statement': 'Encuentra la suma de los primeros _n_ términos de la serie aritmética _serie_',
+      'newProblem': 'NUEVO',
+      'statementSerieNth': 'Encuentra el término _n_ de la serie aritmética: \r\n\n _serie_',
+      'statementSerieSum': 'Encuentra la suma de los primeros _n_ términos de la serie aritmética: \r\n\n _serie_',
+      'solution':'VER SOLUCION',
+      'titleSolution':'SOLUCION',
     },
   };
 
@@ -90,11 +98,23 @@ class MyAppLocalizations {
   String get close {
     return _localizedValues[locale.languageCode]!['close']!;
   }
-  String get statement {
-    return _localizedValues[locale.languageCode]!['statement']!;
+  String get statementSerieNth {
+    return _localizedValues[locale.languageCode]!['statementSerieNth']!;
+  }
+  String get statementSerieSum {
+    return _localizedValues[locale.languageCode]!['statementSerieSum']!;
   }
   String get check {
     return _localizedValues[locale.languageCode]!['check']!;
+  }
+  String get newProblem {
+    return _localizedValues[locale.languageCode]!['newProblem']!;
+  }
+  String get solution {
+    return _localizedValues[locale.languageCode]!['solution']!;
+  }
+  String get titleSolution {
+    return _localizedValues[locale.languageCode]!['titleSolution']!;
   }
   Future<bool> load() async {
     return true;
