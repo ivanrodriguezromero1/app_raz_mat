@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:raz_mat/models/problema.dart';
 
-import 'models/tipo.dart';
+import '../models/tipo.dart';
 
 Problema createProblemSeries(Tipo series , int? dificultad) {
   Random random = Random();

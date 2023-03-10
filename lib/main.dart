@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:raz_mat/createProblemSeries.dart';
+import 'package:raz_mat/viewmodels/createProblemSeries.dart';
 import 'package:raz_mat/models/tipo.dart';
 import 'package:raz_mat/view/problems_screen.dart';
 import 'package:raz_mat/viewmodels/change_page.dart';
