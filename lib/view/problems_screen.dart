@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import 'package:raz_mat/viewmodels/createProblemSeries.dart';
+import 'package:raz_mat/viewmodels/create_problem_series.dart';
 import 'package:raz_mat/models/problema.dart';
 import '../models/tipo.dart';
 import '../viewmodels/change_page.dart';
+import '../viewmodels/create_problem_ages.dart';
 import '../viewmodels/my_app_localizations.dart';
 import '../viewmodels/constants.dart';
 import '../viewmodels/providers.dart';
@@ -177,8 +178,16 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                             setState(() {
                               checkInternetConnectivity(dataModel);
                               dataModel.connected?(){
-                              Tipo series = getTipo(localizations);
-                              Problema p = createProblemSeries(series, dataModel.difficulty);
+                              Problema p;
+                              switch(dataModel.option){
+                                case 1:
+                                  Tipo series = getTipoSeries(localizations);
+                                  p = createProblemSeries(series, dataModel.difficulty);
+                                  break;
+                                default:
+                                  p = createProblemAges(localizations.statementAge1, dataModel.difficulty);
+                                  break;
+                              }
                               dataModel.enunciado = p.enunciado;
                               dataModel.alternativas = p.alternativas;
                               dataModel.clave = p.clave;

@@ -1,12 +1,8 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:raz_mat/view/solutions_screen.dart';
 import '../models/tipo.dart';
 import 'my_app_localizations.dart';
-import '../view/settings_screen.dart';
-import '../main.dart';
 
 class DataModel extends ChangeNotifier {
   int? _selectedDifficulty = 0;
@@ -45,9 +41,15 @@ class DataModel extends ChangeNotifier {
     _solucion = value;
     notifyListeners();
   }
+  int _option = 0;
+  int get option => _option;
+  set option(int value){
+    _option = value;
+    notifyListeners();
+  }
 }
 
-Tipo getTipo(MyAppLocalizations localizations){
+Tipo getTipoSeries(MyAppLocalizations localizations){
     Random random = Random();
     int i = random.nextInt(2);
     List<String> statements = [

@@ -31,6 +31,7 @@ class MyAppLocalizations {
       'statementSerieSum':'Find the sum of the first _n_ terms of the arithmetic series: \r\n\n _serie_',
       'solution':'SEE SOLUTION',
       'titleSolution':'SOLUTION',
+      'statementAge1':'_a_ times the age I will be in _b_ years, minus _c_ times the age I was _d_ years ago, equals _e_. How many years do I have until I turn _f_?',
     },
     'es': {
       'title': 'Razonamiento Matemático',
@@ -53,6 +54,7 @@ class MyAppLocalizations {
       'statementSerieSum': 'Encuentra la suma de los primeros _n_ términos de la serie aritmética: \r\n\n _serie_',
       'solution':'VER SOLUCION',
       'titleSolution':'SOLUCION',
+      'statementAge1':'_a_ veces la edad que tendré dentro de _b_ años, menos _c_ veces la edad que tenía hace _d_ años, resulta ser _e_. ¿Cuántos años me faltan para cumplir _f_ años?',
     },
   };
 
@@ -115,6 +117,9 @@ class MyAppLocalizations {
   }
   String get titleSolution {
     return _localizedValues[locale.languageCode]!['titleSolution']!;
+  }
+  String get statementAge1 {
+    return _localizedValues[locale.languageCode]!['statementAge1']!;
   }
   Future<bool> load() async {
     return true;

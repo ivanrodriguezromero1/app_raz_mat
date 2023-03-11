@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:raz_mat/viewmodels/createProblemSeries.dart';
+import 'package:raz_mat/viewmodels/create_problem_ages.dart';
+import 'package:raz_mat/viewmodels/create_problem_series.dart';
 import 'package:raz_mat/models/tipo.dart';
 import 'package:raz_mat/view/problems_screen.dart';
 import 'package:raz_mat/viewmodels/change_page.dart';
@@ -53,10 +54,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void goToProblems(DataModel dataModel,MyAppLocalizations localizations ) {
+  void goToProblems(DataModel dataModel,MyAppLocalizations localizations) {
     checkInternetConnectivity(dataModel);
-    Tipo series = getTipo(localizations);
-    Problema p = createProblemSeries(series, dataModel.difficulty);
+    Problema p;
+    switch(dataModel.option){
+      case 1:
+        Tipo series = getTipoSeries(localizations);
+        p = createProblemSeries(series, dataModel.difficulty);
+        break;
+      default:
+        p = createProblemAges(localizations.statementAge1, dataModel.difficulty);
+        break;
+    }
     dataModel.enunciado = p.enunciado;
     dataModel.alternativas = p.alternativas;
     dataModel.clave = p.clave;
@@ -118,8 +127,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: const TextStyle(fontSize: 20),
                     ),
                   onTap: (){
-                      goToProblems(dataModel,localizations);
-                    }           
+                    dataModel.option = 1;
+                    goToProblems(dataModel,localizations);
+                  }           
                 ),
                 ),
                 const SizedBox(height: 10),
@@ -138,7 +148,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: const TextStyle(fontSize: 20),
                     ),
                   onTap: () {
-                    // Lógica para la opción 2
+                    dataModel.option = 2;
+                    goToProblems(dataModel,localizations);
                   },
                 ),
                 ),
@@ -158,7 +169,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: const TextStyle(fontSize: 20),
                     ),
                   onTap: () {
-                    // Lógica para la opción 3
+                    dataModel.option = 3;
+                    goToProblems(dataModel,localizations);
                   },
                 ),
                 ),
@@ -178,7 +190,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: const TextStyle(fontSize: 20),
                     ),
                   onTap: () {
-                    // Lógica para la opción 4
+                    dataModel.option = 4;
+                    goToProblems(dataModel,localizations);
                   },
                 ),
                 ),
@@ -198,7 +211,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: const TextStyle(fontSize: 20),
                     ),
                   onTap: () {
-                    // Lógica para la opción 5
+                    dataModel.option = 5;
+                    goToProblems(dataModel,localizations);
                   },
                 ),
                 ),
