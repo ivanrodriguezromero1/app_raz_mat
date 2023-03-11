@@ -46,5 +46,5 @@ void goToHome(BuildContext context) {
   changePageSlide(context,const MyHomePage(),-1.0,0);
 }
 void goToSolution(BuildContext context) {
-  changePageSlide(context,const SolutionsScreen(),0,-1.0);
+  changePageSlide(context, const SolutionsScreen(),0,-1.0);
 }

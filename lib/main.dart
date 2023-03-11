@@ -83,13 +83,65 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+  @override
+  void initState() {
+    super.initState();
+    createBannerAd();
+    // DataModel dataModel = Provider.of<DataModel>(context, listen: false);
+    // dataModel.bannerAd;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      for (String path in imageList) {
+        precacheImage(AssetImage(path), context);
+      }
+    });
+  }
+  void createBannerAd() async{    
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      DataModel dataModel = Provider.of<DataModel>(context, listen: false);
+      int width = MediaQuery.of(context).size.width.toInt();
+      dataModel.bannerAdProblem = BannerAd(
+        adUnitId: adUnitBannerId,
+        size: AdSize(width: width, height: 45),
+        request: const AdRequest(),
+        listener: BannerAdListener(
+          onAdLoaded: (_) {
+            setState(() {
+              dataModel.isBannerAdProblemReady = true;
+            });
+          },
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
+      dataModel.bannerAdProblem.load();
+
+      dataModel.bannerAdSolution = BannerAd(
+        adUnitId: adUnitBannerId,
+        size: AdSize(width: width, height: 45),
+        request: const AdRequest(),
+        listener: BannerAdListener(
+          onAdLoaded: (_) {
+            setState(() {
+              dataModel.isBannerAdSolutionReady = true;
+            });
+          },
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
+      dataModel.bannerAdSolution.load();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     MyAppLocalizations localizations = MyAppLocalizations.of(context);
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
     checkInternetConnectivity(dataModel);
-    return Scaffold(
+    return dataModel.isBannerAdProblemReady && dataModel.isBannerAdSolutionReady
+     ? Scaffold(
       appBar: AppBar(
         title: Center(child: Text(localizations.title,
             style: const TextStyle(color: Colors.white),)
@@ -101,34 +153,34 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: 
-      Stack(
-        children: [
-          Center(
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.7,
-            child: ListView(
-              children: [
-                const SizedBox(height: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
+        Stack(
+          children: [
+            Center(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: ListView(
+                children: [
+                  const SizedBox(height: 10),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 1,
+                      ),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                child:ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 7.0),
-                  leading: const Icon(Icons.psychology),
-                  title: Text(localizations.topic1,
+                  child:ListTile(
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 7.0),
+                    leading: const Icon(Icons.psychology),
+                    title: Text(localizations.topic1,
                     style: const TextStyle(fontSize: 20),
                     ),
-                  onTap: (){
-                    dataModel.option = 1;
-                    goToProblems(dataModel,localizations);
-                  }           
-                ),
+                    onTap: (){
+                      dataModel.option = 1;
+                      goToProblems(dataModel,localizations);
+                    }           
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -259,6 +311,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-    );
+    ):Container(
+      color: Colors.white,
+        child: Image.asset(
+          pathIcon,
+          fit: BoxFit.contain,
+        ),
+      );
   }
 }

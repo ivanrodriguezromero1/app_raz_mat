@@ -55,6 +55,7 @@ class MyAppLocalizations {
       'solution':'VER SOLUCION',
       'titleSolution':'SOLUCION',
       'statementAge1':'_a_ veces la edad que tendré dentro de _b_ años, menos _c_ veces la edad que tenía hace _d_ años, resulta ser _e_. ¿Cuántos años me faltan para cumplir _f_ años?',
+      'statementAge2':'Yo tengo el doble de tu edad. Si mi edad dentro de 5 años es el triple de la edad que tú tenías hace 7 años. ¿Qué edad tengo?',
     },
   };
 

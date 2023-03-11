@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class DataModel extends ChangeNotifier {
   int? _selectedDifficulty = 0;
@@ -42,6 +43,50 @@ class DataModel extends ChangeNotifier {
   int get option => _option;
   set option(int value){
     _option = value;
+    notifyListeners();
+  }  
+  bool _isBannerAdProblemReady = false;
+  bool get isBannerAdProblemReady => _isBannerAdProblemReady;
+  set isBannerAdProblemReady(bool value){
+    _isBannerAdProblemReady = value;
+    notifyListeners();
+  }
+  BannerAd _bannerAdProblem =  BannerAd(
+        adUnitId: '',
+        size: AdSize.banner,
+        request: const AdRequest(),
+        listener: BannerAdListener(
+          onAdLoaded: (_) {},
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
+  BannerAd get bannerAdProblem => _bannerAdProblem;
+  set bannerAdProblem(BannerAd value){
+    _bannerAdProblem = value;
+    notifyListeners();
+  }
+  bool _isBannerAdSolutionReady = false;
+  bool get isBannerAdSolutionReady => _isBannerAdSolutionReady;
+  set isBannerAdSolutionReady(bool value){
+    _isBannerAdSolutionReady = value;
+    notifyListeners();
+  }
+  BannerAd _bannerAdSolution =  BannerAd(
+        adUnitId: '',
+        size: AdSize.banner,
+        request: const AdRequest(),
+        listener: BannerAdListener(
+          onAdLoaded: (_) {},
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+      );
+  BannerAd get bannerAdSolution => _bannerAdSolution;
+  set bannerAdSolution(BannerAd value){
+    _bannerAdSolution = value;
     notifyListeners();
   }
 }

@@ -20,46 +20,48 @@ class ProblemsScreenState extends State<ProblemsScreen> {
   int selectImage = 0;
   bool isRadioTileDisabled = false;
   bool viewCheck = true;
-  late BannerAd _bannerAd;
-  bool _isBannerAdReady = false;
+  // late BannerAd _bannerAd;
+  // bool _isBannerAdReady = false;
   
   String message = '';
   @override
   void initState() {
     super.initState();
-    createBannerAd();
+    // createBannerAd();
+    // DataModel dataModel = Provider.of<DataModel>(context, listen: false);
+    // dataModel.bannerAd;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       for (String path in imageList) {
         precacheImage(AssetImage(path), context);
       }
     });
   }
-  void createBannerAd() async{    
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      int width = MediaQuery.of(context).size.width.toInt();  
-      _bannerAd = BannerAd(
-        adUnitId: 'ca-app-pub-3940256099942544/6300978111',
-        size: AdSize(width: width, height: 45),
-        request: const AdRequest(),
-        listener: BannerAdListener(
-          onAdLoaded: (_) {
-            setState(() {
-              _isBannerAdReady = true;
-            });
-          },
-          onAdFailedToLoad: (ad, error) {
-            ad.dispose();
-          },
-        ),
-      );
-      _bannerAd.load();
-    });
-  }
-  @override
-  void dispose() {
-    _bannerAd.dispose();
-    super.dispose();
-  }
+  // void createBannerAd() async{    
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     int width = MediaQuery.of(context).size.width.toInt();
+  //     _bannerAd = BannerAd(
+  //       adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+  //       size: AdSize(width: width, height: 45),
+  //       request: const AdRequest(),
+  //       listener: BannerAdListener(
+  //         onAdLoaded: (_) {
+  //           setState(() {
+  //             _isBannerAdReady = true;
+  //           });
+  //         },
+  //         onAdFailedToLoad: (ad, error) {
+  //           ad.dispose();
+  //         },
+  //       ),
+  //     );
+  //     _bannerAd.load();
+  //   });
+  // }
+  // @override
+  // void dispose() {
+  //   _bannerAd.dispose();
+  //   super.dispose();
+  // }
   Future<void> precacheImages() async {
     for (var i = 0; i < imageList.length; i++) {
       await precacheImage(AssetImage(imageList[i]), context);
@@ -275,8 +277,8 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                   width: MediaQuery.of(context).size.width,
                   height: 90,
                   alignment: Alignment.center,
-                  child:_isBannerAdReady
-                    ? AdWidget(ad: _bannerAd)
+                  child: dataModel.isBannerAdProblemReady
+                    ? AdWidget(ad: dataModel.bannerAdProblem)
                     : const CircularProgressIndicator(),
                 ),
               ],
