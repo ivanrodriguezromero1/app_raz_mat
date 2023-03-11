@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:raz_mat/models/problema.dart';
 
-Problema createProblemAges(String enunciado , int? dificultad) {
+Problema createProblemAges1(String enunciado , int? dificultad) {
   Random random = Random();
   int x = random.nextInt(31) + 20 + dificultad!*5;
   int a = random.nextInt(5) + 4 + dificultad*5;

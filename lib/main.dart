@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:raz_mat/viewmodels/create_problem_ages.dart';
 import 'package:raz_mat/viewmodels/create_problem_series.dart';
-import 'package:raz_mat/models/tipo.dart';
 import 'package:raz_mat/view/problems_screen.dart';
 import 'package:raz_mat/viewmodels/change_page.dart';
 import 'package:raz_mat/viewmodels/constants.dart';
@@ -59,11 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
     Problema p;
     switch(dataModel.option){
       case 1:
-        Tipo series = getTipoSeries(localizations);
-        p = createProblemSeries(series, dataModel.difficulty);
+        p = createProblemSeries(localizations, dataModel.difficulty);
         break;
       default:
-        p = createProblemAges(localizations.statementAge1, dataModel.difficulty);
+        p = createProblemAges1(localizations.statementAge1, dataModel.difficulty);
         break;
     }
     dataModel.enunciado = p.enunciado;

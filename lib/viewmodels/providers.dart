@@ -1,8 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
-import '../models/tipo.dart';
-import 'my_app_localizations.dart';
 
 class DataModel extends ChangeNotifier {
   int? _selectedDifficulty = 0;
@@ -47,16 +44,6 @@ class DataModel extends ChangeNotifier {
     _option = value;
     notifyListeners();
   }
-}
-
-Tipo getTipoSeries(MyAppLocalizations localizations){
-    Random random = Random();
-    int i = random.nextInt(2);
-    List<String> statements = [
-        localizations.statementSerieNth, 
-        localizations.statementSerieSum
-      ];
-    return Tipo(statements[i], i);
 }
 
 Future<void> checkInternetConnectivity(DataModel dataModel) async {
