@@ -20,48 +20,15 @@ class ProblemsScreenState extends State<ProblemsScreen> {
   int selectImage = 0;
   bool isRadioTileDisabled = false;
   bool viewCheck = true;
-  // late BannerAd _bannerAd;
-  // bool _isBannerAdReady = false;
-  
-  String message = '';
   @override
   void initState() {
     super.initState();
-    // createBannerAd();
-    // DataModel dataModel = Provider.of<DataModel>(context, listen: false);
-    // dataModel.bannerAd;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       for (String path in imageList) {
         precacheImage(AssetImage(path), context);
       }
     });
   }
-  // void createBannerAd() async{    
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     int width = MediaQuery.of(context).size.width.toInt();
-  //     _bannerAd = BannerAd(
-  //       adUnitId: 'ca-app-pub-3940256099942544/6300978111',
-  //       size: AdSize(width: width, height: 45),
-  //       request: const AdRequest(),
-  //       listener: BannerAdListener(
-  //         onAdLoaded: (_) {
-  //           setState(() {
-  //             _isBannerAdReady = true;
-  //           });
-  //         },
-  //         onAdFailedToLoad: (ad, error) {
-  //           ad.dispose();
-  //         },
-  //       ),
-  //     );
-  //     _bannerAd.load();
-  //   });
-  // }
-  // @override
-  // void dispose() {
-  //   _bannerAd.dispose();
-  //   super.dispose();
-  // }
   Future<void> precacheImages() async {
     for (var i = 0; i < imageList.length; i++) {
       await precacheImage(AssetImage(imageList[i]), context);
@@ -114,7 +81,6 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                                   onChanged: isRadioTileDisabled ? null : (value) {
                                     setState(() {
                                       selectedValue = value;
-                                      // buttonEnabled = true;
                                     });
                                   },
                                 );
@@ -122,12 +88,31 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                             ),
                           ),
                           SizedBox(width: MediaQuery.of(context).size.width/10,),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/5,
-                            child: Image.asset(
-                              imageList[selectImage],
-                              fit: BoxFit.fill,
-                            ),
+                          Column(
+                            children:[
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width/5,
+                                child: Image.asset(
+                                  imageList[selectImage],
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                              const SizedBox(height: 20,),
+                              !viewCheck
+                                ?
+                                  Text(localizations.answer,
+                                    style: TextStyle(fontSize: 18,
+                                    color: (selectedValue == dataModel.clave)
+                                      ? Colors.green:Colors.red),)
+                                :const Text(''),
+                              !viewCheck
+                                ?
+                                  Text(dataModel.alternativas[dataModel.clave].toString(),
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,
+                                    color: (selectedValue == dataModel.clave)
+                                      ? Colors.green:Colors.red),)
+                                :const Text(''),
+                            ]
                           ),
                         ],
                       ),

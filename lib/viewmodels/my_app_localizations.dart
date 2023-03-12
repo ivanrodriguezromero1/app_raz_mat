@@ -32,6 +32,7 @@ class MyAppLocalizations {
       'solution':'SEE SOLUTION',
       'titleSolution':'SOLUTION',
       'statementAge1':'_a_ times the age I will be in _b_ years, minus _c_ times the age I was _d_ years ago, equals _e_. How many years do I have until I turn _f_?',
+      'answer':'The answer is',
     },
     'es': {
       'title': 'Razonamiento Matemático',
@@ -56,6 +57,7 @@ class MyAppLocalizations {
       'titleSolution':'SOLUCION',
       'statementAge1':'_a_ veces la edad que tendré dentro de _b_ años, menos _c_ veces la edad que tenía hace _d_ años, resulta ser _e_. ¿Cuántos años me faltan para cumplir _f_ años?',
       'statementAge2':'Yo tengo el doble de tu edad. Si mi edad dentro de 5 años es el triple de la edad que tú tenías hace 7 años. ¿Qué edad tengo?',
+      'answer':'La respuesta es',
     },
   };
 
@@ -121,6 +123,9 @@ class MyAppLocalizations {
   }
   String get statementAge1 {
     return _localizedValues[locale.languageCode]!['statementAge1']!;
+  }
+  String get answer {
+    return _localizedValues[locale.languageCode]!['answer']!;
   }
   Future<bool> load() async {
     return true;

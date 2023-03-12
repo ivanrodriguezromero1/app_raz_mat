@@ -87,8 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     createBannerAd();
-    // DataModel dataModel = Provider.of<DataModel>(context, listen: false);
-    // dataModel.bannerAd;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       for (String path in imageList) {
         precacheImage(AssetImage(path), context);
