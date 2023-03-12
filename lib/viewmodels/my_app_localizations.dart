@@ -27,12 +27,13 @@ class MyAppLocalizations {
       'close': 'Close',
       'check': 'CHECK',
       'newProblem': 'NEW',
-      'statementSerieNth': 'Find the _n_ term of the arithmetic series: \r\n\n _series_',
+      'statementSerieNth': 'Find the _n_ term of the arithmetic series: \r\n\n _serie_',
       'statementSerieSum':'Find the sum of the first _n_ terms of the arithmetic series: \r\n\n _serie_',
       'solution':'SEE SOLUTION',
       'titleSolution':'SOLUTION',
       'statementAge1':'_a_ times the age I will be in _b_ years, minus _c_ times the age I was _d_ years ago, equals _e_. How many years do I have until I turn _f_?',
       'answer':'The answer is',
+      'solutionSerieNth1':' First degree arithmetic series:\r\n _serie_ \r\n\n First term: a₁ = _a_ \r\n Arithmetic relation: r = _r_ \r\n Term to find: n = _n_ \r\n\n Nth term: \r\n aₙ = a₁ + (n-1).r \r\n\n Replacing: \r\n aₙ = _a_ + (_n_-1)._r_ \r\n aₙ = _a_ + (_n-1_)._r_ \r\n\n Result: \r\n aₙ = _an_',
     },
     'es': {
       'title': 'Razonamiento Matemático',
@@ -58,6 +59,7 @@ class MyAppLocalizations {
       'statementAge1':'_a_ veces la edad que tendré dentro de _b_ años, menos _c_ veces la edad que tenía hace _d_ años, resulta ser _e_. ¿Cuántos años me faltan para cumplir _f_ años?',
       'statementAge2':'Yo tengo el doble de tu edad. Si mi edad dentro de 5 años es el triple de la edad que tú tenías hace 7 años. ¿Qué edad tengo?',
       'answer':'La respuesta es',
+      'solutionSerieNth1': ' Serie aritmética de primer grado:\r\n _serie_ \r\n\n Primer término: a₁ = _a_ \r\n Razón aritmética: r = _r_ \r\n Término a hallar: n = _n_ \r\n\n Término enésimo: \r\n aₙ = a₁ + (n-1).r \r\n\n Reemplazando: \r\n aₙ = _a_ + (_n_-1)._r_ \r\n aₙ = _a_ + (_n-1_)._r_ \r\n\n Resultado: \r\n aₙ = _an_',
     },
   };
 
@@ -126,6 +128,9 @@ class MyAppLocalizations {
   }
   String get answer {
     return _localizedValues[locale.languageCode]!['answer']!;
+  }
+  String get solutionSerieNth1 {
+    return _localizedValues[locale.languageCode]!['solutionSerieNth1']!;
   }
   Future<bool> load() async {
     return true;

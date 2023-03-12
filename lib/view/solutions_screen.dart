@@ -43,7 +43,7 @@ class SolutionsScreenState extends State<SolutionsScreen> {
                         padding:const EdgeInsets.fromLTRB(35,20,26,18),
                         child: Text(dataModel.solucion,
                           style: const TextStyle(
-                            fontSize: 20,),
+                            fontSize: 18,),
                         ),
                       ),                      
                     ],

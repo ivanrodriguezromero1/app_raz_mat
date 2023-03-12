@@ -19,7 +19,7 @@ Problema createProblemSeries(MyAppLocalizations localizations , int? dificultad)
   Problema problema;
   switch(tipo){
     case 1:
-      problema = createProblemFirstGradeNthSeries(localizations.statementSerieNth ,dificultad);
+      problema = createProblemFirstGradeNthSeries(localizations.statementSerieNth,localizations.solutionSerieNth1 ,dificultad);
       break;
     case 2:
       problema = createProblemFirstGradeSumSeries(localizations.statementSerieSum ,dificultad);
@@ -43,6 +43,11 @@ String getStatement(String enunciado, int n, String serie){
   return enunciado.replaceAll("_n_", n.toString())
                       .replaceAll("_serie_", serie);
 }
+String getSolutionNth1(String solucion,String serie,int a, int r, int n, int an){
+  return solucion.replaceAll("_serie_", serie).replaceAll("_a_", a.toString())
+    .replaceAll("_r_", r.toString()).replaceAll("_n_", n.toString())
+    .replaceAll("_n-1_", (n-1).toString()).replaceAll("_an_", an.toString());
+}
 List<int> getAlternatives(int respuesta){
   Random random = Random();
   List<int> alternativas = [];
@@ -61,7 +66,7 @@ List<int> getAlternatives(int respuesta){
   alternativas.shuffle();
   return alternativas;
 }
-Problema createProblemFirstGradeNthSeries(String enunciado , int? dificultad) {
+Problema createProblemFirstGradeNthSeries(String enunciado ,String solucion, int? dificultad) {
   Random random = Random();
   int a = random.nextInt(8) + 1;
   int r = random.nextInt(8) + 2;
@@ -70,7 +75,9 @@ Problema createProblemFirstGradeNthSeries(String enunciado , int? dificultad) {
   String serie = "$a, ${a+r}, ${a+2*r}, ...";
   enunciado = getStatement(enunciado, n, serie);
   int respuesta = an;
-  String solucion = " $serie \r\n\n a₁=$a \r\n r=$r \r\n n=$n \r\n aₙ = a₁ + (n-1).r \r\n\n aₙ = $a + ($n-1).$r \r\n\n aₙ = $an";
+  // String solucion = " $serie \r\n\n a₁=$a \r\n r=$r \r\n n=$n \r\n aₙ = a₁ + (n-1).r \r\n\n aₙ = $a + ($n-1).$r \r\n\n aₙ = $an";
+  // String solucion = " Serie aritmética de primer grado:\r\n $serie \r\n\n Primer término: a₁ = $a \r\n Razón aritmética: r = $r \r\n Término a hallar: n = $n \r\n\n Término enésimo: \r\n aₙ = a₁ + (n-1).r \r\n\n Reemplazando: \r\n aₙ = $a + ($n-1).$r \r\n aₙ = $a + (${n-1}).$r \r\n\n Resultado: \r\n aₙ = $an";
+  solucion = getSolutionNth1(solucion, serie, a, r, n, an);
   List<int> alternativas = getAlternatives(respuesta);
   int clave = alternativas.indexOf(respuesta);
   return  Problema(enunciado, alternativas, clave, solucion);
