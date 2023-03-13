@@ -19,34 +19,104 @@ Problema createProblemSeries(MyAppLocalizations localizations , int? dificultad)
   Problema problema;
   switch(tipo){
     case 1:
-      problema = createProblemFirstGradeNthSeries(localizations.statementSerieNth,localizations.solutionSerieNth1 ,dificultad);
+      problema = createProblemSeriesNth1(localizations.statementSerieNth, localizations.solutionSerieNth1, dificultad);
       break;
     case 2:
-      problema = createProblemFirstGradeSumSeries(localizations.statementSerieSum ,dificultad);
+      problema = createProblemSeriesSum1(localizations.statementSerieSum, localizations.solutionSerieSum1, dificultad);
       break;
     case 3:
-      problema = createProblemSecondGradeNthSeries(localizations.statementSerieNth ,dificultad);
+      problema = createProblemSeriesNth2(localizations.statementSerieNth, localizations.solutionSerieNth2, dificultad);
       break;
     case 4:
-      problema = createProblemSecondGradeSumSeries(localizations.statementSerieSum ,dificultad);
+      problema = createProblemSeriesSum2(localizations.statementSerieSum, localizations.solutionSerieSum2, dificultad);
       break;
     case 5:
-      problema = createProblemThirdGradeNthSeries(localizations.statementSerieNth ,dificultad);
+      problema = createProblemSeriesNth3(localizations.statementSerieNth, localizations.solutionSerieNth3, dificultad);
       break;
     default:
-      problema = createProblemThirdGradeSumSeries(localizations.statementSerieSum ,dificultad);
+      problema = createProblemSeriesSum3(localizations.statementSerieSum, localizations.solutionSerieSum3, dificultad);
       break;
   }
   return problema;
 }
 String getStatement(String enunciado, int n, String serie){
   return enunciado.replaceAll("_n_", n.toString())
-                      .replaceAll("_serie_", serie);
+    .replaceAll("_serie_", serie);
 }
 String getSolutionNth1(String solucion,String serie,int a, int r, int n, int an){
-  return solucion.replaceAll("_serie_", serie).replaceAll("_a_", a.toString())
-    .replaceAll("_r_", r.toString()).replaceAll("_n_", n.toString())
-    .replaceAll("_n-1_", (n-1).toString()).replaceAll("_an_", an.toString());
+  return solucion.replaceAll("_serie_", serie)
+    .replaceAll("_a_", a.toString())
+    .replaceAll("_r_", r.toString())
+    .replaceAll("_n_", n.toString())
+    .replaceAll("_n-1_", (n-1).toString())
+    .replaceAll("_(n-1).r_",((n-1)*r).toString())
+    .replaceAll("_an_", an.toString());
+}
+String getSolutionSum1(String solucion,String serie,int a, int r, int n, int sn){
+  return solucion.replaceAll("_serie_", serie)
+    .replaceAll("_a_", a.toString())
+    .replaceAll("_r_", r.toString())
+    .replaceAll("_n_", n.toString())
+    .replaceAll("_a.n_", (a*n).toString())
+    .replaceAll("_n-1_", (n-1).toString())
+    .replaceAll("_[(n-1).n.r]/2_", (((n-1)*n*r)~/2).toString())
+    .replaceAll("_sn_", sn.toString());
+}
+String getSolutionNth2(String solucion,String serie, int a, int r1, int r2, int n, int an){
+  return solucion.replaceAll("_serie_", serie)
+    .replaceAll("_a_", a.toString())
+    .replaceAll("_r1_", r1.toString())
+    .replaceAll("_r2_", r2.toString())
+    .replaceAll("_n_", n.toString())
+    .replaceAll("_n-1_", (n-1).toString())
+    .replaceAll("_n-2_", (n-2).toString())
+    .replaceAll("_(n-1).r1_",((n-1)*r1).toString())
+    .replaceAll("_[(n-1).(n-2).r2]/2_", (((n-1)*(n-2)*r2)~/2).toString())
+    .replaceAll("_an_", an.toString());
+}
+String getSolutionSum2(String solucion,String serie, int a, int r1, int r2, int n, int sn){
+  return solucion.replaceAll("_serie_", serie)
+    .replaceAll("_a_", a.toString())
+    .replaceAll("_r1_", r1.toString())
+    .replaceAll("_r2_", r2.toString())
+    .replaceAll("_n_", n.toString())
+    .replaceAll("_a.n_", (a*n).toString())
+    .replaceAll("_n-1_", (n-1).toString())
+    .replaceAll("_n-2_", (n-2).toString())
+    .replaceAll("_[(n-1).n.r1]/2_", (((n-1)*n*r1)~/2).toString())
+    .replaceAll("_[(n-2).(n-1).n.r2]/6_", (((n-2)*(n-1)*n*r2)~/6).toString())
+    .replaceAll("_sn_", sn.toString());
+}
+String getSolutionNth3(String solucion,String serie, int a, int r1, int r2, int r3, int n, int an){
+  return solucion.replaceAll("_serie_", serie)
+    .replaceAll("_a_", a.toString())
+    .replaceAll("_r1_", r1.toString())
+    .replaceAll("_r2_", r2.toString())
+    .replaceAll("_r3_", r3.toString())
+    .replaceAll("_n_", n.toString())
+    .replaceAll("_n-1_", (n-1).toString())
+    .replaceAll("_n-2_", (n-2).toString())
+    .replaceAll("_n-3_", (n-3).toString())
+    .replaceAll("_(n-1).r1_",((n-1)*r1).toString())
+    .replaceAll("_[(n-1).(n-2).r2]/2_", (((n-1)*(n-2)*r2)~/2).toString())
+    .replaceAll("_[(n-1).(n-2).(n-3).r3]/6_", (((n-1)*(n-2)*(n-3)*r3)~/6).toString())
+    .replaceAll("_an_", an.toString());
+}
+String getSolutionSum3(String solucion,String serie, int a, int r1, int r2, int r3, int n, int sn){
+  return solucion.replaceAll("_serie_", serie)
+    .replaceAll("_a_", a.toString())
+    .replaceAll("_r1_", r1.toString())
+    .replaceAll("_r2_", r2.toString())
+    .replaceAll("_r3_", r3.toString())
+    .replaceAll("_n_", n.toString())
+    .replaceAll("_a.n_", (a*n).toString())
+    .replaceAll("_n-1_", (n-1).toString())
+    .replaceAll("_n-2_", (n-2).toString())
+    .replaceAll("_n-3_", (n-3).toString())
+    .replaceAll("_[(n-1).n.r1]/2_", (((n-1)*n*r1)~/2).toString())
+    .replaceAll("_[(n-2).(n-1).n.r2]/6_", (((n-2)*(n-1)*n*r2)~/6).toString())
+    .replaceAll("_[(n-3).(n-2).(n-1).n.r3]/24_", (((n-3)*(n-2)*(n-1)*n*r3)~/24).toString())
+    .replaceAll("_sn_", sn.toString());
 }
 List<int> getAlternatives(int respuesta){
   Random random = Random();
@@ -66,7 +136,7 @@ List<int> getAlternatives(int respuesta){
   alternativas.shuffle();
   return alternativas;
 }
-Problema createProblemFirstGradeNthSeries(String enunciado ,String solucion, int? dificultad) {
+Problema createProblemSeriesNth1(String enunciado, String solucion, int? dificultad) {
   Random random = Random();
   int a = random.nextInt(8) + 1;
   int r = random.nextInt(8) + 2;
@@ -75,28 +145,26 @@ Problema createProblemFirstGradeNthSeries(String enunciado ,String solucion, int
   String serie = "$a, ${a+r}, ${a+2*r}, ...";
   enunciado = getStatement(enunciado, n, serie);
   int respuesta = an;
-  // String solucion = " $serie \r\n\n a₁=$a \r\n r=$r \r\n n=$n \r\n aₙ = a₁ + (n-1).r \r\n\n aₙ = $a + ($n-1).$r \r\n\n aₙ = $an";
-  // String solucion = " Serie aritmética de primer grado:\r\n $serie \r\n\n Primer término: a₁ = $a \r\n Razón aritmética: r = $r \r\n Término a hallar: n = $n \r\n\n Término enésimo: \r\n aₙ = a₁ + (n-1).r \r\n\n Reemplazando: \r\n aₙ = $a + ($n-1).$r \r\n aₙ = $a + (${n-1}).$r \r\n\n Resultado: \r\n aₙ = $an";
   solucion = getSolutionNth1(solucion, serie, a, r, n, an);
   List<int> alternativas = getAlternatives(respuesta);
   int clave = alternativas.indexOf(respuesta);
   return  Problema(enunciado, alternativas, clave, solucion);
 }
-Problema createProblemFirstGradeSumSeries(String enunciado , int? dificultad) {
+Problema createProblemSeriesSum1(String enunciado, String solucion, int? dificultad) {
   Random random = Random();
   int a = random.nextInt(8) + 1;
   int r = random.nextInt(8) + 2;
   int n = (dificultad!+1)*5 + random.nextInt(5);
-  int suma = a*n + (n-1)*n*r~/2;
+  int sn = a*n + (n-1)*n*r~/2;
   String serie = "$a, ${a+r}, ${a+2*r}, ...";
   enunciado = getStatement(enunciado, n, serie);
-  int respuesta = suma;
-  String solucion = " $serie \r\n\n a₁=$a \r\n r=$r \r\n n=$n \r\n Sₙ = a₁.n + [(n-1).n.r]/2 \r\n\n Sₙ = $a.$n + [($n-1).$n.$r]/2 \r\n\n Sₙ = $suma";
+  int respuesta = sn;
+  solucion = getSolutionSum1(solucion, serie, a, r, n, sn);
   List<int> alternativas = getAlternatives(respuesta);
   int clave = alternativas.indexOf(respuesta);
   return  Problema(enunciado, alternativas, clave, solucion);
 }
-Problema createProblemSecondGradeNthSeries(String enunciado , int? dificultad) {
+Problema createProblemSeriesNth2(String enunciado, String solucion, int? dificultad) {
   Random random = Random();
   int a = random.nextInt(8) + 1;
   int r1 = random.nextInt(8) + 2;
@@ -106,27 +174,27 @@ Problema createProblemSecondGradeNthSeries(String enunciado , int? dificultad) {
   String serie = "$a, ${a + r1}, ${a + 2 * r1 + r2}, ${a + 3 * r1 + 3 * r2}, ...";
   enunciado = getStatement(enunciado, n, serie);
   int respuesta = an;
-  String solucion = " $serie \r\n\n a₁=$a \r\n r₁=$r1 \r\n r₂=$r2 \r\n n=$n \r\n\n aₙ =a₁ + (n-1).r₁ + [(n-1).(n-2).r₂]/2 \r\n\n aₙ =$a + ($n-1).$r1 + [($n-1).($n-2).$r2]/2 \r\n\n aₙ = $an";
+  solucion = getSolutionNth2(solucion, serie, a, r1, r2, n, an);
   List<int> alternativas = getAlternatives(respuesta);
   int clave = alternativas.indexOf(respuesta);
   return Problema(enunciado, alternativas, clave, solucion);
 }
-Problema createProblemSecondGradeSumSeries(String enunciado , int? dificultad) {
+Problema createProblemSeriesSum2(String enunciado, String solucion, int? dificultad) {
   Random random = Random();
   int a = random.nextInt(8) + 1;
   int r1 = random.nextInt(8) + 2;
   int r2 = random.nextInt(8) + 1;
   int n = (dificultad! + 1) * 6 + random.nextInt(6);
-  int suma = a*n + ((n-1)*n*r1)~/2 + ((n-2)*(n-1)*n*r2)~/6;
+  int sn = a*n + ((n-1)*n*r1)~/2 + ((n-2)*(n-1)*n*r2)~/6;
   String serie = "$a, ${a + r1}, ${a + 2 * r1 + r2}, ${a + 3 * r1 + 3 * r2}, ...";
   enunciado = getStatement(enunciado, n, serie);
-  int respuesta = suma;
-  String solucion = " $serie \r\n\n a₁=$a \r\n r₁=$r1 \r\n r₂=$r2 \r\n n=$n \r\n\n Sₙ = a₁.n + [(n-1).n.r₁]/2 + [(n-2).(n-1).n.r₂]/6 \r\n\n Sₙ = $a.$n + [($n-1).$n.$r1]/2 + [($n-2).($n-1).$n.$r2]/6 \r\n\n Sₙ = $suma";
+  int respuesta = sn;
+  solucion = getSolutionSum2(solucion, serie, a, r1, r2, n, sn);
   List<int> alternativas = getAlternatives(respuesta);
   int clave = alternativas.indexOf(respuesta);
   return Problema(enunciado, alternativas, clave, solucion);
 }
-Problema createProblemThirdGradeNthSeries(String enunciado , int? dificultad) {
+Problema createProblemSeriesNth3(String enunciado, String solucion, int? dificultad) {
   Random random = Random();
   int a = random.nextInt(8) + 1;
   int r1 = random.nextInt(8) + 2;
@@ -137,23 +205,23 @@ Problema createProblemThirdGradeNthSeries(String enunciado , int? dificultad) {
   String serie = "$a, ${a + r1}, ${a + 2 * r1 + r2}, ${a + 3 * r1 + 3 * r2 + r3}, ${a + 4 * r1 + 6 * r2 + 4 * r3}, ...";
   enunciado = getStatement(enunciado, n, serie);
   int respuesta = an;
-  String solucion = " $serie \r\n\n a₁=$a \r\n r₁=$r1 \r\n r₂=$r2 \r\n n=$n \r\n\n aₙ =a₁ + (n-1).r₁ + [(n-1).(n-2).r₂]/2 + [(n-1).(n-2).(n-3).r₃]/6 \r\n\n aₙ =$a + ($n-1).$r1 + [($n-1).($n-2).$r2]/2 + [($n-1).($n-2).($n-3).$r3]/6 \r\n\n aₙ = $an";
+  solucion = getSolutionNth3(solucion, serie, a, r1, r2, r3, n, an);
   List<int> alternativas = getAlternatives(respuesta);
   int clave = alternativas.indexOf(respuesta);
   return Problema(enunciado, alternativas, clave, solucion);
 }
-Problema createProblemThirdGradeSumSeries(String enunciado , int? dificultad) {
+Problema createProblemSeriesSum3(String enunciado, String solucion, int? dificultad) {
   Random random = Random();
   int a = random.nextInt(8) + 1;
   int r1 = random.nextInt(8) + 2;
   int r2 = random.nextInt(8) + 2;
   int r3 = random.nextInt(8) + 1;
   int n = (dificultad! + 1) * 7 + random.nextInt(7);
-  int suma = a*n + ((n-1)*n*r1)~/2 + ((n-2)*(n-1)*n*r2)~/6 + ((n-3)*(n-2)*(n-1)*n*r3)~/24;
+  int sn = a*n + ((n-1)*n*r1)~/2 + ((n-2)*(n-1)*n*r2)~/6 + ((n-3)*(n-2)*(n-1)*n*r3)~/24;
   String serie = "$a, ${a + r1}, ${a + 2 * r1 + r2}, ${a + 3 * r1 + 3 * r2 + r3}, ${a + 4 * r1 + 6 * r2 + 4 * r3}, ...";
   enunciado = getStatement(enunciado, n, serie);
-  int respuesta = suma;
-  String solucion = " $serie \r\n\n a₁=$a \r\n r₁=$r1 \r\n r₂=$r2 \r\n n=$n \r\n\n Sₙ = a₁.n + [(n-1).n.r₁]/2 + [(n-2).(n-1).n.r₂]/6 + [(n-3).(n-2).(n-1).n.r₃]/24 \r\n\n Sₙ = $a.$n + [($n-1).$n.$r1]/2 + [($n-2).($n-1).$n.$r2]/6 + [($n-3).($n-2).($n-1).$n.$r3]/24 \r\n\n Sₙ = $suma";
+  int respuesta = sn;
+  solucion = getSolutionSum3(solucion, serie, a, r1, r2, r3, n, sn);
   List<int> alternativas = getAlternatives(respuesta);
   int clave = alternativas.indexOf(respuesta);
   return Problema(enunciado, alternativas, clave, solucion);
