@@ -170,7 +170,7 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                                   p = createProblemSeries(localizations, dataModel.difficulty);
                                   break;
                                 default:
-                                  p = createProblemAges1(localizations.statementAge1, dataModel.difficulty);
+                                  p = createProblemAges(localizations, dataModel.difficulty);
                                   break;
                               }
                               dataModel.enunciado = p.enunciado;

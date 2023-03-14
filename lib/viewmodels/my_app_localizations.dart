@@ -27,18 +27,19 @@ class MyAppLocalizations {
       'close': 'Close',
       'check': 'CHECK',
       'newProblem': 'NEW',
+      'solution':'SEE SOLUTION',
+      'answer':'The answer is',
+      'titleSolution':'SOLUTION',
       'statementSerieNth': 'Find the _n_ term of the arithmetic series: \r\n\n _serie_',
       'statementSerieSum':'Find the sum of the first _n_ terms of the arithmetic series: \r\n\n _serie_',
-      'solution':'SEE SOLUTION',
-      'titleSolution':'SOLUTION',
-      'statementAge1':'_a_ times the age I will be in _b_ years, minus _c_ times the age I was _d_ years ago, equals _e_. How many years do I have until I turn _f_?',
-      'answer':'The answer is',
       'solutionSerieNth1':' First degree arithmetic series:\r\n _serie_ \r\n\n First term: a₁ = _a_ \r\n Arithmetic relation: r = _r_ \r\n Term number to find: n = _n_ \r\n\n Nth term: \r\n aₙ = a₁ + (n-1).r \r\n\n Replacing: \r\n aₙ = _a_ + (_n_-1)._r_ \r\n aₙ = _a_ + (_n-1_)._r_ \r\n aₙ = _a_ + _(n-1).r_ \r\n\n Result: \r\n aₙ = _an_',
       'solutionSerieSum1':' First degree arithmetic series:\r\n _serie_ \r\n\n First term: a₁ = _a_ \r\n Arithmetic relation: r = _r_ \r\n Number of terms: n = _n_ \r\n\n Sum of terms: \r\n Sₙ = a₁.n + [(n-1).n.r]/2 \r\n\n Replacing: \r\n Sₙ = _a_._n_ + [( _n_-1)._n_._r_]/2 \r\n Sₙ = _a.n_ + [(_n-1_)._n_._r_]/2 \r\n Sₙ = _a.n_ + _[(n-1).n.r]/2_ \r\n\n Result: \r\n Sₙ = _sn_',
       'solutionSerieNth2':' Second degree arithmetic series:\r\n _serie_ \r\n\n First term: a₁ = _a_ \r\n First arithmetic ratio: r₁ = _r1_ \r\n Second arithmetic ratio: r₂ = _r2_ \r\n Number of term to find: n = _n_ \r\n\n Nth term: \r\n aₙ = a₁ + (n-1).r₁ + [(n-1).(n-2).r₂]/2 \r\n\n Replacing: \r\n aₙ = _a_ + (_n_-1)._r1_ + [(_n_-1).(_n_-2)._r2_]/2 \r\n aₙ = _a_ + ( _n-1_)._r1_ + [(_n-1_).(_n-2_)._r2_]/2 \r\n aₙ = _a_ + _(n-1).r1_ + _[(n-1).(n-2).r2]/2_ \r\n\n Result: \r\n aₙ = _an_',
       'solutionSerieSum2':' Second degree arithmetic series:\r\n _serie_ \r\n\n First term: a₁ = _a_ \r\n First arithmetic ratio: r₁ = _r1_ \r\n Second arithmetic ratio: r₂ = _r2_ \r\n Number of terms: n = _n_ \r\n\n Sum of terms: \r\n Sₙ = a₁.n + [(n-1).n.r₁]/2 + [(n-2).(n-1).n.r₂]/6 \r\n\n Replacing: \r\n Sₙ = _a_._n_ + [(_n_-1)._n_._r1_]/2 + [(_n_-2).(_n_-1)._n_._r2_]/6 \r\n Sₙ = _a.n_ + [(_n-1_)._n_._r1_]/2 + [(_n-2_).(_n-1_)._n_._r2_]/6 \r\n Sₙ = _a.n_ + _[(n-1).n.r1]/2_ + _[(n-2).(n-1).n.r2]/6_ \r\n\n Result: \r\n Sₙ = _sn_',
       'solutionSerieNth3':' Third degree arithmetic series:\r\n _serie_ \r\n\n First term: a₁ = _a_ \r\n First arithmetic ratio: r₁ = _r1_ \r\n Second arithmetic ratio: r₂ = _r2_ \r\n Third arithmetic ratio: r₃ = _r3_ \r\n Number of term to find: n = _n_ \r\n\n Nth term: ratio \r\n aₙ = a₁ + (n-1).r₁ + [(n-1).(n-2).r₂]/2 + [(n-1).(n-2).(n-3).r₃]/6 \r\n\n Replacing: \r\n aₙ = _a_ + (_n_-1)._r1_ + [(_n_-1).(_n_-2)._r2_]/2 + [(_n_-1).(_n_-2).(_n_-3)._r3_]/6 \r\n aₙ = _a_ + (_n-1_)._r1_ + [(_n-1_).(_n-2_)._r2_]/2 + [(_n-1_).(_n-2_).(_n-3_)._r3_]/6 \r\n aₙ = _a_ + _(n-1).r1_ + _[(n-1).(n-2).r2]/2_ + _[(n-1).(n-2).(n-3).r3]/6_ \r\n\n Result: \r\n aₙ = _an_',
       'solutionSerieSum3':' Third degree arithmetic series:\r\n _serie_ \r\n\n First term: a₁ = _a_ \r\n First arithmetic ratio: r₁ = _r1_ \r\n Second arithmetic ratio: r₂ = _r2_ \r\n Third arithmetic ratio: r₃ = _r3_ \r\n Number of terms: n = _n_ \r\n\n Sum of terms: \r\n Sₙ = a₁.n + [(n-1).n .r₁]/2 + [(n-2).(n-1).n.r₂]/6 + [(n-3).(n-2).(n-1).n.r₃]/ 24 \r\n\n Replacing: \r\n Sₙ = _a_._n_ + [(_n_-1)._n_._r1_]/2 + [(_n_-2).(_n_-1)._n_._r2_]/6 + [(_n_-3).(_n_-2).(_n_-1)._n_._r3_]/24 \r\n Sₙ = _a.n_ + [(_n-1_)._n_._r1_]/ 2 + [(_n-2_).(_n-1_)._n_._r2_]/6 + [(_n-3_).(_n-2_).(_n-1_)._n_._r3_]/24 \r\n Sₙ = _a.n_ + _[(n-1).n.r1]/2_ + _[(n-2).(n-1).n.r2]/6_ + _[(n-3).(n-2).(n-1).n.r3]/24_ \r\n\n Result: \r\n Sₙ = _sn_',
+      'solutionAge1': ' Current age: x years \r\n Past: x - _d_ \r\n Present: x \r\n Future: x + _b_ \r\n\n By condition: \r\n _a_.(x + _b_) - _c_.(x - _d_) = _e_ \r\n\n _a_.x + _a.b_ - _c_.x + _c.d_ = _e_ \r\n\n _(a-c)_.x + _(a.b+c.d)_ = _e_ \r\n\n x = _x_ \r\n Current age: _x_ years \r\n To reach _f_ years I need: \r\n\n _f_ - _x_ = _f-x_ years' ,
+      'statementAge1':'_a_ times the age I will be in _b_ years, minus _c_ times the age I had _d_ years ago, turns out to be _e_. How many years do I have left to turn _f_?',
     },
     'es': {
       'title': 'Razonamiento Matemático',
@@ -57,19 +58,20 @@ class MyAppLocalizations {
       'close': 'Cerrar',
       'check': 'COMPROBAR',
       'newProblem': 'NUEVO',
+      'solution':'VER SOLUCION',
+      'answer':'La respuesta es',
+      'titleSolution':'SOLUCION',
       'statementSerieNth': 'Encuentra el término _n_ de la serie aritmética: \r\n\n _serie_',
       'statementSerieSum': 'Encuentra la suma de los primeros _n_ términos de la serie aritmética: \r\n\n _serie_',
-      'solution':'VER SOLUCION',
-      'titleSolution':'SOLUCION',
-      'statementAge1':'_a_ veces la edad que tendré dentro de _b_ años, menos _c_ veces la edad que tenía hace _d_ años, resulta ser _e_. ¿Cuántos años me faltan para cumplir _f_ años?',
-      'statementAge2':'Yo tengo el doble de tu edad. Si mi edad dentro de 5 años es el triple de la edad que tú tenías hace 7 años. ¿Qué edad tengo?',
-      'answer':'La respuesta es',
       'solutionSerieNth1': ' Serie aritmética de primer grado:\r\n _serie_ \r\n\n Primer término: a₁ = _a_ \r\n Razón aritmética: r = _r_ \r\n Número de término a hallar: n = _n_ \r\n\n Término enésimo: \r\n aₙ = a₁ + (n-1).r \r\n\n Reemplazando: \r\n aₙ = _a_ + (_n_-1)._r_ \r\n aₙ = _a_ + (_n-1_)._r_ \r\n aₙ = _a_ + _(n-1).r_ \r\n\n Resultado: \r\n aₙ = _an_',
       'solutionSerieSum1': ' Serie aritmética de primer grado:\r\n _serie_ \r\n\n Primer término: a₁ = _a_ \r\n Razón aritmética: r = _r_ \r\n Número de términos: n = _n_ \r\n\n Suma de términos: \r\n Sₙ = a₁.n + [(n-1).n.r]/2 \r\n\n Reemplazando: \r\n Sₙ = _a_._n_ + [(_n_-1)._n_._r_]/2 \r\n Sₙ = _a.n_ + [(_n-1_)._n_._r_]/2 \r\n Sₙ = _a.n_ + _[(n-1).n.r]/2_ \r\n\n Resultado: \r\n Sₙ = _sn_',
       'solutionSerieNth2': ' Serie aritmética de segundo grado:\r\n _serie_ \r\n\n Primer término: a₁ = _a_ \r\n Primera razón aritmética: r₁ = _r1_ \r\n Segunda razón aritmética: r₂ = _r2_ \r\n Número de término a hallar: n = _n_ \r\n\n Término enésimo: \r\n aₙ = a₁ + (n-1).r₁ + [(n-1).(n-2).r₂]/2 \r\n\n Reemplazando: \r\n aₙ = _a_ + (_n_-1)._r1_ + [(_n_-1).(_n_-2)._r2_]/2 \r\n aₙ = _a_ + (_n-1_)._r1_ + [(_n-1_).(_n-2_)._r2_]/2 \r\n aₙ = _a_ + _(n-1).r1_ + _[(n-1).(n-2).r2]/2_ \r\n\n Resultado: \r\n aₙ = _an_',
       'solutionSerieSum2': ' Serie aritmética de segundo grado:\r\n _serie_ \r\n\n Primer término: a₁ = _a_ \r\n Primera razón aritmética: r₁ = _r1_ \r\n Segunda razón aritmética: r₂ = _r2_ \r\n Número de términos: n = _n_ \r\n\n Suma de términos: \r\n Sₙ = a₁.n + [(n-1).n.r₁]/2 + [(n-2).(n-1).n.r₂]/6 \r\n\n Reemplazando: \r\n Sₙ = _a_._n_ + [(_n_-1)._n_._r1_]/2 + [(_n_-2).(_n_-1)._n_._r2_]/6 \r\n Sₙ = _a.n_ + [(_n-1_)._n_._r1_]/2 + [(_n-2_).(_n-1_)._n_._r2_]/6 \r\n Sₙ = _a.n_ + _[(n-1).n.r1]/2_ + _[(n-2).(n-1).n.r2]/6_ \r\n\n Resultado: \r\n Sₙ = _sn_',
       'solutionSerieNth3': ' Serie aritmética de tercer grado:\r\n _serie_ \r\n\n Primer término: a₁ = _a_ \r\n Primera razón aritmética: r₁ = _r1_ \r\n Segunda razón aritmética: r₂ = _r2_ \r\n Tercera razón aritmética: r₃ = _r3_ \r\n Número de término a hallar: n = _n_ \r\n\n Término enésimo: \r\n aₙ = a₁ + (n-1).r₁ + [(n-1).(n-2).r₂]/2 + [(n-1).(n-2).(n-3).r₃]/6 \r\n\n Reemplazando: \r\n aₙ = _a_ + (_n_-1)._r1_ + [(_n_-1).(_n_-2)._r2_]/2 + [(_n_-1).(_n_-2).(_n_-3)._r3_]/6 \r\n aₙ = _a_ + (_n-1_)._r1_ + [(_n-1_).(_n-2_)._r2_]/2 + [(_n-1_).(_n-2_).(_n-3_)._r3_]/6 \r\n aₙ = _a_ + _(n-1).r1_ + _[(n-1).(n-2).r2]/2_ + _[(n-1).(n-2).(n-3).r3]/6_ \r\n\n Resultado: \r\n aₙ = _an_',
       'solutionSerieSum3': ' Serie aritmética de tercer grado:\r\n _serie_ \r\n\n Primer término: a₁ = _a_ \r\n Primera razón aritmética: r₁ = _r1_ \r\n Segunda razón aritmética: r₂ = _r2_ \r\n Tercera razón aritmética: r₃ = _r3_ \r\n Número de términos: n = _n_ \r\n\n Suma de términos: \r\n Sₙ = a₁.n + [(n-1).n.r₁]/2 + [(n-2).(n-1).n.r₂]/6 + [(n-3).(n-2).(n-1).n.r₃]/24 \r\n\n Reemplazando: \r\n Sₙ = _a_._n_ + [(_n_-1)._n_._r1_]/2 + [(_n_-2).(_n_-1)._n_._r2_]/6 + [(_n_-3).(_n_-2).(_n_-1)._n_._r3_]/24 \r\n Sₙ = _a.n_ + [(_n-1_)._n_._r1_]/2 + [(_n-2_).(_n-1_)._n_._r2_]/6 + [(_n-3_).(_n-2_).(_n-1_)._n_._r3_]/24 \r\n Sₙ = _a.n_ + _[(n-1).n.r1]/2_ + _[(n-2).(n-1).n.r2]/6_ + _[(n-3).(n-2).(n-1).n.r3]/24_ \r\n\n Resultado: \r\n Sₙ = _sn_',
+      'statementAge1':'_a_ veces la edad que tendré dentro de _b_ años, menos _c_ veces la edad que tenía hace _d_ años, resulta ser _e_. ¿Cuántos años me faltan para cumplir _f_ años?',
+      'solutionAge1': ' Edad actual: x años \r\n Pasado: x - _d_ \r\n Presente: x \r\n Futuro: x + _b_ \r\n\n Por condición: \r\n _a_.(x + _b_) - _c_(x - _d_)=_e_ \r\n\n _a_.x + _a.b_ - _c_.x + _c.d_ = _e_ \r\n\n _(a-c)_.x + _(a.b+c.d)_ = _e_ \r\n\n x = _x_ \r\n Edad actual: _x_ años \r\n Para cumplir _f_ años me faltan: \r\n\n _f_ - _x_ = _f-x_ años',
+      'statementAge2':' Yo tengo el doble de tu edad. Si mi edad dentro de 5 años es el triple de la edad que tú tenías hace 7 años. ¿Qué edad tengo?',
     },
   };
 
@@ -156,6 +158,9 @@ class MyAppLocalizations {
   }
   String get solutionSerieSum3 {
     return _localizedValues[locale.languageCode]!['solutionSerieSum3']!;
+  }
+  String get solutionAge1 {
+    return _localizedValues[locale.languageCode]!['solutionAge1']!;
   }
   Future<bool> load() async {
     return true;
