@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:raz_mat/viewmodels/create_problem_ages.dart';
+import 'package:raz_mat/viewmodels/create_problem_moving.dart';
 import 'package:raz_mat/viewmodels/create_problem_series.dart';
 import 'package:raz_mat/view/problems_screen.dart';
 import 'package:raz_mat/viewmodels/change_page.dart';
@@ -60,8 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         p = createProblemSeries(localizations, dataModel.difficulty);
         break;
-      default:
+      case 2:
         p = createProblemAges(localizations, dataModel.difficulty);
+        break;
+      default:
+        p = createProblemMoving(localizations, dataModel.difficulty);
         break;
     }
     dataModel.enunciado = p.enunciado;
@@ -212,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 child:ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 7.0),
-                  leading: const Icon(Icons.family_restroom),
+                  leading: const Icon(Icons.airport_shuttle),
                   title: Text(localizations.topic3,
                     style: const TextStyle(fontSize: 20),
                     ),

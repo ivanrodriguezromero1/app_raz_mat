@@ -90,7 +90,7 @@ class SolutionsScreenState extends State<SolutionsScreen> {
               persistentFooterButtons: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 90,
+                  height: 80,
                   alignment: Alignment.center,
                   child:dataModel.isBannerAdSolutionReady
                     ? AdWidget(ad: dataModel.bannerAdSolution)

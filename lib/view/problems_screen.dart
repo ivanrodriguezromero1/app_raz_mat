@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
+import 'package:raz_mat/viewmodels/create_problem_moving.dart';
 import 'package:raz_mat/viewmodels/create_problem_series.dart';
 import 'package:raz_mat/models/problema.dart';
 import '../viewmodels/change_page.dart';
@@ -55,15 +56,17 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding:const EdgeInsets.fromLTRB(26,20,26,18),
+                        padding:const EdgeInsets.fromLTRB(35,20,35,15),
                         child: Text(dataModel.enunciado,
+                          textAlign: TextAlign.justify,
                           style: const TextStyle(
-                            fontSize: 20,),
+                            fontSize: 18,),
                           ),
                         ),
                        Row(
                         children: [
-                          SizedBox(
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(10,0,0,0),
                             width: MediaQuery.of(context).size.width / 2,
                             child: Column(
                               children: dataModel.alternativas.map((alternativa) {
@@ -169,8 +172,11 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                                 case 1:
                                   p = createProblemSeries(localizations, dataModel.difficulty);
                                   break;
-                                default:
+                                case 2:
                                   p = createProblemAges(localizations, dataModel.difficulty);
+                                  break;
+                                default:
+                                  p = createProblemMoving(localizations, dataModel.difficulty);
                                   break;
                               }
                               dataModel.enunciado = p.enunciado;
@@ -260,7 +266,7 @@ class ProblemsScreenState extends State<ProblemsScreen> {
               persistentFooterButtons: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 90,
+                  height: 80,
                   alignment: Alignment.center,
                   child: dataModel.isBannerAdProblemReady
                     ? AdWidget(ad: dataModel.bannerAdProblem)
