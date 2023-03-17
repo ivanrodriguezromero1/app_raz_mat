@@ -5,7 +5,6 @@ import 'my_app_localizations.dart';
 Problema createProblemMoving(MyAppLocalizations localizations , int? dificultad) {
   Random random = Random();
   int tipo = random.nextInt(4) + 1;
-  // int tipo = 4;
   Problema problema;
   switch(tipo){
     case 1:

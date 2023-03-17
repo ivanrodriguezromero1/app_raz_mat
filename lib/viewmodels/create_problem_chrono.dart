@@ -4,8 +4,7 @@ import 'my_app_localizations.dart';
 
 Problema createProblemChrono(MyAppLocalizations localizations , int? dificultad) {
   Random random = Random();
-  // int tipo = random.nextInt(4) + 1;
-  int tipo = 4;
+  int tipo = random.nextInt(4) + 1;
   Problema problema;
   switch(tipo){
     case 1:
