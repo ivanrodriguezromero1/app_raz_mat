@@ -6,6 +6,7 @@ import 'package:raz_mat/viewmodels/create_problem_series.dart';
 import 'package:raz_mat/models/problema.dart';
 import '../viewmodels/change_page.dart';
 import '../viewmodels/create_problem_ages.dart';
+import '../viewmodels/create_problem_chrono.dart';
 import '../viewmodels/my_app_localizations.dart';
 import '../viewmodels/constants.dart';
 import '../viewmodels/providers.dart';
@@ -175,8 +176,11 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                                 case 2:
                                   p = createProblemAges(localizations, dataModel.difficulty);
                                   break;
-                                default:
+                                case 3:
                                   p = createProblemMoving(localizations, dataModel.difficulty);
+                                  break;
+                                default:
+                                  p = createProblemChrono(localizations, dataModel.difficulty);
                                   break;
                               }
                               dataModel.enunciado = p.enunciado;

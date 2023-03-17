@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:raz_mat/viewmodels/create_problem_ages.dart';
+import 'package:raz_mat/viewmodels/create_problem_chrono.dart';
 import 'package:raz_mat/viewmodels/create_problem_moving.dart';
 import 'package:raz_mat/viewmodels/create_problem_series.dart';
 import 'package:raz_mat/view/problems_screen.dart';
@@ -64,8 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
       case 2:
         p = createProblemAges(localizations, dataModel.difficulty);
         break;
-      default:
+      case 3:
         p = createProblemMoving(localizations, dataModel.difficulty);
+        break;
+      default:
+        p = createProblemChrono(localizations, dataModel.difficulty);
         break;
     }
     dataModel.enunciado = p.enunciado;
@@ -86,6 +90,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+  Stream<int> _timerStream(int seconds) {
+    return Stream.periodic(Duration(seconds: seconds), (i) => i);
+  }
+   void _loadBannerAd(BannerAd bannerAd, bool isAdLoaded) async {
+    await bannerAd.load();
+    setState(() {
+      isAdLoaded = true;
+    });
   }
   @override
   void initState() {
@@ -112,7 +125,9 @@ class _MyHomePageState extends State<MyHomePage> {
             });
           },
           onAdFailedToLoad: (ad, error) {
-            ad.dispose();
+             _timerStream(10).take(1).listen((_) => _loadBannerAd(
+              dataModel.bannerAdProblem, dataModel.isBannerAdProblemReady
+             ));
           },
         ),
       );
@@ -129,7 +144,9 @@ class _MyHomePageState extends State<MyHomePage> {
             });
           },
           onAdFailedToLoad: (ad, error) {
-            ad.dispose();
+             _timerStream(10).take(1).listen((_) => _loadBannerAd(
+              dataModel.bannerAdProblem, dataModel.isBannerAdProblemReady
+             ));
           },
         ),
       );
