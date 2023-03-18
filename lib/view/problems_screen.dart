@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +24,42 @@ class ProblemsScreenState extends State<ProblemsScreen> {
   int selectImage = 0;
   bool isRadioTileDisabled = false;
   bool viewCheck = true;
+  int elapsedSeconds = 0;
+  bool isRunning = false;
+  StreamSubscription<int>? streamSubscription;
+  
+void startTimer() {
+    if (isRunning) return;
+    isRunning = true;
+    streamSubscription = timerStream(1).listen((_) {
+      setState(() {
+        elapsedSeconds++;
+      });
+    });
+  }
+
+  void pauseTimer() {
+    if (!isRunning) return;
+    isRunning = false;
+    streamSubscription?.cancel();
+  }
+
+  void resetTimer() {
+    pauseTimer();
+    setState(() {
+      elapsedSeconds = 0;
+    });
+  }
+  Stream<int> timerStream(int seconds) {
+    return Stream.periodic(Duration(seconds: seconds), (i) => i);
+  }
+  String formatElapsedTime(int elapsedSeconds) {
+    int hours = elapsedSeconds ~/ 3600;
+    int minutes = (elapsedSeconds % 3600) ~/ 60;
+    int seconds = elapsedSeconds % 60;
+    return '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+  }
+
   @override
   void initState() {
     super.initState();
@@ -47,10 +85,35 @@ class ProblemsScreenState extends State<ProblemsScreen> {
         MaterialApp(
           home: Scaffold(
             appBar: AppBar(
-              title: Text(localizations.problems, 
-                style: const TextStyle(color: Colors.white),),
-                flexibleSpace: Image.asset(pathBar,
-                  fit: BoxFit.cover,),
+              title:  Row(
+                children: [
+                  Icon(iconosItems[dataModel.option-1]),
+                  const SizedBox(width: 9),
+                  Text(localizations.problems, 
+                    style: const TextStyle(color: Colors.white,
+                    fontSize: 21),),
+                  const SizedBox(width: 11),
+                  IconButton(
+                    icon: const Icon(Icons.play_arrow),
+                    onPressed: startTimer,
+                    iconSize: 18,
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.pause),
+                    onPressed: pauseTimer,
+                    iconSize: 18,
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.refresh),
+                    onPressed: resetTimer,
+                    iconSize: 18,
+                  ),
+                  Text(formatElapsedTime(elapsedSeconds),
+                  style: const TextStyle(fontSize: 16),),
+                ],
+              ),
+              flexibleSpace: Image.asset(pathBar,
+                fit: BoxFit.cover,),
             ),
             body: SingleChildScrollView(
                   child: Column(
@@ -60,8 +123,9 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                         padding:const EdgeInsets.fromLTRB(35,20,35,15),
                         child: Text(dataModel.enunciado,
                           textAlign: TextAlign.justify,
-                          style: const TextStyle(
-                            fontSize: 18,),
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.grey.shade800),
                           ),
                         ),
                        Row(
@@ -76,8 +140,10 @@ class ProblemsScreenState extends State<ProblemsScreen> {
                                 return RadioListTile<int?>(
                                   title: Text(
                                     '$literal) $alternativa',
-                                    style: const TextStyle(
-                                      fontSize: 18,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      color: Colors.yellow.shade900,
+                                      fontWeight: FontWeight.bold
                                     ),
                                   ),
                                   value: i,

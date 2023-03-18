@@ -13,7 +13,7 @@ class MyAppLocalizations {
     'en': {
       'title': 'Mathematical Reasoning',
       'settings': 'Settings',
-      'problems':'Practice Problems',
+      'problems':'Problems',
       'topic1':'Series',
       'topic2':'Ages',
       'topic3':'Moving',
@@ -65,7 +65,7 @@ class MyAppLocalizations {
     },
     'es': {
       'title': 'Razonamiento Matemático',
-      'problems':'Problemas de Práctica',
+      'problems':'Problemas',
       'settings': 'Opciones',
       'topic1':'Series',
       'topic2':'Edades',

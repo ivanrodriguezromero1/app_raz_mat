@@ -22,6 +22,11 @@ class SettingsScreenState extends State<SettingsScreen> {
         MaterialApp(
           home: Scaffold(
             appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.settings),
+                onPressed: () {
+                },
+              ),
               title: Text(localizations.settings, 
                 style: const TextStyle(color: Colors.white),),
                 flexibleSpace: Image.asset(pathBar,

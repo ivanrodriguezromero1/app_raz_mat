@@ -9,6 +9,7 @@ import 'package:raz_mat/viewmodels/create_problem_series.dart';
 import 'package:raz_mat/view/problems_screen.dart';
 import 'package:raz_mat/viewmodels/change_page.dart';
 import 'package:raz_mat/viewmodels/constants.dart';
+import 'package:raz_mat/view/widgets.dart';
 import 'models/problema.dart';
 import 'viewmodels/my_app_localizations.dart';
 import 'viewmodels/providers.dart';
@@ -160,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
     checkInternetConnectivity(dataModel);
     return dataModel.isBannerAdProblemReady && dataModel.isBannerAdSolutionReady
-     ? Scaffold(
+     ? Scaffold(      
       appBar: AppBar(
         title: Center(child: Text(localizations.title,
             style: const TextStyle(color: Colors.white),)
@@ -171,8 +172,10 @@ class _MyHomePageState extends State<MyHomePage> {
           fit: BoxFit.cover,
         ),
       ),
-      body: 
-        Stack(
+      body:
+      Container(
+        color: Colors.white, 
+        child:Stack(
           children: [
             Center(
             child: SizedBox(
@@ -180,118 +183,38 @@ class _MyHomePageState extends State<MyHomePage> {
               height: MediaQuery.of(context).size.height * 0.7,
               child: ListView(
                 children: [
+                  const SizedBox(height: 5),
+                  getItem(localizations, dataModel, goToProblems, 
+                    iconosItems[0],
+                    localizations.topic1,
+                    1),
                   const SizedBox(height: 10),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 1,
-                      ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child:ListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 7.0),
-                    leading: const Icon(Icons.psychology),
-                    title: Text(localizations.topic1,
-                    style: const TextStyle(fontSize: 20),
-                    ),
-                    onTap: (){
-                      dataModel.option = 1;
-                      goToProblems(dataModel,localizations);
-                    }           
-                  ),
+                  getItem(localizations, dataModel, goToProblems, 
+                    iconosItems[1],
+                    localizations.topic2,
+                    2),
+                  const SizedBox(height: 10),
+                  getItem(localizations, dataModel, goToProblems, 
+                    iconosItems[2],
+                    localizations.topic3,
+                    3),
+                  const SizedBox(height: 10),
+                  getItem(localizations, dataModel, goToProblems, 
+                    iconosItems[3],
+                    localizations.topic4,
+                    4),
+                  const SizedBox(height: 10),
+                  getItem(localizations, dataModel, goToProblems, 
+                    iconosItems[4],
+                    localizations.topic5, 
+                    5),
+                  ],
                 ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                child:ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 7.0),
-                  leading: const Icon(Icons.face_4),
-                  title: Text(localizations.topic2,
-                    style: const TextStyle(fontSize: 20),
-                    ),
-                  onTap: () {
-                    dataModel.option = 2;
-                    goToProblems(dataModel,localizations);
-                  },
-                ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                child:ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 7.0),
-                  leading: const Icon(Icons.airport_shuttle),
-                  title: Text(localizations.topic3,
-                    style: const TextStyle(fontSize: 20),
-                    ),
-                  onTap: () {
-                    dataModel.option = 3;
-                    goToProblems(dataModel,localizations);
-                  },
-                ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                child:ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 7.0),
-                  leading: const Icon(Icons.av_timer),
-                  title: Text(localizations.topic4,
-                    style: const TextStyle(fontSize: 20),
-                    ),
-                  onTap: () {
-                    dataModel.option = 4;
-                    goToProblems(dataModel,localizations);
-                  },
-                ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                child:ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 7.0),
-                  leading: const Icon(Icons.grid_4x4),
-                  title: Text(localizations.topic5,
-                    style: const TextStyle(fontSize: 20),
-                    ),
-                  onTap: () {
-                    dataModel.option = 5;
-                    goToProblems(dataModel,localizations);
-                  },
-                ),
-                ),
-
-              ],
-            ),
-          ),
-      ),      
-      ],
-      ),
+              ),
+            ),      
+          ],
+        ),
+        ),
       bottomNavigationBar:  Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(

@@ -35,19 +35,26 @@ class SolutionsScreenState extends State<SolutionsScreen> {
                 flexibleSpace: Image.asset(pathBar,
                   fit: BoxFit.cover,),
             ),
-            body: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:const EdgeInsets.fromLTRB(35,20,26,18),
-                        child: Text(dataModel.solucion,
-                          style: const TextStyle(
-                            fontSize: 18,),
-                        ),
-                      ),                      
-                    ],
-                  ),
+            body:   Container(
+                    color: Colors.blueGrey.shade400,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child:SingleChildScrollView(
+                  child: 
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding:const EdgeInsets.fromLTRB(35,20,26,18),
+                          child: Text(dataModel.solucion,
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white),
+                          ),
+                        ),                      
+                      ],
+                    ),
+                  )
                 ),
               bottomNavigationBar:  Container(
                   decoration: const BoxDecoration(
