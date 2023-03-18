@@ -92,13 +92,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-  Stream<int> _timerStream(int seconds) {
+  Stream<int> timerStream(int seconds) {
     return Stream.periodic(Duration(seconds: seconds), (i) => i);
   }
-   void _loadBannerAd(BannerAd bannerAd, bool isAdLoaded) async {
-    await bannerAd.load();
+   void loadBannerAdProblem(DataModel dataModel) async {
+    await dataModel.bannerAdProblem.load();
     setState(() {
-      isAdLoaded = true;
+      dataModel.isBannerAdProblemReady = true;
+    });
+  }
+  void loadBannerAdSolution(DataModel dataModel) async {
+    await dataModel.bannerAdSolution.load();
+    setState(() {
+      dataModel.isBannerAdSolutionReady = true;
     });
   }
   @override
@@ -126,9 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
             });
           },
           onAdFailedToLoad: (ad, error) {
-             _timerStream(10).take(1).listen((_) => _loadBannerAd(
-              dataModel.bannerAdProblem, dataModel.isBannerAdProblemReady
-             ));
+            timerStream(10).take(1).listen((_) => loadBannerAdProblem(dataModel));
           },
         ),
       );
@@ -145,9 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
             });
           },
           onAdFailedToLoad: (ad, error) {
-             _timerStream(10).take(1).listen((_) => _loadBannerAd(
-              dataModel.bannerAdSolution, dataModel.isBannerAdSolutionReady
-             ));
+            timerStream(10).take(1).listen((_) => loadBannerAdSolution(dataModel));
           },
         ),
       );
