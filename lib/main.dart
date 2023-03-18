@@ -146,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           onAdFailedToLoad: (ad, error) {
              _timerStream(10).take(1).listen((_) => _loadBannerAd(
-              dataModel.bannerAdProblem, dataModel.isBannerAdProblemReady
+              dataModel.bannerAdSolution, dataModel.isBannerAdSolutionReady
              ));
           },
         ),
@@ -161,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
     checkInternetConnectivity(dataModel);
     return dataModel.isBannerAdProblemReady && dataModel.isBannerAdSolutionReady
-     ? Scaffold(      
+     ? Scaffold(
       appBar: AppBar(
         title: Center(child: Text(localizations.title,
             style: const TextStyle(color: Colors.white),)
