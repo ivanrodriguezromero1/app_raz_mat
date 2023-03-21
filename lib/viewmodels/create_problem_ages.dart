@@ -39,10 +39,10 @@ String getSolutionAge1(String solucion, int a, int b, int c, int d, int e, int f
     .replaceAll("_e_", e.toString())
     .replaceAll("_f_", f.toString())
     .replaceAll("_x_", x.toString())
-    .replaceAll("_a.b_", (a*b).toString())
-    .replaceAll("_c.d_", (c*d).toString())
+    .replaceAll("_a*b_", (a*b).toString())
+    .replaceAll("_c*d_", (c*d).toString())
     .replaceAll("_(a-c)_", (a-c).toString())
-    .replaceAll("_(a.b+c.d)_", (a*b+c*d).toString())
+    .replaceAll("_(a*b+c*d)_", (a*b+c*d).toString())
     .replaceAll("_f-x_", (f-x).toString());
 }
 String getStatementAges2(String enunciado, int a, int b, int c, int d){
@@ -56,11 +56,11 @@ String getSolutionAge2(String solucion, int a, int b, int c, int d, int x){
     .replaceAll("_b_", b.toString())
     .replaceAll("_c_", c.toString())
     .replaceAll("_d_", d.toString())
-    .replaceAll("_c.d_", (c*d).toString())
+    .replaceAll("_c*d_", (c*d).toString())
     .replaceAll("_(c-a)_", (c-a).toString())
-    .replaceAll("_c.d+b_", (c*d+b).toString())
+    .replaceAll("_c*d+b_", (c*d+b).toString())
     .replaceAll("_x_", x.toString())
-    .replaceAll("_a.x_", (a*x).toString());
+    .replaceAll("_a*x_", (a*x).toString());
 }
 String getStatementAges3(String enunciado, int a, int b, int c){
   return enunciado.replaceAll("_a_", a.toString())
@@ -71,8 +71,8 @@ String getSolutionAge3(String solucion, int a, int b, int c, int x){
   return solucion.replaceAll("_a_", a.toString())
     .replaceAll("_b_", b.toString())
     .replaceAll("_c_", c.toString())
-    .replaceAll("_c.b_", (c*b).toString())
-    .replaceAll("_a-c.b_", (a-c*b).toString())
+    .replaceAll("_c*b_", (c*b).toString())
+    .replaceAll("_a-c*b_", (a-c*b).toString())
     .replaceAll("_(c-1)_", (c-1).toString())
     .replaceAll("_x_", x.toString());
 }

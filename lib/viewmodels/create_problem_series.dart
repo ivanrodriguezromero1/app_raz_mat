@@ -49,7 +49,7 @@ String getSolutionNth1(String solucion, String serie, int a, int r, int n, int a
     .replaceAll("_r_", r.toString())
     .replaceAll("_n_", n.toString())
     .replaceAll("_n-1_", (n-1).toString())
-    .replaceAll("_(n-1).r_",((n-1)*r).toString())
+    .replaceAll("_(n-1)*r_",((n-1)*r).toString())
     .replaceAll("_an_", an.toString());
 }
 String getSolutionSum1(String solucion, String serie, int a, int r, int n, int sn){
@@ -57,9 +57,9 @@ String getSolutionSum1(String solucion, String serie, int a, int r, int n, int s
     .replaceAll("_a_", a.toString())
     .replaceAll("_r_", r.toString())
     .replaceAll("_n_", n.toString())
-    .replaceAll("_a.n_", (a*n).toString())
+    .replaceAll("_a*n_", (a*n).toString())
     .replaceAll("_n-1_", (n-1).toString())
-    .replaceAll("_[(n-1).n.r]/2_", (((n-1)*n*r)~/2).toString())
+    .replaceAll("_[(n-1)*n*r]/2_", (((n-1)*n*r)~/2).toString())
     .replaceAll("_sn_", sn.toString());
 }
 String getSolutionNth2(String solucion, String serie, int a, int r1, int r2, int n, int an){
@@ -70,8 +70,8 @@ String getSolutionNth2(String solucion, String serie, int a, int r1, int r2, int
     .replaceAll("_n_", n.toString())
     .replaceAll("_n-1_", (n-1).toString())
     .replaceAll("_n-2_", (n-2).toString())
-    .replaceAll("_(n-1).r1_",((n-1)*r1).toString())
-    .replaceAll("_[(n-1).(n-2).r2]/2_", (((n-1)*(n-2)*r2)~/2).toString())
+    .replaceAll("_(n-1)*r1_",((n-1)*r1).toString())
+    .replaceAll("_[(n-1)*(n-2)*r2]/2_", (((n-1)*(n-2)*r2)~/2).toString())
     .replaceAll("_an_", an.toString());
 }
 String getSolutionSum2(String solucion, String serie, int a, int r1, int r2, int n, int sn){
@@ -80,11 +80,11 @@ String getSolutionSum2(String solucion, String serie, int a, int r1, int r2, int
     .replaceAll("_r1_", r1.toString())
     .replaceAll("_r2_", r2.toString())
     .replaceAll("_n_", n.toString())
-    .replaceAll("_a.n_", (a*n).toString())
+    .replaceAll("_a*n_", (a*n).toString())
     .replaceAll("_n-1_", (n-1).toString())
     .replaceAll("_n-2_", (n-2).toString())
-    .replaceAll("_[(n-1).n.r1]/2_", (((n-1)*n*r1)~/2).toString())
-    .replaceAll("_[(n-2).(n-1).n.r2]/6_", (((n-2)*(n-1)*n*r2)~/6).toString())
+    .replaceAll("_[(n-1)*n*r1]/2_", (((n-1)*n*r1)~/2).toString())
+    .replaceAll("_[(n-2)*(n-1)*n*r2]/6_", (((n-2)*(n-1)*n*r2)~/6).toString())
     .replaceAll("_sn_", sn.toString());
 }
 String getSolutionNth3(String solucion, String serie, int a, int r1, int r2, int r3, int n, int an){
@@ -97,9 +97,9 @@ String getSolutionNth3(String solucion, String serie, int a, int r1, int r2, int
     .replaceAll("_n-1_", (n-1).toString())
     .replaceAll("_n-2_", (n-2).toString())
     .replaceAll("_n-3_", (n-3).toString())
-    .replaceAll("_(n-1).r1_",((n-1)*r1).toString())
-    .replaceAll("_[(n-1).(n-2).r2]/2_", (((n-1)*(n-2)*r2)~/2).toString())
-    .replaceAll("_[(n-1).(n-2).(n-3).r3]/6_", (((n-1)*(n-2)*(n-3)*r3)~/6).toString())
+    .replaceAll("_(n-1)*r1_",((n-1)*r1).toString())
+    .replaceAll("_[(n-1)*(n-2)*r2]/2_", (((n-1)*(n-2)*r2)~/2).toString())
+    .replaceAll("_[(n-1)*(n-2)*(n-3)*r3]/6_", (((n-1)*(n-2)*(n-3)*r3)~/6).toString())
     .replaceAll("_an_", an.toString());
 }
 String getSolutionSum3(String solucion, String serie, int a, int r1, int r2, int r3, int n, int sn){
@@ -109,13 +109,13 @@ String getSolutionSum3(String solucion, String serie, int a, int r1, int r2, int
     .replaceAll("_r2_", r2.toString())
     .replaceAll("_r3_", r3.toString())
     .replaceAll("_n_", n.toString())
-    .replaceAll("_a.n_", (a*n).toString())
+    .replaceAll("_a*n_", (a*n).toString())
     .replaceAll("_n-1_", (n-1).toString())
     .replaceAll("_n-2_", (n-2).toString())
     .replaceAll("_n-3_", (n-3).toString())
-    .replaceAll("_[(n-1).n.r1]/2_", (((n-1)*n*r1)~/2).toString())
-    .replaceAll("_[(n-2).(n-1).n.r2]/6_", (((n-2)*(n-1)*n*r2)~/6).toString())
-    .replaceAll("_[(n-3).(n-2).(n-1).n.r3]/24_", (((n-3)*(n-2)*(n-1)*n*r3)~/24).toString())
+    .replaceAll("_[(n-1)*n*r1]/2_", (((n-1)*n*r1)~/2).toString())
+    .replaceAll("_[(n-2)*(n-1)*n*r2]/6_", (((n-2)*(n-1)*n*r2)~/6).toString())
+    .replaceAll("_[(n-3)*(n-2)*(n-1)*n*r3]/24_", (((n-3)*(n-2)*(n-1)*n*r3)~/24).toString())
     .replaceAll("_sn_", sn.toString());
 }
 List<int> getAlternatives(int respuesta){

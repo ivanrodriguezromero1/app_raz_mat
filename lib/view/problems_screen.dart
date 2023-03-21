@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -26,6 +27,7 @@ class ProblemsScreenState extends State<ProblemsScreen> {
   bool viewCheck = true;
   int elapsedSeconds = 0;
   bool isRunning = false;
+  List<bool> areKeys = [false,false,false,false];
   StreamSubscription<int>? streamSubscription;
   
 void startTimer() {
@@ -68,6 +70,7 @@ void startTimer() {
         precacheImage(AssetImage(path), context);
       }
     });
+    startTimer();
   }
   Future<void> precacheImages() async {
     for (var i = 0; i < imageList.length; i++) {
@@ -89,7 +92,7 @@ void startTimer() {
                 children: [
                   Icon(iconosItems[dataModel.option-1]),
                   const SizedBox(width: 9),
-                  Text(localizations.problems, 
+                  Text(localizations.problems,
                     style: const TextStyle(color: Colors.white,
                     fontSize: 21),),
                   const SizedBox(width: 11),
@@ -128,8 +131,67 @@ void startTimer() {
                             color: Colors.grey.shade800),
                           ),
                         ),
-                       Row(
-                        children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,                          
+                          children: [
+                            const SizedBox(width: 35.0),
+                            Container(
+                              width: 35,
+                              height: 35,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.cyan.shade700,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: IconButton(
+                                icon: Icon(Icons.filter_alt, color: Colors.cyan.shade800),
+                                iconSize: 20,
+                                onPressed: () {
+                                  if(areKeys.every((value) => value == false) && viewCheck){
+                                    List<int> randomIndices = [];
+                                    do {
+                                      int randomIndex = Random().nextInt(dataModel.alternativas.length);
+                                      if (randomIndex != dataModel.clave && !randomIndices.contains(randomIndex)) {
+                                        randomIndices.add(randomIndex);
+                                      }
+                                    } while (randomIndices.length < 2);
+                                    setState(() {
+                                      areKeys[randomIndices[0]] = true;
+                                      areKeys[randomIndices[1]] = true;
+                                      if(selectedValue == randomIndices[0] 
+                                          || selectedValue == randomIndices[1]){
+                                            selectedValue = null;
+                                      }
+                                    });
+                                  }
+                                },
+                              ),
+                            ),
+                            const SizedBox(width: 8.0),
+                            Container(
+                              width: 35,
+                              height: 35,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.yellow.shade700,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: IconButton(
+                                icon: Icon(Icons.tips_and_updates, color: Colors.yellow.shade800),
+                                iconSize: 20,
+                                onPressed: () {
+                                  
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                         children: [
                           Container(
                             padding: const EdgeInsets.fromLTRB(10,0,0,0),
                             width: MediaQuery.of(context).size.width / 2,
@@ -142,17 +204,19 @@ void startTimer() {
                                     '$literal) $alternativa',
                                     style: TextStyle(
                                       fontSize: 17,
-                                      color: Colors.yellow.shade900,
-                                      fontWeight: FontWeight.bold
+                                      color: areKeys[i]?Colors.grey.shade500 : Colors.yellow.shade900,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: areKeys[i]?TextDecoration.lineThrough:TextDecoration.none,
                                     ),
                                   ),
                                   value: i,
                                   groupValue: selectedValue,
-                                  onChanged: isRadioTileDisabled ? null : (value) {
-                                    setState(() {
-                                      selectedValue = value;
-                                    });
-                                  },
+                                  onChanged: isRadioTileDisabled || areKeys[i] 
+                                    ? null : (value) {
+                                      setState(() {
+                                        selectedValue = value;
+                                      });
+                                    },
                                 );
                               }).toList(),
                             ),
@@ -189,7 +253,7 @@ void startTimer() {
                     Column(
                       children: [
                         Row(
-                          children: const [SizedBox(height: 32)],
+                          children: const [SizedBox(height: 25)],
                         ),
                         ElevatedButton(
                           onPressed: () {
@@ -228,7 +292,7 @@ void startTimer() {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 25),
                         ElevatedButton(                          
                           onPressed: () {
                             setState(() {
@@ -256,6 +320,7 @@ void startTimer() {
                               selectedValue = null;
                               viewCheck = true;
                               selectImage = 0;
+                              areKeys = [false,false,false,false];
                               }():ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(localizations.disconnected),
@@ -288,7 +353,7 @@ void startTimer() {
                               const SizedBox(width: 8.0),
                               Text(localizations.newProblem, style: const TextStyle(fontSize: 15, fontFamily:'Roboto',),)
                             ],
-                          ),                          
+                          ),
                         ),
                       ],
                     ),

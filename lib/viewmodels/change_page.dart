@@ -8,7 +8,7 @@ import '../view/solutions_screen.dart';
 void changePageSlide(BuildContext context, StatefulWidget page, double x, double y){
   Navigator.of(context).push(
     PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 350),
+      transitionDuration: const Duration(milliseconds: 400),
       pageBuilder: (_, __, ___) => page,
       transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
         return SlideTransition(
@@ -25,7 +25,7 @@ void changePageSlide(BuildContext context, StatefulWidget page, double x, double
 void changePageScale(BuildContext context, StatefulWidget page){
   Navigator.of(context).push(
     PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 400),
+      transitionDuration: const Duration(milliseconds: 500),
       pageBuilder: (_, __, ___) => page,
       transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
         return ScaleTransition(

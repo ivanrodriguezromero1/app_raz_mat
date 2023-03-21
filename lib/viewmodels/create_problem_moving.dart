@@ -55,7 +55,7 @@ String getSolutionMoving3(String solucion, int a, int b, int t, int x){
   return solucion.replaceAll("_a_", a.toString())
     .replaceAll("_b_", b.toString())
     .replaceAll("_t_", t.toString())
-    .replaceAll("_b.t_", (b*t).toString())
+    .replaceAll("_b*t_", (b*t).toString())
     .replaceAll("_x_", x.toString());
 }
 String getStatementMoving4(String enunciado, int a, int b, int c, int t){
@@ -70,8 +70,8 @@ String getSolutionMoving4(String solucion, int a, int b, int c, int t, int t2){
     .replaceAll("_c_", c.toString())
     .replaceAll("_t_", t.toString())
     .replaceAll("_c-b_", (c-b).toString())
-    .replaceAll("_b.t_", (b*t).toString())
-    .replaceAll("_a-b.t_", (a-b*t).toString())
+    .replaceAll("_b*t_", (b*t).toString())
+    .replaceAll("_a-b*t_", (a-b*t).toString())
     .replaceAll("_t2_", t2.toString());
 }
 List<int> getAlternatives(int respuesta){

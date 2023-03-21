@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         Locale('en', ''),
         Locale('es', ''),
       ],
-      // locale: const Locale('en', ''),
+      locale: const Locale('en', ''),
       theme: ThemeData(
         primarySwatch: myColor,
         
@@ -174,49 +174,50 @@ class _MyHomePageState extends State<MyHomePage> {
           fit: BoxFit.cover,
         ),
       ),
-      body:
-      Container(
-        color: Colors.white, 
-        child:Stack(
-          children: [
-            Center(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.7,
-              child: ListView(
-                children: [
-                  const SizedBox(height: 5),
-                  getItem(localizations, dataModel, goToProblems, 
-                    iconosItems[0],
-                    localizations.topic1,
-                    1),
-                  const SizedBox(height: 10),
-                  getItem(localizations, dataModel, goToProblems, 
-                    iconosItems[1],
-                    localizations.topic2,
-                    2),
-                  const SizedBox(height: 10),
-                  getItem(localizations, dataModel, goToProblems, 
-                    iconosItems[2],
-                    localizations.topic3,
-                    3),
-                  const SizedBox(height: 10),
-                  getItem(localizations, dataModel, goToProblems, 
-                    iconosItems[3],
-                    localizations.topic4,
-                    4),
-                  const SizedBox(height: 10),
-                  getItem(localizations, dataModel, goToProblems, 
-                    iconosItems[4],
-                    localizations.topic5, 
-                    5),
-                  ],
-                ),
-              ),
-            ),      
-          ],
-        ),
-        ),
+      body: 
+        Container(
+          color: Colors.white, 
+          child:Stack(
+            children: [
+              Container(
+                padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: ListView(
+                    children: [
+                      const SizedBox(height: 5),
+                      getItem(localizations, dataModel, goToProblems, 
+                        iconosItems[0],
+                        localizations.topic1,
+                        1),
+                      const SizedBox(height: 15),
+                      getItem(localizations, dataModel, goToProblems, 
+                        iconosItems[1],
+                        localizations.topic2,
+                        2),
+                      const SizedBox(height: 15),
+                      getItem(localizations, dataModel, goToProblems, 
+                        iconosItems[2],
+                        localizations.topic3,
+                        3),
+                      const SizedBox(height: 15),
+                      getItem(localizations, dataModel, goToProblems, 
+                        iconosItems[3],
+                        localizations.topic4,
+                        4),
+                      const SizedBox(height: 15),
+                      getItem(localizations, dataModel, goToProblems, 
+                        iconosItems[4],
+                        localizations.topic5, 
+                        5),
+                      ],
+                    ),
+                  ),
+                ),      
+              ],
+            ),
+          ),
       bottomNavigationBar:  Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(

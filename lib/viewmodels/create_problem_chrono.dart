@@ -29,9 +29,9 @@ String getStatementChrono1(String enunciado, int h, int m){
 String getSolutionChrono1(String solucion, int h, int m, int a){
   return solucion.replaceAll("_h_", h.toString())
     .replaceAll("_m_", m.toString())
-    .replaceAll("_30.h_", (30*h).toString())
-    .replaceAll("_5,5.m_", ((5.5*m).toInt()).toString())
-    .replaceAll("_30.h-5,5.m_", ((30*h-5.5*m).toInt()).toString())
+    .replaceAll("_30*h_", (30*h).toString())
+    .replaceAll("_[11/2]*m_", ((5.5*m).toInt()).toString())
+    .replaceAll("_30*h-[11/2]*m_", ((30*h-5.5*m).toInt()).toString())
     .replaceAll("_a_", a.toString());
 }
 String getStatementChrono2(String enunciado, int h, int a){
@@ -41,8 +41,8 @@ String getStatementChrono2(String enunciado, int h, int a){
 String getSolutionChrono2(String solucion, int h, int a, int m){
   return solucion.replaceAll("_h_", h.toString())
     .replaceAll("_a_", a.toString())
-    .replaceAll("_30.h_", (30*h).toString())
-    .replaceAll("_30.h-a_", (30*h-a).toString())
+    .replaceAll("_30*h_", (30*h).toString())
+    .replaceAll("_30*h-a_", (30*h-a).toString())
     .replaceAll("_m_", m.toString());
 }
 String getStatementChrono3(String enunciado, int h, int a){
@@ -52,8 +52,8 @@ String getStatementChrono3(String enunciado, int h, int a){
 String getSolutionChrono3(String solucion, int h, int a, int m){
   return solucion.replaceAll("_h_", h.toString())
     .replaceAll("_a_", a.toString())
-    .replaceAll("_30.h_", (30*h).toString())
-    .replaceAll("_30.h+a_", (30*h+a).toString())
+    .replaceAll("_30*h_", (30*h).toString())
+    .replaceAll("_30*h+a_", (30*h+a).toString())
     .replaceAll("_m_", m.toString());
 }
 String getStatementChrono4(String enunciado, int c1, int t1, int t2){

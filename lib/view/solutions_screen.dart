@@ -16,7 +16,7 @@ class SolutionsScreenState extends State<SolutionsScreen> {
   int selectImage = 0;
   bool isRadioTileDisabled = false;
   bool viewCheck = true;
-
+  
   @override
   Widget build(BuildContext context) {
     MyAppLocalizations localizations = MyAppLocalizations.of(context);
@@ -30,13 +30,20 @@ class SolutionsScreenState extends State<SolutionsScreen> {
                iconTheme: const IconThemeData(
                   color: Colors.white, // Cambia el color de la flecha de ir atrás a blanco
                 ),
-              title: Text(localizations.titleSolution, 
-                style: const TextStyle(color: Colors.white),),
-                flexibleSpace: Image.asset(pathBar,
+              title: 
+                Row(
+                  children:[
+                    const Icon(Icons.done_all),
+                    const SizedBox(width: 8,),
+                    Text(localizations.titleSolution, 
+                    style: const TextStyle(color: Colors.white),),                    
+                  ]
+                ),
+              flexibleSpace: Image.asset(pathBar,
                   fit: BoxFit.cover,),
             ),
             body:   Container(
-                    color: Colors.blueGrey.shade400,
+                    color: Colors.cyan.shade50,
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                     child:SingleChildScrollView(
@@ -48,10 +55,21 @@ class SolutionsScreenState extends State<SolutionsScreen> {
                           padding:const EdgeInsets.fromLTRB(35,20,26,18),
                           child: Text(dataModel.solucion,
                             style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white),
+                              fontSize: 17,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.grey.shade900),
                           ),
-                        ),                      
+                        ),
+                        const SizedBox(height: 5,),
+                        Center(
+                          child: 
+                           Text('∴  ${dataModel.alternativas[dataModel.clave]}',
+                            style: const TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black),
+                          ),)
                       ],
                     ),
                   )
