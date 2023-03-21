@@ -118,20 +118,21 @@ String getSolutionSum3(String solucion, String serie, int a, int r1, int r2, int
     .replaceAll("_[(n-3)*(n-2)*(n-1)*n*r3]/24_", (((n-3)*(n-2)*(n-1)*n*r3)~/24).toString())
     .replaceAll("_sn_", sn.toString());
 }
-List<int> getAlternatives(int respuesta){
+List<String> getAlternatives(String respuesta){
+  int rpta = int.parse(respuesta);
   Random random = Random();
-  List<int> alternativas = [];
+  List<String> alternativas = [];
   alternativas.add(respuesta);
   for (int i = 0; i < 3; i++) {
     int alternativa = random.nextInt(2) == 0 
-      ? respuesta + random.nextInt(5) + 1 
-      : respuesta - random.nextInt(3) - 1;
-    while (alternativas.contains(alternativa)) {
+      ? rpta + random.nextInt(5) + 1 
+      : rpta - random.nextInt(3) - 1;
+    while (alternativas.contains('$alternativa')) {
       alternativa = random.nextInt(2) == 0 
-      ? respuesta + random.nextInt(5) + 1 
-      : respuesta - random.nextInt(3) - 1;
+      ? rpta + random.nextInt(5) + 1 
+      : rpta - random.nextInt(3) - 1;
     }
-    alternativas.add(alternativa);
+    alternativas.add('$alternativa');
   }
   alternativas.shuffle();
   return alternativas;
@@ -146,8 +147,8 @@ Problema createProblemSeriesNth1(String enunciado, String solucion, int? dificul
   enunciado = getStatementSeries(enunciado, n, serie);
   int respuesta = an;
   solucion = getSolutionNth1(solucion, serie, a, r, n, an);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemSeriesSum1(String enunciado, String solucion, int? dificultad) {
@@ -160,8 +161,8 @@ Problema createProblemSeriesSum1(String enunciado, String solucion, int? dificul
   enunciado = getStatementSeries(enunciado, n, serie);
   int respuesta = sn;
   solucion = getSolutionSum1(solucion, serie, a, r, n, sn);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemSeriesNth2(String enunciado, String solucion, int? dificultad) {
@@ -175,8 +176,8 @@ Problema createProblemSeriesNth2(String enunciado, String solucion, int? dificul
   enunciado = getStatementSeries(enunciado, n, serie);
   int respuesta = an;
   solucion = getSolutionNth2(solucion, serie, a, r1, r2, n, an);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemSeriesSum2(String enunciado, String solucion, int? dificultad) {
@@ -190,8 +191,8 @@ Problema createProblemSeriesSum2(String enunciado, String solucion, int? dificul
   enunciado = getStatementSeries(enunciado, n, serie);
   int respuesta = sn;
   solucion = getSolutionSum2(solucion, serie, a, r1, r2, n, sn);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemSeriesNth3(String enunciado, String solucion, int? dificultad) {
@@ -206,8 +207,8 @@ Problema createProblemSeriesNth3(String enunciado, String solucion, int? dificul
   enunciado = getStatementSeries(enunciado, n, serie);
   int respuesta = an;
   solucion = getSolutionNth3(solucion, serie, a, r1, r2, r3, n, an);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemSeriesSum3(String enunciado, String solucion, int? dificultad) {
@@ -222,7 +223,7 @@ Problema createProblemSeriesSum3(String enunciado, String solucion, int? dificul
   enunciado = getStatementSeries(enunciado, n, serie);
   int respuesta = sn;
   solucion = getSolutionSum3(solucion, serie, a, r1, r2, r3, n, sn);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return Problema(enunciado, alternativas, clave, solucion);
 }

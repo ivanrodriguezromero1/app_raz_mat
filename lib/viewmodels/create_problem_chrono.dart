@@ -69,20 +69,21 @@ String getSolutionChrono4(String solucion, int c1, int t1, int t2, int c2){
     .replaceAll("_c2-1_", (c2-1).toString())
     .replaceAll("_c2_", c2.toString());
 }
-List<int> getAlternatives(int respuesta){
+List<String> getAlternatives(String respuesta){
+  int rpta = int.parse(respuesta);
   Random random = Random();
-  List<int> alternativas = [];
+  List<String> alternativas = [];
   alternativas.add(respuesta);
   for (int i = 0; i < 3; i++) {
     int alternativa = random.nextInt(2) == 0 
-      ? respuesta + random.nextInt(5) + 1 
-      : respuesta - random.nextInt(2) - 1;
-    while (alternativas.contains(alternativa)) {
+      ? rpta + random.nextInt(5) + 1 
+      : rpta - random.nextInt(2) - 1;
+    while (alternativas.contains('$alternativa')) {
       alternativa = random.nextInt(2) == 0 
-      ? respuesta + random.nextInt(5) + 1 
-      : respuesta - random.nextInt(2) - 1;
+      ? rpta + random.nextInt(5) + 1 
+      : rpta - random.nextInt(2) - 1;
     }
-    alternativas.add(alternativa);
+    alternativas.add('$alternativa');
   }
   alternativas.shuffle();
   return alternativas;
@@ -95,8 +96,8 @@ Problema createProblemChrono1(String enunciado , String solucion, int? dificulta
   enunciado = getStatementChrono1(enunciado, h, m);
   int respuesta = a;
   solucion = getSolutionChrono1(solucion, h, m, a);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemChrono2(String enunciado , String solucion, int? dificultad) {
@@ -107,8 +108,8 @@ Problema createProblemChrono2(String enunciado , String solucion, int? dificulta
   enunciado = getStatementChrono2(enunciado, h, a);
   int respuesta = m;
   solucion = getSolutionChrono2(solucion, h, a, m);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemChrono3(String enunciado , String solucion, int? dificultad) {
@@ -119,8 +120,8 @@ Problema createProblemChrono3(String enunciado , String solucion, int? dificulta
   enunciado = getStatementChrono3(enunciado, h, a);
   int respuesta = m;
   solucion = getSolutionChrono3(solucion, h, a, m);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemChrono4(String enunciado , String solucion, int? dificultad) {
@@ -133,7 +134,7 @@ Problema createProblemChrono4(String enunciado , String solucion, int? dificulta
   enunciado = getStatementChrono4(enunciado, c1, t1, t2);
   int respuesta = c2;
   solucion = getSolutionChrono4(solucion, c1, t1, t2, c2);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }

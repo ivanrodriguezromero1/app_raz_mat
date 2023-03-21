@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         Locale('en', ''),
         Locale('es', ''),
       ],
-      locale: const Locale('en', ''),
+      // locale: const Locale('en', ''),
       theme: ThemeData(
         primarySwatch: myColor,
         

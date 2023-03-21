@@ -1,6 +1,6 @@
 class Problema {
   String enunciado;
-  List<int> alternativas;
+  List<String> alternativas;
   int clave;
   String solucion;
   Problema(this.enunciado, this.alternativas, this.clave, this.solucion);

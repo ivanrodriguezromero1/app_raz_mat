@@ -74,20 +74,21 @@ String getSolutionMoving4(String solucion, int a, int b, int c, int t, int t2){
     .replaceAll("_a-b*t_", (a-b*t).toString())
     .replaceAll("_t2_", t2.toString());
 }
-List<int> getAlternatives(int respuesta){
+List<String> getAlternatives(String respuesta){
+  int rpta = int.parse(respuesta);
   Random random = Random();
-  List<int> alternativas = [];
+  List<String> alternativas = [];
   alternativas.add(respuesta);
   for (int i = 0; i < 3; i++) {
     int alternativa = random.nextInt(2) == 0 
-      ? respuesta + random.nextInt(5) + 1 
-      : respuesta - random.nextInt(2) - 1;
-    while (alternativas.contains(alternativa)) {
+      ? rpta + random.nextInt(5) + 1 
+      : rpta - random.nextInt(2) - 1;
+    while (alternativas.contains('$alternativa')) {
       alternativa = random.nextInt(2) == 0 
-      ? respuesta + random.nextInt(5) + 1 
-      : respuesta - random.nextInt(2) - 1;
+      ? rpta + random.nextInt(5) + 1 
+      : rpta - random.nextInt(2) - 1;
     }
-    alternativas.add(alternativa);
+    alternativas.add('$alternativa');
   }
   alternativas.shuffle();
   return alternativas;
@@ -101,8 +102,8 @@ Problema createProblemMoving1(String enunciado , String solucion, int? dificulta
   enunciado = getStatementMoving1(enunciado, a, b, c);
   int respuesta = t;
   solucion = getSolutionMoving1(solucion, a, b, c, t);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemMoving2(String enunciado , String solucion, int? dificultad) {
@@ -114,8 +115,8 @@ Problema createProblemMoving2(String enunciado , String solucion, int? dificulta
   enunciado = getStatementMoving2(enunciado, a, b, c);
   int respuesta = t;
   solucion = getSolutionMoving2(solucion, a, b, c, t);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemMoving3(String enunciado , String solucion, int? dificultad) {
@@ -127,8 +128,8 @@ Problema createProblemMoving3(String enunciado , String solucion, int? dificulta
   enunciado = getStatementMoving3(enunciado, a, b, t);
   int respuesta = x;
   solucion = getSolutionMoving3(solucion, a, b, t, x);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemMoving4(String enunciado , String solucion, int? dificultad) {
@@ -141,7 +142,7 @@ Problema createProblemMoving4(String enunciado , String solucion, int? dificulta
   enunciado = getStatementMoving4(enunciado, a, b, c, t);
   int respuesta = t2;
   solucion = getSolutionMoving4(solucion, a, b, c, t, t2);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }

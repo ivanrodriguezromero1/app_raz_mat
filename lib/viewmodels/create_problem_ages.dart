@@ -90,20 +90,21 @@ String getSolutionAge4(String solucion, int a, int b, int c, int x){
     .replaceAll("_x_", x.toString())
     .replaceAll("_2022-b-x_", (2022-b-x).toString());
 }
-List<int> getAlternatives(int respuesta){
+List<String> getAlternatives(String respuesta){
+  int rpta = int.parse(respuesta);
   Random random = Random();
-  List<int> alternativas = [];
+  List<String> alternativas = [];
   alternativas.add(respuesta);
   for (int i = 0; i < 3; i++) {
     int alternativa = random.nextInt(2) == 0 
-      ? respuesta + random.nextInt(5) + 1 
-      : respuesta - random.nextInt(2) - 1;
-    while (alternativas.contains(alternativa)) {
+      ? rpta + random.nextInt(5) + 1 
+      : rpta - random.nextInt(2) - 1;
+    while (alternativas.contains('$alternativa')) {
       alternativa = random.nextInt(2) == 0 
-      ? respuesta + random.nextInt(5) + 1 
-      : respuesta - random.nextInt(2) - 1;
+      ? rpta + random.nextInt(5) + 1 
+      : rpta - random.nextInt(2) - 1;
     }
-    alternativas.add(alternativa);
+    alternativas.add('$alternativa');
   }
   alternativas.shuffle();
   return alternativas;
@@ -120,8 +121,8 @@ Problema createProblemAges1(String enunciado , String solucion, int? dificultad)
   enunciado = getStatementAges1(enunciado, a, b, c, d, e, f);
   int respuesta = f-x;
   solucion = getSolutionAge1(solucion, a, b, c, d, e, f, x);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemAges2(String enunciado , String solucion, int? dificultad) {
@@ -134,8 +135,8 @@ Problema createProblemAges2(String enunciado , String solucion, int? dificultad)
   enunciado = getStatementAges2(enunciado, a, b, c, d);
   int respuesta = a*x;
   solucion = getSolutionAge2(solucion, a, b, c, d, x);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemAges3(String enunciado , String solucion, int? dificultad) {
@@ -147,8 +148,8 @@ Problema createProblemAges3(String enunciado , String solucion, int? dificultad)
   enunciado = getStatementAges3(enunciado, a, b, c);
   int respuesta = x;
   solucion = getSolutionAge3(solucion, a, b, c, x);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }
 Problema createProblemAges4(String enunciado , String solucion, int? dificultad) {
@@ -160,7 +161,7 @@ Problema createProblemAges4(String enunciado , String solucion, int? dificultad)
   enunciado = getStatementAges4(enunciado, a, b, c);
   int respuesta = 2022-b-x;
   solucion = getSolutionAge4(solucion, a, b, c, x);
-  List<int> alternativas = getAlternatives(respuesta);
-  int clave = alternativas.indexOf(respuesta);
+  List<String> alternativas = getAlternatives('$respuesta');
+  int clave = alternativas.indexOf('$respuesta');
   return  Problema(enunciado, alternativas, clave, solucion);
 }

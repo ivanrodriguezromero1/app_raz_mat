@@ -21,9 +21,9 @@ class DataModel extends ChangeNotifier {
     _enunciado = value;
     notifyListeners();
   }
-  List<int> _alternativas = [];
-  List<int> get alternativas => _alternativas;
-  set alternativas(List<int> value){
+  List<String> _alternativas = [];
+  List<String> get alternativas => _alternativas;
+  set alternativas(List<String> value){
     _alternativas = value;
     notifyListeners();
   }
