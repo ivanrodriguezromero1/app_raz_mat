@@ -1,10 +1,28 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:raz_mat/viewmodels/providers.dart';
 import '../main.dart';
+import '../view/problems_screen.dart';
 import '../view/settings_screen.dart';
 import '../view/solutions_screen.dart';
+import '../view/theory_screen.dart';
+import '../view/widgets.dart';
+import 'my_app_localizations.dart';
 
+void goToProblems(BuildContext context, DataModel dataModel, MyAppLocalizations localizations) {
+  checkInternetConnectivity(dataModel);
+  createProblem(dataModel, localizations);
+  dataModel.connected 
+    ? changePageScale(context, const ProblemsScreen())
+    : disconnected(context, localizations);
+}
+void goToTheory(BuildContext context, DataModel dataModel, MyAppLocalizations localizations) {
+  checkInternetConnectivity(dataModel);
+  dataModel.teoria = getTheoryByOption(dataModel, localizations);
+  dataModel.connected 
+    ? changePageScale(context, const TheoryScreen())
+    : disconnected(context, localizations);
+}
 void changePageSlide(BuildContext context, StatefulWidget page, double x, double y){
   Navigator.of(context).push(
     PageRouteBuilder(

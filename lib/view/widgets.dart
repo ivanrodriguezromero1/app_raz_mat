@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:raz_mat/viewmodels/change_page.dart';
 import 'package:raz_mat/viewmodels/providers.dart';
 import '../viewmodels/my_app_localizations.dart';
 
-Container getItem(MyAppLocalizations localizations, 
-                  DataModel dataModel, 
-                  Function goToProblems,
+Container getItem(BuildContext context,
+                  DataModel dataModel,
+                  MyAppLocalizations localizations,
                   IconData iconData,
                   String topic,
-                  int op){
+                  {int opcion = 1}){
   return Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -37,7 +38,8 @@ Container getItem(MyAppLocalizations localizations,
                           child: IconButton(
                             icon: Icon(Icons.menu_book, color: Colors.orange.shade600),
                             onPressed: () {
-                              // Acción del primer IconButton
+                              dataModel.option = opcion;
+                              goToTheory(context, dataModel, localizations);
                             },
                           ),
                         ),
@@ -53,8 +55,8 @@ Container getItem(MyAppLocalizations localizations,
                           child: IconButton(
                             icon: Icon(Icons.edit, color: Colors.orange.shade600),
                             onPressed: () {
-                              dataModel.option = op;
-                              goToProblems(dataModel,localizations);
+                              dataModel.option = opcion;
+                              goToProblems(context, dataModel, localizations);
                             },
                           ),
                         ),
@@ -62,4 +64,20 @@ Container getItem(MyAppLocalizations localizations,
                     ),
                   ),
                 );
+}
+
+ScaffoldFeatureController<SnackBar, SnackBarClosedReason> disconnected(BuildContext context, 
+                                                                       MyAppLocalizations localizations){
+  return ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(localizations.disconnected),
+          action: SnackBarAction(
+            label: localizations.close,
+            textColor: Colors.white,
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+          ),
+        ),
+      );
 }

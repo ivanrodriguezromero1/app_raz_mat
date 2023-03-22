@@ -1,15 +1,12 @@
 import 'dart:async';
 import 'dart:math';
-
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import 'package:raz_mat/viewmodels/create_problem_moving.dart';
-import 'package:raz_mat/viewmodels/create_problem_series.dart';
-import 'package:raz_mat/models/problema.dart';
+import 'package:raz_mat/view/widgets.dart';
 import '../viewmodels/change_page.dart';
-import '../viewmodels/create_problem_ages.dart';
-import '../viewmodels/create_problem_chrono.dart';
+import '../viewmodels/globals.dart';
 import '../viewmodels/my_app_localizations.dart';
 import '../viewmodels/constants.dart';
 import '../viewmodels/providers.dart';
@@ -72,15 +69,11 @@ void startTimer() {
     });
     startTimer();
   }
-  Future<void> precacheImages() async {
-    for (var i = 0; i < imageList.length; i++) {
-      await precacheImage(AssetImage(imageList[i]), context);
-    }
-  }
   @override
   Widget build(BuildContext context) {
     MyAppLocalizations localizations = MyAppLocalizations.of(context);
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
+    String title = getTitleByOption(dataModel, localizations);
     checkInternetConnectivity(dataModel);
     return ChangeNotifierProvider(
       create: (context) => dataModel,
@@ -92,7 +85,7 @@ void startTimer() {
                 children: [
                   Icon(iconosItems[dataModel.option-1]),
                   const SizedBox(width: 9),
-                  Text(localizations.problems,
+                  Text(title,
                     style: const TextStyle(color: Colors.white,
                     fontSize: 21),),
                   const SizedBox(width: 11),
@@ -118,7 +111,8 @@ void startTimer() {
               flexibleSpace: Image.asset(pathBar,
                 fit: BoxFit.cover,),
             ),
-            body: SingleChildScrollView(
+            body: SingleChildScrollView(child:Container(
+                  color: Colors.white,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -256,14 +250,18 @@ void startTimer() {
                           children: const [SizedBox(height: 25)],
                         ),
                         ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
+                            bool isCorrect = selectedValue == dataModel.clave;
+                            isCorrect
+                                  ?  await sonidoBien.play(AssetSource(pathSonidoBien))
+                                  :  await sonidoMal.play(AssetSource(pathSonidoMal)); 
                             setState(() {
                               if(viewCheck && selectedValue!=null){ 
                                 //Si el botón dice 'COMPROBAR' 
                                 // y a menos una opción está marcada
-                                selectedValue == dataModel.clave
+                                isCorrect
                                   ? selectImage = 1
-                                  : selectImage = 2;
+                                  : selectImage = 2;                
                                 isRadioTileDisabled = true;
                                 viewCheck=false;
                               }else if(!viewCheck){
@@ -297,42 +295,15 @@ void startTimer() {
                           onPressed: () {
                             setState(() {
                               checkInternetConnectivity(dataModel);
-                              dataModel.connected?(){
-                              Problema p;
-                              switch(dataModel.option){
-                                case 1:
-                                  p = createProblemSeries(localizations, dataModel.difficulty);
-                                  break;
-                                case 2:
-                                  p = createProblemAges(localizations, dataModel.difficulty);
-                                  break;
-                                case 3:
-                                  p = createProblemMoving(localizations, dataModel.difficulty);
-                                  break;
-                                default:
-                                  p = createProblemChrono(localizations, dataModel.difficulty);
-                                  break;
-                              }
-                              dataModel.enunciado = p.enunciado;
-                              dataModel.alternativas = p.alternativas;
-                              dataModel.clave = p.clave;
-                              dataModel.solucion = p.solucion;
-                              selectedValue = null;
-                              viewCheck = true;
-                              selectImage = 0;
-                              areKeys = [false,false,false,false];
-                              }():ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(localizations.disconnected),
-                                  action: SnackBarAction(
-                                    label: localizations.close,
-                                    textColor: Colors.white,
-                                    onPressed: () {
-                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                                    },
-                                  ),
-                                ),
-                              );
+                              dataModel.connected
+                                ? (){
+                                  createProblem(dataModel, localizations);
+                                  selectedValue = null;
+                                  viewCheck = true;
+                                  selectImage = 0;
+                                  areKeys = [false,false,false,false];
+                                  }()
+                                : disconnected(context, localizations);
                               isRadioTileDisabled = false;
                             });
                           },
@@ -359,6 +330,7 @@ void startTimer() {
                     ),
                   ],
                 ),
+               ),
               ),
               bottomNavigationBar:  Container(
                   decoration: const BoxDecoration(
