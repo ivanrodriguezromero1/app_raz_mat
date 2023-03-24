@@ -117,7 +117,7 @@ void startTimer() {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding:const EdgeInsets.fromLTRB(35,20,35,15),
+                        padding:const EdgeInsets.fromLTRB(35,20,35,5),
                         child: Text(dataModel.enunciado,
                           textAlign: TextAlign.justify,
                           style: TextStyle(
@@ -178,7 +178,12 @@ void startTimer() {
                                 icon: Icon(Icons.tips_and_updates, color: Colors.yellow.shade800),
                                 iconSize: 20,
                                 onPressed: () {
-                                  
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return showTip(context, localizations);
+                                    },
+                                  );
                                 },
                               ),
                             ),
@@ -252,9 +257,12 @@ void startTimer() {
                         ElevatedButton(
                           onPressed: () async {
                             bool isCorrect = selectedValue == dataModel.clave;
-                            isCorrect
-                                  ?  await sonidoBien.play(AssetSource(pathSonidoBien))
-                                  :  await sonidoMal.play(AssetSource(pathSonidoMal)); 
+                            if(viewCheck&&selectedValue!=null)
+                            {
+                              isCorrect
+                                ?  await sonidoBien.play(AssetSource(pathSonidoBien))
+                                :  await sonidoMal.play(AssetSource(pathSonidoMal));
+                            } 
                             setState(() {
                               if(viewCheck && selectedValue!=null){ 
                                 //Si el botón dice 'COMPROBAR' 
@@ -290,7 +298,7 @@ void startTimer() {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 25),
+                        const SizedBox(height: 20),
                         ElevatedButton(                          
                           onPressed: () {
                             setState(() {

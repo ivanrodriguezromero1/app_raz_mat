@@ -81,3 +81,51 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason> disconnected(BuildCont
         ),
       );
 }
+AlertDialog showTip(BuildContext context, MyAppLocalizations localizations){
+  return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          backgroundColor: Colors.cyan[50],
+          title: Text(localizations.tip,
+            textAlign: TextAlign.center,),
+          content: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text(localizations.tipSerieSum3),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            ButtonBar(
+              alignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextButton(                  
+                  onPressed: () {
+                    // Cerrar el diálogo
+                    Navigator.of(context).pop();
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14.0),
+                      ),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0,2.0,8.0,2.0),
+                    child: Text(
+                      localizations.close,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+}
