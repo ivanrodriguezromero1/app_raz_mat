@@ -87,7 +87,8 @@ void startTimer() {
                   const SizedBox(width: 9),
                   Text(title,
                     style: const TextStyle(color: Colors.white,
-                    fontSize: 21),),
+                    fontSize: 18),
+                    ),
                   const SizedBox(width: 11),
                   IconButton(
                     icon: const Icon(Icons.play_arrow),
@@ -117,7 +118,7 @@ void startTimer() {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding:const EdgeInsets.fromLTRB(35,20,35,5),
+                        padding:const EdgeInsets.fromLTRB(35,20,35,0),
                         child: Text(dataModel.enunciado,
                           textAlign: TextAlign.justify,
                           style: TextStyle(
@@ -252,7 +253,7 @@ void startTimer() {
                     Column(
                       children: [
                         Row(
-                          children: const [SizedBox(height: 25)],
+                          children: const [SizedBox(height: 20)],
                         ),
                         ElevatedButton(
                           onPressed: () async {
@@ -381,7 +382,7 @@ void startTimer() {
               persistentFooterButtons: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 80,
+                  height: 75,
                   alignment: Alignment.center,
                   child: dataModel.isBannerAdProblemReady
                     ? AdWidget(ad: dataModel.bannerAdProblem)
