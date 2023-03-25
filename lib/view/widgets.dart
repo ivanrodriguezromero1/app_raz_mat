@@ -81,7 +81,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason> disconnected(BuildCont
         ),
       );
 }
-AlertDialog showTip(BuildContext context, MyAppLocalizations localizations){
+AlertDialog showTip(BuildContext context, DataModel dataModel, MyAppLocalizations localizations){
   return AlertDialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
@@ -92,7 +92,7 @@ AlertDialog showTip(BuildContext context, MyAppLocalizations localizations){
           content: SingleChildScrollView(
             child: Column(
               children: [
-                Text(localizations.tipSerieSum3),
+                Text(getTipByOptionAndType(dataModel, localizations)),
               ],
             ),
           ),

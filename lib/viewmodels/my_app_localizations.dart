@@ -7,6 +7,10 @@ import 'package:raz_mat/viewmodels/topics/ages/statement_age1.dart';
 import 'package:raz_mat/viewmodels/topics/ages/statement_age2.dart';
 import 'package:raz_mat/viewmodels/topics/ages/statement_age3.dart';
 import 'package:raz_mat/viewmodels/topics/ages/statement_age4.dart';
+import 'package:raz_mat/viewmodels/topics/ages/tip_age1.dart';
+import 'package:raz_mat/viewmodels/topics/ages/tip_age2.dart';
+import 'package:raz_mat/viewmodels/topics/ages/tip_age3.dart';
+import 'package:raz_mat/viewmodels/topics/ages/tip_age4.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/solution_chrono1.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/solution_chrono2.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/solution_chrono3.dart';
@@ -15,6 +19,10 @@ import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono1.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono2.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono3.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono4.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono1.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono2.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono3.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono4.dart';
 import 'package:raz_mat/viewmodels/topics/moving/solution_moving1.dart';
 import 'package:raz_mat/viewmodels/topics/moving/solution_moving2.dart';
 import 'package:raz_mat/viewmodels/topics/moving/solution_moving3.dart';
@@ -23,6 +31,10 @@ import 'package:raz_mat/viewmodels/topics/moving/statement_moving1.dart';
 import 'package:raz_mat/viewmodels/topics/moving/statement_moving2.dart';
 import 'package:raz_mat/viewmodels/topics/moving/statement_moving3.dart';
 import 'package:raz_mat/viewmodels/topics/moving/statement_moving4.dart';
+import 'package:raz_mat/viewmodels/topics/moving/tip_moving1.dart';
+import 'package:raz_mat/viewmodels/topics/moving/tip_moving2.dart';
+import 'package:raz_mat/viewmodels/topics/moving/tip_moving3.dart';
+import 'package:raz_mat/viewmodels/topics/moving/tip_moving4.dart';
 import 'package:raz_mat/viewmodels/topics/series/solution_serie_nth1.dart';
 import 'package:raz_mat/viewmodels/topics/series/solution_serie_nth2.dart';
 import 'package:raz_mat/viewmodels/topics/series/solution_serie_nth3.dart';
@@ -31,6 +43,12 @@ import 'package:raz_mat/viewmodels/topics/series/solution_serie_sum2.dart';
 import 'package:raz_mat/viewmodels/topics/series/solution_serie_sum3.dart';
 import 'package:raz_mat/viewmodels/topics/series/statement_serie_nth.dart';
 import 'package:raz_mat/viewmodels/topics/series/statement_serie_sum.dart';
+import 'package:raz_mat/viewmodels/topics/series/tip_serie_nth1.dart';
+import 'package:raz_mat/viewmodels/topics/series/tip_serie_nth2.dart';
+import 'package:raz_mat/viewmodels/topics/series/tip_serie_nth3.dart';
+import 'package:raz_mat/viewmodels/topics/series/tip_serie_sum1.dart';
+import 'package:raz_mat/viewmodels/topics/series/tip_serie_sum2.dart';
+import 'package:raz_mat/viewmodels/topics/series/tip_serie_sum3.dart';
 
 class MyAppLocalizations {
   MyAppLocalizations(this.locale);
@@ -63,8 +81,15 @@ class MyAppLocalizations {
       'solution':'VER SOLUCION',
       'answer':'La respuesta es',
       'titleSolution':'SOLUCION',
+
       'statementSerieNth': statementSerieNthEs,
       'statementSerieSum': statementSerieSumEs,
+      'tipSerieNth1': tipSerieNth1Es,
+      'tipSerieNth2': tipSerieNth2Es,
+      'tipSerieNth3': tipSerieNth3Es,
+      'tipSerieSum1': tipSerieSum1Es,
+      'tipSerieSum2': tipSerieSum2Es,
+      'tipSerieSum3': tipSerieSum3Es,
       'solutionSerieNth1': solutionSerieNth1Es,
       'solutionSerieSum1': solutionSerieSum1Es,
       'solutionSerieNth2': solutionSerieNth2Es,
@@ -72,33 +97,40 @@ class MyAppLocalizations {
       'solutionSerieNth3': solutionSerieNth3Es,
       'solutionSerieSum3': solutionSerieSum3Es,
       
-      'tipSerieNth1': ' Serie aritmética de primer grado: \r\n\n Término enésimo: \r\n  aₙ = a₁ + (n-1).r \r\n\n a₁ : Primer término \r\n r : Razón aritmética \r\n n : Número de término',
-      'tipSerieSum1':' Serie aritmética de primer grado: \r\n Suma de términos: \r\n  Sₙ = a₁.n + [(n-1).n.r]/2 \r\n\n a₁ : Primer término \r\n r : Razón aritmética \r\n n : Número de términos',
-      'tipSerieNth2': ' Serie aritmética de segundo grado: \r\n Término enésimo: \r\n  aₙ = a₁ + (n-1).r₁ + [(n-1)(n-2).r₂]/2 \r\n\n a₁ : Primer término \r\n r₁ : Primera razón aritmética \r\n r₂ : Segunda razón aritmética \r\n n : Número de término',
-      'tipSerieSum2':' Serie aritmética de segundo grado: \r\n Suma de términos: \r\n  Sₙ = a₁.n + [(n-1).n.r₁]/2 +\r\n   [(n-2)(n-1).n.r₂]/6 \r\n\n a₁ : Primer término \r\n r₁ : Primera razón aritmética \r\n r₂ : Segunda razón aritmética \r\n n : Número de términos',
-      'tipSerieNth3': ' Serie aritmética de tercer grado: \r\n Término enésimo: \r\n  aₙ = a₁ + (n-1).r₁ + [(n-1)(n-2).r₂]/2 +\r\n   [(n-1)(n-2)(n-3).r₃]/6 \r\n\n a₁ : Primer término \r\n r₁ : Primera razón aritmética \r\n r₂ : Segunda razón aritmética \r\n r₃ : Tercera razón aritmética \r\n n : Número de término',
-      'tipSerieSum3':' Serie aritmética de tercer grado: \r\n Suma de términos: \r\n  Sₙ = a₁.n + [(n-1).n.r₁]/2 +\r\n   [(n-2)(n-1).n.r₂]/6 +\r\n   [(n-3)(n-2)(n-1).n.r₃]/24 \r\n\n a₁ : Primer término \r\n r₁ : Primera razón aritmética \r\n r₂ : Segunda razón aritmética \r\n r₃ : Tercera razón aritmética \r\n n : Número de términos',
-      
       'statementAge1': statementAge1Es,
       'statementAge2': statementAge2Es,
       'statementAge3': statementAge3Es,
       'statementAge4': statementAge4Es,
+      'tipAge1': tipAge1Es,
+      'tipAge2': tipAge2Es,
+      'tipAge3': tipAge3Es,
+      'tipAge4': tipAge4Es,
       'solutionAge1': solutionAge1Es,
       'solutionAge2': solutionAge2Es,  
       'solutionAge3': solutionAge3Es,
       'solutionAge4': solutionAge4Es,
+      
       'statementMoving1': statementMoving1Es,
       'statementMoving2': statementMoving2Es, 
       'statementMoving3': statementMoving3Es,
       'statementMoving4': statementMoving4Es,
+      'tipMoving1': tipMoving1Es,
+      'tipMoving2': tipMoving2Es,
+      'tipMoving3': tipMoving3Es,
+      'tipMoving4': tipMoving4Es,
       'solutionMoving1': solutionMoving1Es,
       'solutionMoving2': solutionMoving2Es,
       'solutionMoving3': solutionMoving3Es,
       'solutionMoving4': solutionMoving4Es,
+      
       'statementChrono1': statementChrono1Es,
       'statementChrono2': statementChrono2Es,
       'statementChrono3': statementChrono3Es,
       'statementChrono4': statementChrono4Es,
+      'tipChrono1': tipChrono1Es,
+      'tipChrono2': tipChrono2Es,
+      'tipChrono3': tipChrono3Es,
+      'tipChrono4': tipChrono4Es,
       'solutionChrono1': solutionChrono1Es,
       'solutionChrono2': solutionChrono2Es,
       'solutionChrono3': solutionChrono3Es,
@@ -125,8 +157,15 @@ class MyAppLocalizations {
       'solution':'SEE SOLUTION',
       'answer':'The answer is',
       'titleSolution':'SOLUTION',
+      
       'statementSerieNth': statementSerieNthEn,
       'statementSerieSum': statementSerieSumEn,
+      'tipSerieNth1': tipSerieNth1En,
+      'tipSerieNth2': tipSerieNth2En,
+      'tipSerieNth3': tipSerieNth3En,
+      'tipSerieSum1': tipSerieSum1En,
+      'tipSerieSum2': tipSerieSum2En,
+      'tipSerieSum3': tipSerieSum3En,
       'solutionSerieNth1': solutionSerieNth1En,
       'solutionSerieSum1': solutionSerieSum1En,
       'solutionSerieNth2': solutionSerieNth2En,
@@ -134,33 +173,40 @@ class MyAppLocalizations {
       'solutionSerieNth3': solutionSerieNth3En,
       'solutionSerieSum3': solutionSerieSum3En,
       
-      'tipSerieNth1': ' First-degree arithmetic series: \r\n N-th term: \r\n  aₙ = a₁ + (n-1). r \r\n\n a₁ : First term \r\n r : Arithmetic ratio \r\n n : Number of terms',
-      'tipSerieSum1':' First-degree arithmetic series: \r\n Sum of terms: \r\n  Sₙ = a₁.n + [(n-1).n.r]/2 \r\n\n a₁ : First term \r\n r : Arithmetic ratio \r\n n : Number of terms',
-      'tipSerieNth2': 'Quadratic arithmetic series: \r\n Nth term: \r\n  aₙ = a₁ + (n-1).r₁ + [(n-1)(n-2).r₂]/2 \r\n\n a₁ : First term \r\n r₁ : First arithmetic ratio \r\n r₂ : Second arithmetic ratio \r\n n : Number of terms',
-      'tipSerieSum2':' Quadratic arithmetic series: \r\n Sum of terms: \r\n  Sₙ = a₁n + [(n-1)nr₁]/2 +\r\n   [(n-2)(n-1)nr₂]/6 \r\n\n a₁ : First term \r\n r₁ : First arithmetic ratio \r\n r₂ : Second arithmetic ratio \r\n n : Number of terms',
-      'tipSerieNth3': ' Third degree arithmetic series: \r\n Nth term: \r\n  aₙ = a₁ + (n-1)r₁ + [(n-1)(n-2)r₂]/2 +\r\n   [(n-1)(n-2)(n-3)r₃]/6 \r\n\n a₁ : First term \r\n r₁ : First arithmetic ratio \r\n r₂ : Second arithmetic ratio \r\n r₃ : Third arithmetic ratio \r\n n : Number of term',
-      'tipSerieSum3':' Third degree arithmetic series: \r\n Sum of terms: \r\n  Sₙ = a₁.n + [(n-1).n.r₁]/2 +\r\n   [(n-2)(n-1).n.r₂]/6 +\r\n   [(n-3)(n-2)(n-1).n.r₃]/24 \r\n\n a₁ : First term \r\n r₁ : First arithmetic ratio \r\n r₂ : Second arithmetic ratio \r\n r₃ : Third arithmetic ratio \r\n n : Number of terms',
-      
       'statementAge1': statementAge1En,
       'statementAge2': statementAge2En,
       'statementAge3': statementAge3En,
       'statementAge4': statementAge4En,
+      'tipAge1': tipAge1En,
+      'tipAge2': tipAge2En,
+      'tipAge3': tipAge3En,
+      'tipAge4': tipAge4En,
       'solutionAge1': solutionAge1En ,
       'solutionAge2': solutionAge2En,
       'solutionAge3': solutionAge3En,
       'solutionAge4': solutionAge4En,
+
       'statementMoving1': statementMoving1En,
       'statementMoving2': statementMoving2En,
       'statementMoving3': statementMoving3En,
       'statementMoving4': statementMoving4En,
+      'tipMoving1': tipMoving1En,
+      'tipMoving2': tipMoving2En,
+      'tipMoving3': tipMoving3En,
+      'tipMoving4': tipMoving4En,
       'solutionMoving1': solutionMoving1En,
       'solutionMoving2': solutionMoving2En,
       'solutionMoving3': solutionMoving3En,
       'solutionMoving4': solutionMoving4En,
+
       'statementChrono1': statementChrono1En,
       'statementChrono2': statementChrono2En,
       'statementChrono3': statementChrono3En,
       'statementChrono4': statementChrono4En,
+      'tipChrono1': tipChrono1En,
+      'tipChrono2': tipChrono2En,
+      'tipChrono3': tipChrono3En,
+      'tipChrono4': tipChrono4En,
       'solutionChrono1': solutionChrono1En,
       'solutionChrono2': solutionChrono2En,
       'solutionChrono3': solutionChrono3En,
@@ -209,6 +255,9 @@ class MyAppLocalizations {
   }
   String get close {
     return _localizedValues[locale.languageCode]!['close']!;
+  }
+  String get tip {
+    return _localizedValues[locale.languageCode]!['tip']!;
   }
   String get statementSerieNth {
     return _localizedValues[locale.languageCode]!['statementSerieNth']!;
@@ -339,8 +388,41 @@ class MyAppLocalizations {
   String get solutionChrono4 {
     return _localizedValues[locale.languageCode]!['solutionChrono4']!;
   }
-  String get tip {
-    return _localizedValues[locale.languageCode]!['tip']!;
+  String get tipAge1 {
+    return _localizedValues[locale.languageCode]!['tipAge1']!;
+  }
+  String get tipAge2 {
+    return _localizedValues[locale.languageCode]!['tipAge2']!;
+  }
+  String get tipAge3 {
+    return _localizedValues[locale.languageCode]!['tipAge3']!;
+  }
+  String get tipAge4 {
+    return _localizedValues[locale.languageCode]!['tipAge4']!;
+  }
+  String get tipMoving1 {
+    return _localizedValues[locale.languageCode]!['tipMoving1']!;
+  }
+  String get tipMoving2 {
+    return _localizedValues[locale.languageCode]!['tipMoving2']!;
+  }
+  String get tipMoving3 {
+    return _localizedValues[locale.languageCode]!['tipMoving3']!;
+  }
+  String get tipMoving4 {
+    return _localizedValues[locale.languageCode]!['tipMoving4']!;
+  }
+  String get tipChrono1 {
+    return _localizedValues[locale.languageCode]!['tipChrono1']!;
+  }
+  String get tipChrono2 {
+    return _localizedValues[locale.languageCode]!['tipChrono2']!;
+  }
+  String get tipChrono3 {
+    return _localizedValues[locale.languageCode]!['tipChrono3']!;
+  }
+  String get tipChrono4 {
+    return _localizedValues[locale.languageCode]!['tipChrono4']!;
   }
   Future<bool> load() async {
     return true;

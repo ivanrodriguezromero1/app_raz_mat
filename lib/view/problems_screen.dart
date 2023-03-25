@@ -182,7 +182,7 @@ void startTimer() {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return showTip(context, localizations);
+                                      return showTip(context, dataModel, localizations);
                                     },
                                   );
                                 },

@@ -4,7 +4,7 @@ const solutionChrono1Es =
   H = _h_ 
  Minutos: 
   M = _m_ 
- Se sabe que: α = |30.H - [11/2].M| grados 
+ Se sabe que: α = |30.H - [11/2].M| grados
   α = |30(_h_) - [11/2](_m_)| 
   α = |_30*h_ - _[11/2]*m_| 
   α = |_30*h-[11/2]*m_| 
@@ -18,7 +18,7 @@ const solutionChrono1En =
   H = _h_ 
  Minutes: 
   M = _m_ 
- It is known that: α = |30.H - [11/2].M| degrees 
+ It is known that: α = |30.H - [11/2].M| degrees
   α = |30(_h_) - [11/2](_m_)| 
   α = |_30*h_ - _[11/2]*m_| 
   α = |_30*h-[11/2]*m_| 

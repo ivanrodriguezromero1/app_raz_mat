@@ -3,11 +3,11 @@ const solutionChrono4Es =
  Caso 1: 
   Número de campanadas: 
    C₁ = _c1_ 
-  Tiempo para dar las campanadas: 
+  Duración de las campanadas: 
    T₁ = _t1_ 
  Caso 2: 
   Número de campanadas: C₂ 
-  Tiempo para dar las campanadas: 
+  Duración de las campanadas: 
    T₂ = _t2_ 
    
  Se sabe que: 
@@ -22,13 +22,13 @@ const solutionChrono4Es =
 const solutionChrono4En = 
 '''
  Case 1: 
-  Number of bells: 
+  Number of chimes: 
    C₁ = _c1_ 
-  Time the bells: 
+  Chimes duration: 
    T₁ = _t1_ 
  Case 2: 
-  Number of bells: C₂ 
-  Time the bells: 
+  Number of chimes: C₂
+  Chimes duration: 
    T₂ = _t2_ 
    
  We know that: 

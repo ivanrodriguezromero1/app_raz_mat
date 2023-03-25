@@ -1,11 +1,12 @@
 import 'dart:math';
 import 'package:raz_mat/models/problema.dart';
+import 'package:raz_mat/viewmodels/providers.dart';
 import 'my_app_localizations.dart';
 
-Problema createProblemSeries(MyAppLocalizations localizations , int? dificultad) {
+Problema createProblemSeries(MyAppLocalizations localizations , DataModel dataModel) {
   Random random = Random();
   int tipo;
-  switch(dificultad){
+  switch(dataModel.difficulty){
     case 0:
       tipo = random.nextInt(2) + 1;
       break;
@@ -16,25 +17,26 @@ Problema createProblemSeries(MyAppLocalizations localizations , int? dificultad)
       tipo = random.nextInt(6) + 1;
       break;
   }
+  dataModel.tipo = tipo;
   Problema problema;
   switch(tipo){
     case 1:
-      problema = createProblemSeriesNth1(localizations.statementSerieNth, localizations.solutionSerieNth1, dificultad);
+      problema = createProblemSeriesNth1(localizations.statementSerieNth, localizations.solutionSerieNth1, dataModel.difficulty);
       break;
     case 2:
-      problema = createProblemSeriesSum1(localizations.statementSerieSum, localizations.solutionSerieSum1, dificultad);
+      problema = createProblemSeriesSum1(localizations.statementSerieSum, localizations.solutionSerieSum1, dataModel.difficulty);
       break;
     case 3:
-      problema = createProblemSeriesNth2(localizations.statementSerieNth, localizations.solutionSerieNth2, dificultad);
+      problema = createProblemSeriesNth2(localizations.statementSerieNth, localizations.solutionSerieNth2, dataModel.difficulty);
       break;
     case 4:
-      problema = createProblemSeriesSum2(localizations.statementSerieSum, localizations.solutionSerieSum2, dificultad);
+      problema = createProblemSeriesSum2(localizations.statementSerieSum, localizations.solutionSerieSum2, dataModel.difficulty);
       break;
     case 5:
-      problema = createProblemSeriesNth3(localizations.statementSerieNth, localizations.solutionSerieNth3, dificultad);
+      problema = createProblemSeriesNth3(localizations.statementSerieNth, localizations.solutionSerieNth3, dataModel.difficulty);
       break;
     default:
-      problema = createProblemSeriesSum3(localizations.statementSerieSum, localizations.solutionSerieSum3, dificultad);
+      problema = createProblemSeriesSum3(localizations.statementSerieSum, localizations.solutionSerieSum3, dataModel.difficulty);
       break;
   }
   return problema;

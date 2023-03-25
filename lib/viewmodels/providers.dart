@@ -56,6 +56,12 @@ class DataModel extends ChangeNotifier {
   set option(int value){
     _option = value;
     notifyListeners();
+  }
+  int _tipo = 0;
+  int get tipo => _tipo;
+  set tipo(int value){
+    _tipo = value;
+    notifyListeners();
   }  
   bool _isBannerAdProblemReady = false;
   bool get isBannerAdProblemReady => _isBannerAdProblemReady;
@@ -138,13 +144,13 @@ Future<void> checkInternetConnectivity(DataModel dataModel) async {
 Problema getProblemByOption(DataModel dataModel, MyAppLocalizations localizations){
   switch(dataModel.option){
     case 1:
-      return createProblemSeries(localizations, dataModel.difficulty);
+      return createProblemSeries(localizations, dataModel);
     case 2:
-      return createProblemAges(localizations, dataModel.difficulty);
+      return createProblemAges(localizations, dataModel);
     case 3:
-      return createProblemMoving(localizations, dataModel.difficulty);
+      return createProblemMoving(localizations, dataModel);
     default:
-      return createProblemChrono(localizations, dataModel.difficulty);
+      return createProblemChrono(localizations, dataModel);
   }
 }
 void createProblem(DataModel dataModel, MyAppLocalizations localizations){
@@ -180,5 +186,68 @@ String getTheoryByOption(DataModel dataModel, MyAppLocalizations localizations){
       return localizations.topic4;
     default:
       return localizations.topic5;
+  }
+}
+String getTipByOptionAndType(DataModel dataModel, MyAppLocalizations localizations){
+  switch(dataModel.option){
+    case 1:
+      switch(dataModel.tipo){
+        case 1:
+          return localizations.tipSerieNth1;
+        case 2:
+          return localizations.tipSerieSum1;
+        case 3:
+          return localizations.tipSerieNth2;
+        case 4:
+          return localizations.tipSerieSum2;
+        case 5:
+          return localizations.tipSerieNth3;
+        default:
+          return localizations.tipSerieSum3;
+      }
+    case 2:
+      switch(dataModel.tipo){
+        case 1:
+          return localizations.tipAge1;
+        case 2:
+          return localizations.tipAge2;
+        case 3:
+          return localizations.tipAge3;
+        default:
+          return localizations.tipAge4;
+      }
+    case 3:
+      switch(dataModel.tipo){
+        case 1:
+          return localizations.tipMoving1;
+        case 2:
+          return localizations.tipMoving2;
+        case 3:
+          return localizations.tipMoving3;
+        default:
+          return localizations.tipMoving4;
+      }
+    case 4:
+      switch(dataModel.tipo){
+        case 1:
+          return localizations.tipChrono1;
+        case 2:
+          return localizations.tipChrono2;
+        case 3:
+          return localizations.tipChrono3;
+        default:
+          return localizations.tipChrono4;
+      }
+    default:
+      switch(dataModel.tipo){
+        case 1:
+          return localizations.tipChrono1;
+        case 2:
+          return localizations.tipChrono2;
+        case 3:
+          return localizations.tipChrono3;
+        default:
+          return localizations.tipChrono4;
+      }
   }
 }
