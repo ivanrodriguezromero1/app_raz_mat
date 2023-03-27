@@ -45,18 +45,19 @@ class TheoryScreenState extends State<TheoryScreen> {
               flexibleSpace: Image.asset(pathBar,
                   fit: BoxFit.cover,),
             ),
-            body:   SingleChildScrollView(child:Container(
-                    color: Colors.white,
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    child:SingleChildScrollView(
+            body: SingleChildScrollView(child:ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: MediaQuery.of(context).size.height,
+                      ),
                   child: 
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
+                          color: Colors.white,
                           padding:const EdgeInsets.fromLTRB(35,20,26,18),
                           child: Text(dataModel.teoria,
+                            textAlign: TextAlign.justify,
                             style: TextStyle(
                               fontSize: 17,
                               fontStyle: FontStyle.italic,
@@ -65,7 +66,6 @@ class TheoryScreenState extends State<TheoryScreen> {
                         ),
                       ],
                     ),
-                  )
                 ),
               ),
               bottomNavigationBar:  Container(

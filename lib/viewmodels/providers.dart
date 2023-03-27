@@ -177,15 +177,15 @@ String getTitleByOption(DataModel dataModel, MyAppLocalizations localizations){
 String getTheoryByOption(DataModel dataModel, MyAppLocalizations localizations){
   switch(dataModel.option){
     case 1:
-      return localizations.topic1;
+      return localizations.theorySeries;
     case 2:
-      return localizations.topic2;
+      return localizations.theoryAges;
     case 3:
-      return localizations.topic3;
+      return localizations.theoryMoving;
     case 4:
-      return localizations.topic4;
+      return localizations.theoryChrono;
     default:
-      return localizations.topic5;
+      return localizations.theoryChrono;
   }
 }
 String getTipByOptionAndType(DataModel dataModel, MyAppLocalizations localizations){

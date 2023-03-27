@@ -7,6 +7,7 @@ import 'package:raz_mat/viewmodels/topics/ages/statement_age1.dart';
 import 'package:raz_mat/viewmodels/topics/ages/statement_age2.dart';
 import 'package:raz_mat/viewmodels/topics/ages/statement_age3.dart';
 import 'package:raz_mat/viewmodels/topics/ages/statement_age4.dart';
+import 'package:raz_mat/viewmodels/topics/ages/theory_ages.dart';
 import 'package:raz_mat/viewmodels/topics/ages/tip_age1.dart';
 import 'package:raz_mat/viewmodels/topics/ages/tip_age2.dart';
 import 'package:raz_mat/viewmodels/topics/ages/tip_age3.dart';
@@ -19,6 +20,7 @@ import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono1.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono2.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono3.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono4.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/theory_chrono.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono1.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono2.dart';
 import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono3.dart';
@@ -31,6 +33,7 @@ import 'package:raz_mat/viewmodels/topics/moving/statement_moving1.dart';
 import 'package:raz_mat/viewmodels/topics/moving/statement_moving2.dart';
 import 'package:raz_mat/viewmodels/topics/moving/statement_moving3.dart';
 import 'package:raz_mat/viewmodels/topics/moving/statement_moving4.dart';
+import 'package:raz_mat/viewmodels/topics/moving/theory_moving.dart';
 import 'package:raz_mat/viewmodels/topics/moving/tip_moving1.dart';
 import 'package:raz_mat/viewmodels/topics/moving/tip_moving2.dart';
 import 'package:raz_mat/viewmodels/topics/moving/tip_moving3.dart';
@@ -43,6 +46,7 @@ import 'package:raz_mat/viewmodels/topics/series/solution_serie_sum2.dart';
 import 'package:raz_mat/viewmodels/topics/series/solution_serie_sum3.dart';
 import 'package:raz_mat/viewmodels/topics/series/statement_serie_nth.dart';
 import 'package:raz_mat/viewmodels/topics/series/statement_serie_sum.dart';
+import 'package:raz_mat/viewmodels/topics/series/theory_series.dart';
 import 'package:raz_mat/viewmodels/topics/series/tip_serie_nth1.dart';
 import 'package:raz_mat/viewmodels/topics/series/tip_serie_nth2.dart';
 import 'package:raz_mat/viewmodels/topics/series/tip_serie_nth3.dart';
@@ -82,6 +86,7 @@ class MyAppLocalizations {
       'answer':'La respuesta es',
       'titleSolution':'SOLUCION',
 
+      'theorySeries': theorySeriesEs,
       'statementSerieNth': statementSerieNthEs,
       'statementSerieSum': statementSerieSumEs,
       'tipSerieNth1': tipSerieNth1Es,
@@ -97,6 +102,7 @@ class MyAppLocalizations {
       'solutionSerieNth3': solutionSerieNth3Es,
       'solutionSerieSum3': solutionSerieSum3Es,
       
+      'theoryAges': theoryAgesEs,
       'statementAge1': statementAge1Es,
       'statementAge2': statementAge2Es,
       'statementAge3': statementAge3Es,
@@ -110,6 +116,7 @@ class MyAppLocalizations {
       'solutionAge3': solutionAge3Es,
       'solutionAge4': solutionAge4Es,
       
+      'theoryMoving': theoryMovingEs,
       'statementMoving1': statementMoving1Es,
       'statementMoving2': statementMoving2Es, 
       'statementMoving3': statementMoving3Es,
@@ -123,6 +130,7 @@ class MyAppLocalizations {
       'solutionMoving3': solutionMoving3Es,
       'solutionMoving4': solutionMoving4Es,
       
+      'theoryChrono': theoryChronoEs,
       'statementChrono1': statementChrono1Es,
       'statementChrono2': statementChrono2Es,
       'statementChrono3': statementChrono3Es,
@@ -158,6 +166,7 @@ class MyAppLocalizations {
       'answer':'The answer is',
       'titleSolution':'SOLUTION',
       
+      'theorySeries': theorySeriesEn,
       'statementSerieNth': statementSerieNthEn,
       'statementSerieSum': statementSerieSumEn,
       'tipSerieNth1': tipSerieNth1En,
@@ -173,6 +182,7 @@ class MyAppLocalizations {
       'solutionSerieNth3': solutionSerieNth3En,
       'solutionSerieSum3': solutionSerieSum3En,
       
+      'theoryAges': theoryAgesEn,
       'statementAge1': statementAge1En,
       'statementAge2': statementAge2En,
       'statementAge3': statementAge3En,
@@ -186,6 +196,7 @@ class MyAppLocalizations {
       'solutionAge3': solutionAge3En,
       'solutionAge4': solutionAge4En,
 
+      'theoryMoving': theoryMovingEn,
       'statementMoving1': statementMoving1En,
       'statementMoving2': statementMoving2En,
       'statementMoving3': statementMoving3En,
@@ -199,6 +210,7 @@ class MyAppLocalizations {
       'solutionMoving3': solutionMoving3En,
       'solutionMoving4': solutionMoving4En,
 
+      'theoryChrono': theoryChronoEn,
       'statementChrono1': statementChrono1En,
       'statementChrono2': statementChrono2En,
       'statementChrono3': statementChrono3En,
@@ -423,6 +435,18 @@ class MyAppLocalizations {
   }
   String get tipChrono4 {
     return _localizedValues[locale.languageCode]!['tipChrono4']!;
+  }
+  String get theorySeries {
+    return _localizedValues[locale.languageCode]!['theorySeries']!;
+  }
+  String get theoryAges {
+    return _localizedValues[locale.languageCode]!['theoryAges']!;
+  }
+  String get theoryMoving {
+    return _localizedValues[locale.languageCode]!['theoryMoving']!;
+  }
+  String get theoryChrono {
+    return _localizedValues[locale.languageCode]!['theoryChrono']!;
   }
   Future<bool> load() async {
     return true;

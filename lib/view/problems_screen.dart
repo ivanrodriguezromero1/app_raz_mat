@@ -6,7 +6,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:raz_mat/view/widgets.dart';
 import '../viewmodels/change_page.dart';
-import '../viewmodels/globals.dart';
+import '../viewmodels/audio.dart';
 import '../viewmodels/my_app_localizations.dart';
 import '../viewmodels/constants.dart';
 import '../viewmodels/providers.dart';
@@ -69,6 +69,7 @@ void startTimer() {
     });
     startTimer();
   }
+  
   @override
   Widget build(BuildContext context) {
     MyAppLocalizations localizations = MyAppLocalizations.of(context);
