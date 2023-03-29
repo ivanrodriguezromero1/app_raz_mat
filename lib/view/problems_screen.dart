@@ -29,7 +29,9 @@ class ProblemsScreenState extends State<ProblemsScreen> {
   
 void startTimer() {
     if (isRunning) return;
-    isRunning = true;
+    setState(() {
+      isRunning = true;
+    });
     streamSubscription = timerStream(1).listen((_) {
       setState(() {
         elapsedSeconds++;
@@ -39,7 +41,9 @@ void startTimer() {
 
   void pauseTimer() {
     if (!isRunning) return;
-    isRunning = false;
+    setState(() {
+      isRunning = false;
+    });
     streamSubscription?.cancel();
   }
 
@@ -90,15 +94,10 @@ void startTimer() {
                     style: const TextStyle(color: Colors.white,
                     fontSize: 18),
                     ),
-                  const SizedBox(width: 11),
+                  const Spacer(),
                   IconButton(
-                    icon: const Icon(Icons.play_arrow),
-                    onPressed: startTimer,
-                    iconSize: 18,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.pause),
-                    onPressed: pauseTimer,
+                    icon: isRunning ? const Icon(Icons.pause) : const Icon(Icons.play_arrow),
+                    onPressed: isRunning ? pauseTimer : startTimer,
                     iconSize: 18,
                   ),
                   IconButton(
@@ -119,11 +118,11 @@ void startTimer() {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding:const EdgeInsets.fromLTRB(35,20,35,0),
+                        padding:const EdgeInsets.fromLTRB(35,15,35,0),
                         child: Text(dataModel.enunciado,
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 17,
                             color: Colors.grey.shade800),
                           ),
                         ),
@@ -254,7 +253,7 @@ void startTimer() {
                     Column(
                       children: [
                         Row(
-                          children: const [SizedBox(height: 20)],
+                          children: const [SizedBox(height: 15)],
                         ),
                         ElevatedButton(
                           onPressed: () async {
@@ -300,7 +299,7 @@ void startTimer() {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 15),
                         ElevatedButton(                          
                           onPressed: () {
                             setState(() {

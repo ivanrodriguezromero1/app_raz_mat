@@ -1,58 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:raz_mat/viewmodels/topics/ages/solution_age1.dart';
-import 'package:raz_mat/viewmodels/topics/ages/solution_age2.dart';
-import 'package:raz_mat/viewmodels/topics/ages/solution_age3.dart';
-import 'package:raz_mat/viewmodels/topics/ages/solution_age4.dart';
-import 'package:raz_mat/viewmodels/topics/ages/statement_age1.dart';
-import 'package:raz_mat/viewmodels/topics/ages/statement_age2.dart';
-import 'package:raz_mat/viewmodels/topics/ages/statement_age3.dart';
-import 'package:raz_mat/viewmodels/topics/ages/statement_age4.dart';
-import 'package:raz_mat/viewmodels/topics/ages/theory_ages.dart';
-import 'package:raz_mat/viewmodels/topics/ages/tip_age1.dart';
-import 'package:raz_mat/viewmodels/topics/ages/tip_age2.dart';
-import 'package:raz_mat/viewmodels/topics/ages/tip_age3.dart';
-import 'package:raz_mat/viewmodels/topics/ages/tip_age4.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/solution_chrono1.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/solution_chrono2.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/solution_chrono3.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/solution_chrono4.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono1.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono2.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono3.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/statement_chrono4.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/theory_chrono.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono1.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono2.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono3.dart';
-import 'package:raz_mat/viewmodels/topics/chrono/tip_chrono4.dart';
-import 'package:raz_mat/viewmodels/topics/moving/solution_moving1.dart';
-import 'package:raz_mat/viewmodels/topics/moving/solution_moving2.dart';
-import 'package:raz_mat/viewmodels/topics/moving/solution_moving3.dart';
-import 'package:raz_mat/viewmodels/topics/moving/solution_moving4.dart';
-import 'package:raz_mat/viewmodels/topics/moving/statement_moving1.dart';
-import 'package:raz_mat/viewmodels/topics/moving/statement_moving2.dart';
-import 'package:raz_mat/viewmodels/topics/moving/statement_moving3.dart';
-import 'package:raz_mat/viewmodels/topics/moving/statement_moving4.dart';
-import 'package:raz_mat/viewmodels/topics/moving/theory_moving.dart';
-import 'package:raz_mat/viewmodels/topics/moving/tip_moving1.dart';
-import 'package:raz_mat/viewmodels/topics/moving/tip_moving2.dart';
-import 'package:raz_mat/viewmodels/topics/moving/tip_moving3.dart';
-import 'package:raz_mat/viewmodels/topics/moving/tip_moving4.dart';
-import 'package:raz_mat/viewmodels/topics/series/solution_serie_nth1.dart';
-import 'package:raz_mat/viewmodels/topics/series/solution_serie_nth2.dart';
-import 'package:raz_mat/viewmodels/topics/series/solution_serie_nth3.dart';
-import 'package:raz_mat/viewmodels/topics/series/solution_serie_sum1.dart';
-import 'package:raz_mat/viewmodels/topics/series/solution_serie_sum2.dart';
-import 'package:raz_mat/viewmodels/topics/series/solution_serie_sum3.dart';
-import 'package:raz_mat/viewmodels/topics/series/statement_serie_nth.dart';
-import 'package:raz_mat/viewmodels/topics/series/statement_serie_sum.dart';
-import 'package:raz_mat/viewmodels/topics/series/theory_series.dart';
-import 'package:raz_mat/viewmodels/topics/series/tip_serie_nth1.dart';
-import 'package:raz_mat/viewmodels/topics/series/tip_serie_nth2.dart';
-import 'package:raz_mat/viewmodels/topics/series/tip_serie_nth3.dart';
-import 'package:raz_mat/viewmodels/topics/series/tip_serie_sum1.dart';
-import 'package:raz_mat/viewmodels/topics/series/tip_serie_sum2.dart';
-import 'package:raz_mat/viewmodels/topics/series/tip_serie_sum3.dart';
+import 'package:raz_mat/viewmodels/topics/ages/solutions/solution_age1.dart';
+import 'package:raz_mat/viewmodels/topics/ages/solutions/solution_age2.dart';
+import 'package:raz_mat/viewmodels/topics/ages/solutions/solution_age3.dart';
+import 'package:raz_mat/viewmodels/topics/ages/solutions/solution_age4.dart';
+import 'package:raz_mat/viewmodels/topics/ages/statements/statement_age1.dart';
+import 'package:raz_mat/viewmodels/topics/ages/statements/statement_age2.dart';
+import 'package:raz_mat/viewmodels/topics/ages/statements/statement_age3.dart';
+import 'package:raz_mat/viewmodels/topics/ages/statements/statement_age4.dart';
+import 'package:raz_mat/viewmodels/topics/ages/theory/theory_ages.dart';
+import 'package:raz_mat/viewmodels/topics/ages/tips/tip_age1.dart';
+import 'package:raz_mat/viewmodels/topics/ages/tips/tip_age2.dart';
+import 'package:raz_mat/viewmodels/topics/ages/tips/tip_age3.dart';
+import 'package:raz_mat/viewmodels/topics/ages/tips/tip_age4.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/solutions/solution_chrono1.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/solutions/solution_chrono2.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/solutions/solution_chrono3.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/solutions/solution_chrono4.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/statements/statement_chrono1.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/statements/statement_chrono2.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/statements/statement_chrono3.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/statements/statement_chrono4.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/theory/theory_chrono.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/tips/tip_chrono1.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/tips/tip_chrono2.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/tips/tip_chrono3.dart';
+import 'package:raz_mat/viewmodels/topics/chrono/tips/tip_chrono4.dart';
+import 'package:raz_mat/viewmodels/topics/moving/solutions/solution_moving1.dart';
+import 'package:raz_mat/viewmodels/topics/moving/solutions/solution_moving2.dart';
+import 'package:raz_mat/viewmodels/topics/moving/solutions/solution_moving3.dart';
+import 'package:raz_mat/viewmodels/topics/moving/solutions/solution_moving4.dart';
+import 'package:raz_mat/viewmodels/topics/moving/statements/statement_moving1.dart';
+import 'package:raz_mat/viewmodels/topics/moving/statements/statement_moving2.dart';
+import 'package:raz_mat/viewmodels/topics/moving/statements/statement_moving3.dart';
+import 'package:raz_mat/viewmodels/topics/moving/statements/statement_moving4.dart';
+import 'package:raz_mat/viewmodels/topics/moving/theory/theory_moving.dart';
+import 'package:raz_mat/viewmodels/topics/moving/tips/tip_moving1.dart';
+import 'package:raz_mat/viewmodels/topics/moving/tips/tip_moving2.dart';
+import 'package:raz_mat/viewmodels/topics/moving/tips/tip_moving3.dart';
+import 'package:raz_mat/viewmodels/topics/moving/tips/tip_moving4.dart';
+import 'package:raz_mat/viewmodels/topics/probability/solutions/solution_probability1.dart';
+import 'package:raz_mat/viewmodels/topics/probability/solutions/solution_probability2.dart';
+import 'package:raz_mat/viewmodels/topics/probability/solutions/solution_probability3.dart';
+import 'package:raz_mat/viewmodels/topics/probability/solutions/solution_probability4.dart';
+import 'package:raz_mat/viewmodels/topics/probability/statements/statement_probability1.dart';
+import 'package:raz_mat/viewmodels/topics/probability/statements/statement_probability2.dart';
+import 'package:raz_mat/viewmodels/topics/probability/statements/statement_probability3.dart';
+import 'package:raz_mat/viewmodels/topics/probability/statements/statement_probability4.dart';
+import 'package:raz_mat/viewmodels/topics/probability/theory/theory_probability.dart';
+import 'package:raz_mat/viewmodels/topics/probability/tips/tip_probability1.dart';
+import 'package:raz_mat/viewmodels/topics/probability/tips/tip_probability2.dart';
+import 'package:raz_mat/viewmodels/topics/probability/tips/tip_probability3.dart';
+import 'package:raz_mat/viewmodels/topics/probability/tips/tip_probability4.dart';
+import 'package:raz_mat/viewmodels/topics/series/solutions/solution_serie_nth1.dart';
+import 'package:raz_mat/viewmodels/topics/series/solutions/solution_serie_nth2.dart';
+import 'package:raz_mat/viewmodels/topics/series/solutions/solution_serie_nth3.dart';
+import 'package:raz_mat/viewmodels/topics/series/solutions/solution_serie_sum1.dart';
+import 'package:raz_mat/viewmodels/topics/series/solutions/solution_serie_sum2.dart';
+import 'package:raz_mat/viewmodels/topics/series/solutions/solution_serie_sum3.dart';
+import 'package:raz_mat/viewmodels/topics/series/statements/statement_serie_nth.dart';
+import 'package:raz_mat/viewmodels/topics/series/statements/statement_serie_sum.dart';
+import 'package:raz_mat/viewmodels/topics/series/theory/theory_series.dart';
+import 'package:raz_mat/viewmodels/topics/series/tips/tip_serie_nth1.dart';
+import 'package:raz_mat/viewmodels/topics/series/tips/tip_serie_nth2.dart';
+import 'package:raz_mat/viewmodels/topics/series/tips/tip_serie_nth3.dart';
+import 'package:raz_mat/viewmodels/topics/series/tips/tip_serie_sum1.dart';
+import 'package:raz_mat/viewmodels/topics/series/tips/tip_serie_sum2.dart';
+import 'package:raz_mat/viewmodels/topics/series/tips/tip_serie_sum3.dart';
 
 class MyAppLocalizations {
   MyAppLocalizations(this.locale);
@@ -72,7 +85,7 @@ class MyAppLocalizations {
       'topic2':'Edades',
       'topic3':'Móviles',
       'topic4':'Cronometría',
-      'topic5':'Conteo',
+      'topic5':'Probabilidades',
       'difficulty':'Dificultad',
       'easy': 'Fácil',
       'normal':'Normal',
@@ -143,6 +156,20 @@ class MyAppLocalizations {
       'solutionChrono2': solutionChrono2Es,
       'solutionChrono3': solutionChrono3Es,
       'solutionChrono4': solutionChrono4Es,
+
+      'theoryProbability': theoryProbabilityEs,
+      'statementProbability1': statementProbability1Es,
+      'statementProbability2': statementProbability2Es,
+      'statementProbability3': statementProbability3Es,
+      'statementProbability4': statementProbability4Es,
+      'tipProbability1': tipProbability1Es,
+      'tipProbability2': tipProbability2Es,
+      'tipProbability3': tipProbability3Es,
+      'tipProbability4': tipProbability4Es,
+      'solutionProbability1': solutionProbability1Es,
+      'solutionProbability2': solutionProbability2Es,  
+      'solutionProbability3': solutionProbability3Es,
+      'solutionProbability4': solutionProbability4Es,
     },
     'en': {
       'title': 'Mathematical Reasoning',
@@ -152,7 +179,7 @@ class MyAppLocalizations {
       'topic2':'Ages',
       'topic3':'Moving',
       'topic4':'Chronometry',
-      'topic5':'Counting',
+      'topic5':'Probability',
       'difficulty':'Difficulty',
       'easy': 'Easy',
       'normal':'Normal',
@@ -223,6 +250,20 @@ class MyAppLocalizations {
       'solutionChrono2': solutionChrono2En,
       'solutionChrono3': solutionChrono3En,
       'solutionChrono4': solutionChrono4En,
+
+      'theoryProbability': theoryProbabilityEn,
+      'statementProbability1': statementProbability1En,
+      'statementProbability2': statementProbability2En,
+      'statementProbability3': statementProbability3En,
+      'statementProbability4': statementProbability4En,
+      'tipProbability1': tipProbability1En,
+      'tipProbability2': tipProbability2En,
+      'tipProbability3': tipProbability3En,
+      'tipProbability4': tipProbability4En,
+      'solutionProbability1': solutionProbability1En,
+      'solutionProbability2': solutionProbability2En,  
+      'solutionProbability3': solutionProbability3En,
+      'solutionProbability4': solutionProbability4En,
     },
   };
 
@@ -447,6 +488,45 @@ class MyAppLocalizations {
   }
   String get theoryChrono {
     return _localizedValues[locale.languageCode]!['theoryChrono']!;
+  }
+  String get theoryProbability {
+    return _localizedValues[locale.languageCode]!['theoryProbability']!;
+  }
+  String get statementProbability1 {
+    return _localizedValues[locale.languageCode]!['statementProbability1']!;
+  }
+  String get statementProbability2 {
+    return _localizedValues[locale.languageCode]!['statementProbability2']!;
+  }
+  String get statementProbability3 {
+    return _localizedValues[locale.languageCode]!['statementProbability3']!;
+  }
+  String get statementProbability4 {
+    return _localizedValues[locale.languageCode]!['statementProbability4']!;
+  }
+  String get tipProbability1 {
+    return _localizedValues[locale.languageCode]!['tipProbability1']!;
+  }
+  String get tipProbability2 {
+    return _localizedValues[locale.languageCode]!['tipProbability2']!;
+  }
+  String get tipProbability3 {
+    return _localizedValues[locale.languageCode]!['tipProbability3']!;
+  }
+  String get tipProbability4 {
+    return _localizedValues[locale.languageCode]!['tipProbability4']!;
+  }
+  String get solutionProbability1 {
+    return _localizedValues[locale.languageCode]!['solutionProbability1']!;
+  }
+  String get solutionProbability2 {
+    return _localizedValues[locale.languageCode]!['solutionProbability2']!;
+  }
+  String get solutionProbability3 {
+    return _localizedValues[locale.languageCode]!['solutionProbability3']!;
+  }
+  String get solutionProbability4 {
+    return _localizedValues[locale.languageCode]!['solutionProbability4']!;
   }
   Future<bool> load() async {
     return true;

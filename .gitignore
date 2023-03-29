@@ -48,6 +48,7 @@ android/
 linux/
 macos/
 README.md
+example.dart
 .metadata
 pubspec.lock
 web/

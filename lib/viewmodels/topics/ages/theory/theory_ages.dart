@@ -4,7 +4,7 @@ PROBLEMAS DE EDADES
 
 La resolución de problemas de edades en razonamiento matemático se basa en la creación de ecuaciones que relacionen las edades de las personas involucradas en el problema. Estas ecuaciones pueden ser lineales o no lineales, dependiendo del enunciado del problema.
 
-▶ ECUACIÓN DIOFÁNTICA
+▶ ECUACIÓN DIOFÁNTICA:
 
 Un tipo común de ecuación que se utiliza en la resolución de problemas de edades es la ecuación diofántica, que es una ecuación lineal de la forma:
 
@@ -38,7 +38,7 @@ AGE PROBLEMS
 
 The resolution of age problems in mathematical reasoning is based on creating equations that relate the ages of the people involved in the problem. These equations can be linear or nonlinear, depending on the statement of the problem.
 
-▶ DIOPHANTINE EQUATION
+▶ DIOPHANTINE EQUATION:
 
 A common type of equation used in solving age problems is the Diophantine equation, which is a linear equation of the form:
 

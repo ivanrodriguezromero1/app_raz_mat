@@ -200,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         const SizedBox(height: 15),
                         getItem(context, dataModel, localizations, 
                           iconosItems[4],
-                          localizations.topic5, 
+                          localizations.topic5,
                           opcion:5),
                         ],
                       ),

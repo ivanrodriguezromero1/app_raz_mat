@@ -93,9 +93,11 @@ class SolutionsScreenState extends State<SolutionsScreen> {
                         width: MediaQuery.of(context).size.width/2,
                         height: kBottomNavigationBarHeight,
                         child: IconButton(
-                          icon: const Icon(Icons.home,color: Colors.white),
+                          icon: const Icon(Icons.arrow_back,color: Colors.white),
                           onPressed: (){
-                            goToHome(context);
+                            if (Navigator.canPop(context)) {
+                              Navigator.pop(context);
+                            }
                           }
                         ),
                       ),

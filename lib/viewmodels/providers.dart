@@ -7,6 +7,7 @@ import 'create_problem_ages.dart';
 import 'create_problem_chrono.dart';
 import 'create_problem_moving.dart';
 import 'create_problem_series.dart';
+import 'create_problem_probability.dart';
 
 class DataModel extends ChangeNotifier {
   int? _selectedDifficulty = 0;
@@ -149,8 +150,10 @@ Problema getProblemByOption(DataModel dataModel, MyAppLocalizations localization
       return createProblemAges(localizations, dataModel);
     case 3:
       return createProblemMoving(localizations, dataModel);
-    default:
+    case 4:
       return createProblemChrono(localizations, dataModel);
+    default:
+      return createProblemProbability(localizations, dataModel);
   }
 }
 void createProblem(DataModel dataModel, MyAppLocalizations localizations){
@@ -185,7 +188,7 @@ String getTheoryByOption(DataModel dataModel, MyAppLocalizations localizations){
     case 4:
       return localizations.theoryChrono;
     default:
-      return localizations.theoryChrono;
+      return localizations.theoryProbability;
   }
 }
 String getTipByOptionAndType(DataModel dataModel, MyAppLocalizations localizations){
@@ -241,13 +244,13 @@ String getTipByOptionAndType(DataModel dataModel, MyAppLocalizations localizatio
     default:
       switch(dataModel.tipo){
         case 1:
-          return localizations.tipChrono1;
+          return localizations.tipProbability1;
         case 2:
-          return localizations.tipChrono2;
+          return localizations.tipProbability2;
         case 3:
-          return localizations.tipChrono3;
+          return localizations.tipProbability3;
         default:
-          return localizations.tipChrono4;
+          return localizations.tipProbability4;
       }
   }
 }

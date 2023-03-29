@@ -7,7 +7,7 @@ const String adUnitBannerId = 'ca-app-pub-3940256099942544/6300978111';
 const String pathSonidoBien = 'audio/SonidoBien.mp3';
 const String pathSonidoMal = 'audio/SonidoMal.mp3';
 const List<String> imageList = ['assets/images/Vacio.png', 'assets/images/Check.png', 'assets/images/Error.png'];
-const List<IconData> iconosItems = [Icons.psychology, Icons.face_4, Icons.airport_shuttle, Icons.av_timer, Icons.grid_4x4];
+const List<IconData> iconosItems = [Icons.psychology, Icons.face_4, Icons.airport_shuttle, Icons.av_timer, Icons.border_outer];
 const MaterialColor myColor = MaterialColor(
   0x00FFFFFF,
   <int, Color>{

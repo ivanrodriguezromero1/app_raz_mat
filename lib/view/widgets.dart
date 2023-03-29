@@ -22,7 +22,7 @@ Container getItem(BuildContext context,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
                     leading: Icon(iconData, color: Colors.yellow.shade800,),
                     title: Text(topic,
-                      style: TextStyle(fontSize: 20, color: Colors.grey.shade700),
+                      style: TextStyle(fontSize: 18, color: Colors.grey.shade700),
                     ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
