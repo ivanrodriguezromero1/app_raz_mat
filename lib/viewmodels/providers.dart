@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:connectivity/connectivity.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:raz_mat/viewmodels/my_app_localizations.dart';
-import '../models/problema.dart';
+import 'package:raz_mat/viewmodels/my_words.dart';
+import '/models/problema.dart';
 import 'create_problem_ages.dart';
 import 'create_problem_chrono.dart';
 import 'create_problem_moving.dart';
@@ -15,12 +13,6 @@ class DataModel extends ChangeNotifier {
   set difficulty(int? value) {
       _selectedDifficulty = value;
       notifyListeners();
-  }
-  bool _connected = false;
-  bool get connected => _connected;
-  set connected(bool value){
-    _connected = value;
-    notifyListeners();
   }
   String _enunciado = '';
   String get enunciado => _enunciado;
@@ -63,194 +55,118 @@ class DataModel extends ChangeNotifier {
   set tipo(int value){
     _tipo = value;
     notifyListeners();
-  }  
-  bool _isBannerAdProblemReady = false;
-  bool get isBannerAdProblemReady => _isBannerAdProblemReady;
-  set isBannerAdProblemReady(bool value){
-    _isBannerAdProblemReady = value;
-    notifyListeners();
-  }
-  BannerAd _bannerAdProblem =  BannerAd(
-        adUnitId: '',
-        size: AdSize.banner,
-        request: const AdRequest(),
-        listener: BannerAdListener(
-          onAdLoaded: (_) {},
-          onAdFailedToLoad: (ad, error) {
-            ad.dispose();
-          },
-        ),
-      );
-  BannerAd get bannerAdProblem => _bannerAdProblem;
-  set bannerAdProblem(BannerAd value){
-    _bannerAdProblem = value;
-    notifyListeners();
-  }
-  bool _isBannerAdSolutionReady = false;
-  bool get isBannerAdSolutionReady => _isBannerAdSolutionReady;
-  set isBannerAdSolutionReady(bool value){
-    _isBannerAdSolutionReady = value;
-    notifyListeners();
-  }
-  BannerAd _bannerAdSolution =  BannerAd(
-        adUnitId: '',
-        size: AdSize.banner,
-        request: const AdRequest(),
-        listener: BannerAdListener(
-          onAdLoaded: (_) {},
-          onAdFailedToLoad: (ad, error) {
-            ad.dispose();
-          },
-        ),
-      );
-  BannerAd get bannerAdSolution => _bannerAdSolution;
-  set bannerAdSolution(BannerAd value){
-    _bannerAdSolution = value;
-    notifyListeners();
-  }
-  bool _isBannerAdTheoryReady = false;
-  bool get isBannerAdTheoryReady => _isBannerAdTheoryReady;
-  set isBannerAdTheoryReady(bool value){
-    _isBannerAdTheoryReady = value;
-    notifyListeners();
-  }
-  BannerAd _bannerAdTheory =  BannerAd(
-        adUnitId: '',
-        size: AdSize.banner,
-        request: const AdRequest(),
-        listener: BannerAdListener(
-          onAdLoaded: (_) {},
-          onAdFailedToLoad: (ad, error) {
-            ad.dispose();
-          },
-        ),
-      );
-  BannerAd get bannerAdTheory => _bannerAdTheory;
-  set bannerAdTheory(BannerAd value){
-    _bannerAdTheory = value;
-    notifyListeners();
   }
 }
 
-Future<void> checkInternetConnectivity(DataModel dataModel) async {
-  var connectivityResult = await (Connectivity().checkConnectivity());
-  if (connectivityResult == ConnectivityResult.mobile) {
-    dataModel.connected = true;
-  } else if (connectivityResult == ConnectivityResult.wifi) {
-    dataModel.connected = true;
-  } else{
-    dataModel.connected = false;
-  }
-}
-Problema getProblemByOption(DataModel dataModel, MyAppLocalizations localizations){
+Problema getProblemByOption(DataModel dataModel, MyWords myWords){
   switch(dataModel.option){
     case 1:
-      return createProblemSeries(localizations, dataModel);
+      return createProblemSeries(myWords, dataModel);
     case 2:
-      return createProblemAges(localizations, dataModel);
+      return createProblemAges(myWords, dataModel);
     case 3:
-      return createProblemMoving(localizations, dataModel);
+      return createProblemMoving(myWords, dataModel);
     case 4:
-      return createProblemChrono(localizations, dataModel);
+      return createProblemChrono(myWords, dataModel);
     default:
-      return createProblemProbability(localizations, dataModel);
+      return createProblemProbability(myWords, dataModel);
   }
 }
-void createProblem(DataModel dataModel, MyAppLocalizations localizations){
-  Problema problema = getProblemByOption(dataModel, localizations);
+void createProblem(DataModel dataModel, MyWords myWords){
+  Problema problema = getProblemByOption(dataModel, myWords);
   dataModel.enunciado = problema.enunciado;
   dataModel.alternativas = problema.alternativas;
   dataModel.clave = problema.clave;
   dataModel.solucion = problema.solucion;
 }
-String getTitleByOption(DataModel dataModel, MyAppLocalizations localizations){
+String getTitleByOption(DataModel dataModel, MyWords myWords){
   switch(dataModel.option){
     case 1:
-      return localizations.topic1;
+      return myWords.series;
     case 2:
-      return localizations.topic2;
+      return myWords.ages;
     case 3:
-      return localizations.topic3;
+      return myWords.moving;
     case 4:
-      return localizations.topic4;
+      return myWords.chronometry;
     default:
-      return localizations.topic5;
+      return myWords.probability;
   }
 }
-String getTheoryByOption(DataModel dataModel, MyAppLocalizations localizations){
+String getTheoryByOption(DataModel dataModel, MyWords myWords){
   switch(dataModel.option){
     case 1:
-      return localizations.theorySeries;
+      return myWords.theorySeries;
     case 2:
-      return localizations.theoryAges;
+      return myWords.theoryAges;
     case 3:
-      return localizations.theoryMoving;
+      return myWords.theoryMoving;
     case 4:
-      return localizations.theoryChrono;
+      return myWords.theoryChrono;
     default:
-      return localizations.theoryProbability;
+      return myWords.theoryProbability;
   }
 }
-String getTipByOptionAndType(DataModel dataModel, MyAppLocalizations localizations){
+String getTipByOptionAndType(DataModel dataModel, MyWords myWords){
   switch(dataModel.option){
     case 1:
       switch(dataModel.tipo){
         case 1:
-          return localizations.tipSerieNth1;
+          return myWords.tipSerieNth1;
         case 2:
-          return localizations.tipSerieSum1;
+          return myWords.tipSerieSum1;
         case 3:
-          return localizations.tipSerieNth2;
+          return myWords.tipSerieNth2;
         case 4:
-          return localizations.tipSerieSum2;
+          return myWords.tipSerieSum2;
         case 5:
-          return localizations.tipSerieNth3;
+          return myWords.tipSerieNth3;
         default:
-          return localizations.tipSerieSum3;
+          return myWords.tipSerieSum3;
       }
     case 2:
       switch(dataModel.tipo){
         case 1:
-          return localizations.tipAge1;
+          return myWords.tipAge1;
         case 2:
-          return localizations.tipAge2;
+          return myWords.tipAge2;
         case 3:
-          return localizations.tipAge3;
+          return myWords.tipAge3;
         default:
-          return localizations.tipAge4;
+          return myWords.tipAge4;
       }
     case 3:
       switch(dataModel.tipo){
         case 1:
-          return localizations.tipMoving1;
+          return myWords.tipMoving1;
         case 2:
-          return localizations.tipMoving2;
+          return myWords.tipMoving2;
         case 3:
-          return localizations.tipMoving3;
+          return myWords.tipMoving3;
         default:
-          return localizations.tipMoving4;
+          return myWords.tipMoving4;
       }
     case 4:
       switch(dataModel.tipo){
         case 1:
-          return localizations.tipChrono1;
+          return myWords.tipChrono1;
         case 2:
-          return localizations.tipChrono2;
+          return myWords.tipChrono2;
         case 3:
-          return localizations.tipChrono3;
+          return myWords.tipChrono3;
         default:
-          return localizations.tipChrono4;
+          return myWords.tipChrono4;
       }
     default:
       switch(dataModel.tipo){
         case 1:
-          return localizations.tipProbability1;
+          return myWords.tipProbability1;
         case 2:
-          return localizations.tipProbability2;
+          return myWords.tipProbability2;
         case 3:
-          return localizations.tipProbability3;
+          return myWords.tipProbability3;
         default:
-          return localizations.tipProbability4;
+          return myWords.tipProbability4;
       }
   }
 }

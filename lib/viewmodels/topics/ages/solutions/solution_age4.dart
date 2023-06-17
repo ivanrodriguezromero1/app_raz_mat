@@ -1,4 +1,5 @@
-const solutionAge4Es = 
+class SolutionAge4 {
+  static String text = 
 '''
  Año nacimiento hijo 1: 
   - Persona = _a_ años 
@@ -21,26 +22,4 @@ const solutionAge4Es =
   
  Respuesta: Año _2022-b-x_
 ''';
-const solutionAge4En = 
-'''
- Year of birth of child 1: 
-  - Person = _a_ years old 
-  - Child 1 = 0 years old 
- Year of birth of child 2: 
-  - Person = _b_ years old 
-  - Child 1 = _b-a_ years old 
-  - Child 2 = 0 years old 
- Year 2022: 
-  - Child 1 = _b-a_ + x years old 
-  - Child 2 = x years old 
-  
- By condition: 
-  _b_ - _a_ + x + x = _c_ 
-  _b-a_ + 2.x = _c_ 
-  2.x = _c+a-b_ 
-  x = _x_ 
- Year of birth of the person: 
-  = 2022 - _b_ - x \r\n = 2022 - _b_ - _x_ 
- 
- Answer: Year _2022-b-x_
-''';
+}

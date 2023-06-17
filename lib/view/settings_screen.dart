@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../viewmodels/change_page.dart';
-import '../viewmodels/my_app_localizations.dart';
-import '../viewmodels/constants.dart';
-import '../viewmodels/providers.dart';
+import '/viewmodels/change_page.dart';
+import '/viewmodels/my_words.dart';
+import '/viewmodels/constants.dart';
+import '/viewmodels/providers.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class SettingsScreen extends StatefulWidget {
 class SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-    MyAppLocalizations localizations = MyAppLocalizations.of(context);
+    MyWords myWords = MyWords();
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
     return ChangeNotifierProvider(
       create: (context) => DataModel(),
@@ -27,7 +27,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                 },
               ),
-              title: Text(localizations.settings, 
+              title: Text(myWords.settings, 
                 style: const TextStyle(color: Colors.white),),
                 flexibleSpace: Image.asset(pathBar,
                   fit: BoxFit.cover,),
@@ -37,14 +37,14 @@ class SettingsScreenState extends State<SettingsScreen> {
               children: [
                 Padding(
                   padding:const EdgeInsets.all(20),
-                  child: Text( localizations.difficulty,
+                  child: Text( myWords.difficulty,
                     style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
                   ),
                 ),
                 RadioListTile<int?>(
-                  title: Text(localizations.easy,
+                  title: Text(myWords.easy,
                     style: const TextStyle(fontSize: 20),),
                   value: 0,
                   groupValue: dataModel.difficulty,
@@ -55,7 +55,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                   },
                 ),
                 RadioListTile<int?>(
-                  title: Text(localizations.normal,
+                  title: Text(myWords.normal,
                     style: const TextStyle(fontSize: 20),),
                   value: 1,
                   groupValue: dataModel.difficulty,
@@ -66,7 +66,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                   },
                 ),
                 RadioListTile<int?>(
-                  title: Text(localizations.hard,
+                  title: Text(myWords.hard,
                     style: const TextStyle(fontSize: 20),),
                   value: 2,
                   groupValue: dataModel.difficulty,

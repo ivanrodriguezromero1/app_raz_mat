@@ -1,27 +1,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:raz_mat/viewmodels/providers.dart';
-import '../main.dart';
-import '../view/problems_screen.dart';
-import '../view/settings_screen.dart';
-import '../view/solutions_screen.dart';
-import '../view/theory_screen.dart';
-import '../view/widgets.dart';
-import 'my_app_localizations.dart';
+import '/main.dart';
+import '/view/problems_screen.dart';
+import '/view/settings_screen.dart';
+import '/view/solutions_screen.dart';
+import '/view/theory_screen.dart';
+import '/viewmodels/my_words.dart';
 
-void goToProblems(BuildContext context, DataModel dataModel, MyAppLocalizations localizations) {
-  checkInternetConnectivity(dataModel);
-  createProblem(dataModel, localizations);
-  dataModel.connected 
-    ? changePageScale(context, const ProblemsScreen())
-    : disconnected(context, localizations);
+void goToProblems(BuildContext context, DataModel dataModel, MyWords myWords) {
+  createProblem(dataModel, myWords);
+  changePageScale(context, const ProblemsScreen());
 }
-void goToTheory(BuildContext context, DataModel dataModel, MyAppLocalizations localizations) {
-  checkInternetConnectivity(dataModel);
+void goToTheory(BuildContext context, DataModel dataModel, MyWords localizations) {
   dataModel.teoria = getTheoryByOption(dataModel, localizations);
-  dataModel.connected 
-    ? changePageScale(context, const TheoryScreen())
-    : disconnected(context, localizations);
+  changePageScale(context, const TheoryScreen());
 }
 void changePageSlide(BuildContext context, StatefulWidget page, double x, double y){
   Navigator.of(context).push(

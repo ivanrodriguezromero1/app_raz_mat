@@ -1,25 +1,25 @@
 import 'dart:math';
 import 'package:raz_mat/models/problema.dart';
 import 'package:raz_mat/viewmodels/providers.dart';
-import 'my_app_localizations.dart';
+import 'my_words.dart';
 
-Problema createProblemAges(MyAppLocalizations localizations , DataModel dataModel) {
+Problema createProblemAges(MyWords myWords , DataModel dataModel) {
   Random random = Random();
   int tipo = random.nextInt(4) + 1;
   dataModel.tipo = tipo;
   Problema problema;
   switch(tipo){
     case 1:
-      problema = createProblemAges1(localizations.statementAge1, localizations.solutionAge1, dataModel.difficulty);
+      problema = createProblemAges1(myWords.statementAge1, myWords.solutionAge1, dataModel.difficulty);
       break;
     case 2:
-      problema = createProblemAges2(localizations.statementAge2, localizations.solutionAge2, dataModel.difficulty);
+      problema = createProblemAges2(myWords.statementAge2, myWords.solutionAge2, dataModel.difficulty);
       break;
     case 3:
-      problema = createProblemAges3(localizations.statementAge3, localizations.solutionAge3, dataModel.difficulty);
+      problema = createProblemAges3(myWords.statementAge3, myWords.solutionAge3, dataModel.difficulty);
       break;
     default:
-      problema = createProblemAges4(localizations.statementAge4, localizations.solutionAge4, dataModel.difficulty);
+      problema = createProblemAges4(myWords.statementAge4, myWords.solutionAge4, dataModel.difficulty);
       break;
   }
   return problema;

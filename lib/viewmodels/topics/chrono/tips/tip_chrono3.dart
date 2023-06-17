@@ -1,4 +1,5 @@
-const tipChrono3Es =
+class TipChrono3 {
+  static String text =
 '''
 Ángulo entre el horario y el minutero (Segunda vez):
   α = [11/2].M - 30.H grados
@@ -6,11 +7,4 @@ const tipChrono3Es =
   H: Hora
   M: Minutos
 ''';
-const tipChrono3En =
-'''
-Angle between the hour and minute hands (Second Time):
-  α = [11/2].M - 30.H degrees
- Where:
-  H: Hour
-  M: Minutes
-''';
+}

@@ -1,12 +1,8 @@
-const tipProbability1Es =
+class TipProbability1 {
+  static String text =
 '''
 Regla de adición:
 
  P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
 ''';
-const tipProbability1En =
-'''
-Addition rule:
-
- P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
-''';
+}

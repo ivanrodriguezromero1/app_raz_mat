@@ -1,4 +1,5 @@
-const theoryProbabilityEs =
+class TheoryProbability {
+  static String text =
 '''
 PROBABILIDADES
 
@@ -28,33 +29,4 @@ El teorema de Bayes se utiliza para calcular la probabilidad de que ocurra un ev
 
 P(A|B) = P(B|A) x P(A) / P(B)
 ''';
-const theoryProbabilityEn =
-'''
-PROBABILITY
-
-Probability theory is a branch of mathematics that deals with the study of random events. It is based on the idea that if the probability of an event is known, its occurrence can be predicted in similar situations. Below are some important formulas in probability theory:
-
-▶ ADDITION RULE:
-
-The addition rule is used to calculate the probability of at least one of two events A and B occurring. The formula is as follows:
-
-P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
-
-▶ MULTIPLICATION RULE:
-
-The multiplication rule is used to calculate the probability of two events A and B occurring. The formula is as follows:
-
-P(A ∩ B) = P(B) x P(A|B)
-
-▶ CONDITIONAL PROBABILITY:
-
-Conditional probability is used to calculate the probability of an event A occurring given that an event B has occurred. The formula is as follows:
-
-P(A|B) = P(A ∩ B) / P(B)
-
-▶ BAYES' THEOREM:
-
-Bayes' theorem is used to calculate the probability of an event A occurring given that an event B has occurred and additional information is available about the probability of A and B. The formula is as follows:
-
-P(A|B) = P(B|A) x P(A) / P(B)
-''';
+}

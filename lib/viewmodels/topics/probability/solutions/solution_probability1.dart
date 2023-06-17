@@ -1,4 +1,5 @@
-const solutionProbability1Es =
+class SolutionProbability1 {
+  static String text =
 '''
 La probabilidad de que el evento A ocurra es numEventosA / totalCasos, y la probabilidad de que el evento B ocurra es numEventosB / totalCasos.
 
@@ -18,23 +19,4 @@ P(A U B) = numEventosA/totalCasos + numEventosB/totalCasos - interseccion/totalC
 
 Por lo tanto, la probabilidad de que el evento A o el evento B haya ocurrido es _P(A U B)_.
 ''';
-const solutionProbability1En =
-'''
-The probability of event A occurring is numEventosA/totalCasos, and the probability of event B occurring is numEventosB/totalCasos.
-
-By the addition rule:
-
-P(A U B) = P(A) + P(B) - P(A ∩ B)
-
-where:
-
-P(A U B) is the probability of event A or event B (or both) occurring.
-P(A) is the probability of event A occurring.
-P(B) is the probability of event B occurring.
-P(A ∩ B) is the probability of both events A and B occurring.
-Substituting the variables from the problem, we have:
-
-P(A U B) = numEventosA/totalCasos + numEventosB/totalCasos - interseccion/totalCasos
-
-Therefore, the probability of event A or event B having occurred is _P(A U B)_.
-''';
+}

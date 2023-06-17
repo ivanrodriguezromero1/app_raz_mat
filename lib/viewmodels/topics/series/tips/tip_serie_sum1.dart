@@ -1,4 +1,5 @@
-const tipSerieSum1Es = 
+class TipSerieSum1 {
+  static String text = 
 '''
  Serie aritmética de primer grado: 
  Suma de términos: 
@@ -8,13 +9,4 @@ const tipSerieSum1Es =
   r : Razón aritmética 
   n : Número de términos
 ''';
-const tipSerieSum1En = 
-'''
- First-degree arithmetic series: 
- Sum of terms: 
-  Sₙ = a₁.n + [(n-1).n.r]/2 
- Where:
-  a₁ : First term 
-  r : Arithmetic ratio 
-  n : Number of terms
-''';
+}

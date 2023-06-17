@@ -1,4 +1,5 @@
-const theoryAgesEs =
+class TheoryAges {
+  static String text=
 '''
 PROBLEMAS DE EDADES
 
@@ -32,36 +33,4 @@ y = 45 - x = 15
 Así que las edades de las dos personas son 30 y 15.
 
 ''';
-const theoryAgesEn =
-'''
-AGE PROBLEMS
-
-The resolution of age problems in mathematical reasoning is based on creating equations that relate the ages of the people involved in the problem. These equations can be linear or nonlinear, depending on the statement of the problem.
-
-▶ DIOPHANTINE EQUATION:
-
-A common type of equation used in solving age problems is the Diophantine equation, which is a linear equation of the form:
-
-ax + by = c
-
-where a, b, and c are constants and x, y are unknown integer variables. In solving age problems, this equation is often used to relate the ages of two or more people.
-
-For example, suppose we are told that the sum of the ages of two people is 45 and the difference between their ages is 15. To solve this problem, we can set up the following Diophantine equation:
-
-x + y = 45
-x - y = 15
-
-where x and y represent the ages of the two people. To solve this equation, we can add the two equations to obtain:
-
-2x = 60
-
-and then solve for x:
-
-x = 30
-
-Once we have x, we can use one of the original equations to solve for y:
-
-y = 45 - x = 15
-
-So the ages of the two people are 30 and 15.
-''';
+}

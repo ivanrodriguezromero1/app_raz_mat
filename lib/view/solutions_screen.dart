@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import '../viewmodels/change_page.dart';
-import '../viewmodels/my_app_localizations.dart';
-import '../viewmodels/constants.dart';
-import '../viewmodels/providers.dart';
+import '/viewmodels/change_page.dart';
+import '/viewmodels/my_words.dart';
+import '/viewmodels/constants.dart';
+import '/viewmodels/providers.dart';
 
 class SolutionsScreen extends StatefulWidget {
    const SolutionsScreen({Key? key}) : super(key: key);
@@ -19,9 +18,8 @@ class SolutionsScreenState extends State<SolutionsScreen> {
   
   @override
   Widget build(BuildContext context) {
-    MyAppLocalizations localizations = MyAppLocalizations.of(context);
+    MyWords myWords = MyWords();
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
-    checkInternetConnectivity(dataModel);
     return ChangeNotifierProvider(
       create: (context) => dataModel,
       child:
@@ -35,7 +33,7 @@ class SolutionsScreenState extends State<SolutionsScreen> {
                   children:[
                     const Icon(Icons.done_all),
                     const SizedBox(width: 8,),
-                    Text(localizations.titleSolution, 
+                    Text(myWords.titleSolution, 
                     style: const TextStyle(color: Colors.white),),                    
                   ]
                 ),
@@ -115,16 +113,6 @@ class SolutionsScreenState extends State<SolutionsScreen> {
                   ),
                 ),
               ),
-              persistentFooterButtons: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 80,
-                  alignment: Alignment.center,
-                  child:dataModel.isBannerAdSolutionReady
-                    ? AdWidget(ad: dataModel.bannerAdSolution)
-                    : const CircularProgressIndicator(),
-                ),
-              ],
           ),
         );
       }

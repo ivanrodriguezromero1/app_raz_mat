@@ -1,25 +1,25 @@
 import 'dart:math';
 import 'package:raz_mat/models/problema.dart';
 import 'package:raz_mat/viewmodels/providers.dart';
-import 'my_app_localizations.dart';
+import 'my_words.dart';
 
-Problema createProblemProbability(MyAppLocalizations localizations , DataModel dataModel) {
+Problema createProblemProbability(MyWords myWords , DataModel dataModel) {
   Random random = Random();
   int tipo = random.nextInt(4) + 1;
   dataModel.tipo = tipo;
   Problema problema;
   switch(tipo){
     case 1:
-      problema = createProblemProbability1(localizations.statementProbability1, localizations.solutionProbability1, dataModel.difficulty);
+      problema = createProblemProbability1(myWords.statementProbability1, myWords.solutionProbability1, dataModel.difficulty);
       break;
     case 2:
-      problema = createProblemProbability2(localizations.statementProbability2, localizations.solutionProbability2, dataModel.difficulty);
+      problema = createProblemProbability2(myWords.statementProbability2, myWords.solutionProbability2, dataModel.difficulty);
       break;
     case 3:
-      problema = createProblemProbability3(localizations.statementProbability3, localizations.solutionProbability3, dataModel.difficulty);
+      problema = createProblemProbability3(myWords.statementProbability3, myWords.solutionProbability3, dataModel.difficulty);
       break;
     default:
-      problema = createProblemProbability4(localizations.statementProbability4, localizations.solutionProbability4, dataModel.difficulty);
+      problema = createProblemProbability4(myWords.statementProbability4, myWords.solutionProbability4, dataModel.difficulty);
       break;
   }
   return problema;

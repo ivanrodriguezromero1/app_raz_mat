@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:raz_mat/viewmodels/change_page.dart';
 import 'package:raz_mat/viewmodels/providers.dart';
-import '../viewmodels/my_app_localizations.dart';
+import '../viewmodels/my_words.dart';
 
 Container getItem(BuildContext context,
                   DataModel dataModel,
-                  MyAppLocalizations localizations,
+                  MyWords myWords,
                   IconData iconData,
                   String topic,
                   {int opcion = 1}){
@@ -39,7 +39,7 @@ Container getItem(BuildContext context,
                             icon: Icon(Icons.menu_book, color: Colors.orange.shade600),
                             onPressed: () {
                               dataModel.option = opcion;
-                              goToTheory(context, dataModel, localizations);
+                              goToTheory(context, dataModel, myWords);
                             },
                           ),
                         ),
@@ -56,7 +56,7 @@ Container getItem(BuildContext context,
                             icon: Icon(Icons.edit, color: Colors.orange.shade600),
                             onPressed: () {
                               dataModel.option = opcion;
-                              goToProblems(context, dataModel, localizations);
+                              goToProblems(context, dataModel, myWords);
                             },
                           ),
                         ),
@@ -66,33 +66,18 @@ Container getItem(BuildContext context,
                 );
 }
 
-ScaffoldFeatureController<SnackBar, SnackBarClosedReason> disconnected(BuildContext context, 
-                                                                       MyAppLocalizations localizations){
-  return ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(localizations.disconnected),
-          action: SnackBarAction(
-            label: localizations.close,
-            textColor: Colors.white,
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            },
-          ),
-        ),
-      );
-}
-AlertDialog showTip(BuildContext context, DataModel dataModel, MyAppLocalizations localizations){
+AlertDialog showTip(BuildContext context, DataModel dataModel, MyWords myWords){
   return AlertDialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
           backgroundColor: Colors.cyan[50],
-          title: Text(localizations.tip,
+          title: Text(myWords.tip,
             textAlign: TextAlign.center,),
           content: SingleChildScrollView(
             child: Column(
               children: [
-                Text(getTipByOptionAndType(dataModel, localizations)),
+                Text(getTipByOptionAndType(dataModel, myWords)),
               ],
             ),
           ),
@@ -116,7 +101,7 @@ AlertDialog showTip(BuildContext context, DataModel dataModel, MyAppLocalization
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0,2.0,8.0,2.0),
                     child: Text(
-                      localizations.close,
+                      myWords.close,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,

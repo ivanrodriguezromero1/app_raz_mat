@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'package:raz_mat/models/problema.dart';
 import 'package:raz_mat/viewmodels/providers.dart';
-import 'my_app_localizations.dart';
+import 'my_words.dart';
 
-Problema createProblemSeries(MyAppLocalizations localizations , DataModel dataModel) {
+Problema createProblemSeries(MyWords myWords , DataModel dataModel) {
   Random random = Random();
   int tipo;
   switch(dataModel.difficulty){
@@ -21,22 +21,22 @@ Problema createProblemSeries(MyAppLocalizations localizations , DataModel dataMo
   Problema problema;
   switch(tipo){
     case 1:
-      problema = createProblemSeriesNth1(localizations.statementSerieNth, localizations.solutionSerieNth1, dataModel.difficulty);
+      problema = createProblemSeriesNth1(myWords.statementSerieNth, myWords.solutionSerieNth1, dataModel.difficulty);
       break;
     case 2:
-      problema = createProblemSeriesSum1(localizations.statementSerieSum, localizations.solutionSerieSum1, dataModel.difficulty);
+      problema = createProblemSeriesSum1(myWords.statementSerieSum, myWords.solutionSerieSum1, dataModel.difficulty);
       break;
     case 3:
-      problema = createProblemSeriesNth2(localizations.statementSerieNth, localizations.solutionSerieNth2, dataModel.difficulty);
+      problema = createProblemSeriesNth2(myWords.statementSerieNth, myWords.solutionSerieNth2, dataModel.difficulty);
       break;
     case 4:
-      problema = createProblemSeriesSum2(localizations.statementSerieSum, localizations.solutionSerieSum2, dataModel.difficulty);
+      problema = createProblemSeriesSum2(myWords.statementSerieSum, myWords.solutionSerieSum2, dataModel.difficulty);
       break;
     case 5:
-      problema = createProblemSeriesNth3(localizations.statementSerieNth, localizations.solutionSerieNth3, dataModel.difficulty);
+      problema = createProblemSeriesNth3(myWords.statementSerieNth, myWords.solutionSerieNth3, dataModel.difficulty);
       break;
     default:
-      problema = createProblemSeriesSum3(localizations.statementSerieSum, localizations.solutionSerieSum3, dataModel.difficulty);
+      problema = createProblemSeriesSum3(myWords.statementSerieSum, myWords.solutionSerieSum3, dataModel.difficulty);
       break;
   }
   return problema;

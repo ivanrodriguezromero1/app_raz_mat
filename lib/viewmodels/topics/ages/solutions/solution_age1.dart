@@ -1,4 +1,5 @@
-const solutionAge1Es = 
+class SolutionAge1 {
+  static String text =
 '''
  Mi edad actual: x años 
  Pasado: x - _d_ 
@@ -18,22 +19,4 @@ const solutionAge1Es =
   
   _f_ - _x_ = _f-x_ años
 ''';
-const solutionAge1En = 
-'''
- My current age: x years 
- Past: x - _d_ 
- Present: x 
- Future: x + _b_ 
- By condition: 
-  (_a_)(x + _b_) - (_c_)(x - _d_) = _e_ 
- 
-  _a_.x + _a*b_ - _c_.x + _c*d_ = _e_ 
- 
-  _(a-c)_.x + _(a*b+c*d)_ = _e_ 
-  
-  x = _x_ 
- Current age: _x_ years 
- To reach _f_ years I need: 
- 
-  _f_ - _x_ = _f-x_ years
-''';
+}

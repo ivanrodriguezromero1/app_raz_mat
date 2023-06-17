@@ -1,4 +1,5 @@
-const tipSerieSum2Es = 
+class TipSerieSum2 {
+  static String text = 
 '''
  Serie aritmética de segundo grado: 
  Suma de términos: 
@@ -10,15 +11,4 @@ const tipSerieSum2Es =
   r₂ : Segunda razón aritmética 
   n : Número de términos
 ''';
-const tipSerieSum2En = 
-'''
- Quadratic arithmetic series: 
- Sum of terms: 
-  Sₙ = a₁n + [(n-1)nr₁]/2 +
-        [(n-2)(n-1)nr₂]/6 
- Where:
-  a₁ : First term 
-  r₁ : First arithmetic ratio 
-  r₂ : Second arithmetic ratio 
-  n : Number of terms
-''';
+}

@@ -4,12 +4,12 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import 'package:raz_mat/view/widgets.dart';
-import '../viewmodels/change_page.dart';
-import '../viewmodels/audio.dart';
-import '../viewmodels/my_app_localizations.dart';
-import '../viewmodels/constants.dart';
-import '../viewmodels/providers.dart';
+import '/view/widgets.dart';
+import '/viewmodels/change_page.dart';
+import '/viewmodels/audio.dart';
+import '../viewmodels/my_words.dart';
+import '/viewmodels/constants.dart';
+import '/viewmodels/providers.dart';
 
 class ProblemsScreen extends StatefulWidget {
    const ProblemsScreen({Key? key}) : super(key: key);
@@ -76,10 +76,9 @@ void startTimer() {
   
   @override
   Widget build(BuildContext context) {
-    MyAppLocalizations localizations = MyAppLocalizations.of(context);
+    MyWords myWords = MyWords();
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
-    String title = getTitleByOption(dataModel, localizations);
-    checkInternetConnectivity(dataModel);
+    String title = getTitleByOption(dataModel, myWords);
     return ChangeNotifierProvider(
       create: (context) => dataModel,
       child:
@@ -182,7 +181,7 @@ void startTimer() {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return showTip(context, dataModel, localizations);
+                                      return showTip(context, dataModel, myWords);
                                     },
                                   );
                                 },
@@ -234,7 +233,7 @@ void startTimer() {
                               const SizedBox(height: 20,),
                               !viewCheck
                                 ?
-                                  Text(localizations.answer,
+                                  Text(myWords.answer,
                                     style: TextStyle(fontSize: 18,
                                     color: (selectedValue == dataModel.clave)
                                       ? Colors.green:Colors.red),)
@@ -294,7 +293,7 @@ void startTimer() {
                             children: [
                               const Icon(Icons.visibility),
                               const SizedBox(width: 8.0),
-                              Text( viewCheck? localizations.check:localizations.solution
+                              Text( viewCheck? myWords.check:myWords.solution
                                 , style: const TextStyle(fontSize: 15, fontFamily:'Roboto',),)
                             ],
                           ),
@@ -302,18 +301,14 @@ void startTimer() {
                         const SizedBox(height: 15),
                         ElevatedButton(                          
                           onPressed: () {
-                            setState(() {
-                              checkInternetConnectivity(dataModel);
-                              dataModel.connected
-                                ? (){
-                                  createProblem(dataModel, localizations);
+                            setState(
+                              () {
+                                  createProblem(dataModel, myWords);
                                   selectedValue = null;
                                   viewCheck = true;
                                   selectImage = 0;
                                   areKeys = [false,false,false,false];
-                                  }()
-                                : disconnected(context, localizations);
-                              isRadioTileDisabled = false;
+                                  isRadioTileDisabled = false;
                             });
                           },
                           style:ElevatedButton.styleFrom(
@@ -331,7 +326,7 @@ void startTimer() {
                             children: [
                               const Icon(Icons.refresh),
                               const SizedBox(width: 8.0),
-                              Text(localizations.newProblem, style: const TextStyle(fontSize: 15, fontFamily:'Roboto',),)
+                              Text(myWords.newProblem, style: const TextStyle(fontSize: 15, fontFamily:'Roboto',),)
                             ],
                           ),
                         ),
@@ -379,16 +374,6 @@ void startTimer() {
                   ),
                 ),
               ),
-              persistentFooterButtons: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 75,
-                  alignment: Alignment.center,
-                  child: dataModel.isBannerAdProblemReady
-                    ? AdWidget(ad: dataModel.bannerAdProblem)
-                    : const CircularProgressIndicator(),
-                ),
-              ],
             ),
           ),
         );

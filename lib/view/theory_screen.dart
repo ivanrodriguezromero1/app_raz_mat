@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import '../viewmodels/change_page.dart';
-import '../viewmodels/my_app_localizations.dart';
-import '../viewmodels/constants.dart';
-import '../viewmodels/providers.dart';
+import '/viewmodels/change_page.dart';
+import '../viewmodels/my_words.dart';
+import '/viewmodels/constants.dart';
+import '/viewmodels/providers.dart';
 
 class TheoryScreen extends StatefulWidget {
    const TheoryScreen({Key? key}) : super(key: key);
@@ -19,13 +18,12 @@ class TheoryScreenState extends State<TheoryScreen> {
   
   @override
   Widget build(BuildContext context) {
-    MyAppLocalizations localizations = MyAppLocalizations.of(context);
+    MyWords myWords = MyWords();
     DataModel dataModel = Provider.of<DataModel>(context, listen: false);
-    String title = getTitleByOption(dataModel, localizations); 
-    checkInternetConnectivity(dataModel);
-    return ChangeNotifierProvider(
+    String title = getTitleByOption(dataModel, myWords);
+    return ChangeNotifierProvider (
       create: (context) => dataModel,
-      child: 
+      child:
         MaterialApp(
           home: 
             Scaffold(
@@ -106,16 +104,6 @@ class TheoryScreenState extends State<TheoryScreen> {
                   ),
                 ),
               ),
-              persistentFooterButtons: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 80,
-                  alignment: Alignment.center,
-                  child:dataModel.isBannerAdTheoryReady
-                    ? AdWidget(ad: dataModel.bannerAdTheory)
-                    : const CircularProgressIndicator(),
-                ),
-              ],
           ),
         ),
       );

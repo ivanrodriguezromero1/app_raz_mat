@@ -1,4 +1,5 @@
-const solutionChrono3Es = 
+class SolutionChrono3 {
+  static String text = 
 '''
  Hora: 
   H = _h_ 
@@ -14,19 +15,4 @@ const solutionChrono3Es =
   
  Respuesta: _m_ minutos
 ''';
-const solutionChrono3En = 
-'''
- Hour: 
-  H = _h_ 
- Angle: 
-  α = _a_ degrees 
- It is known that: 
-  α = [11/2].M - 30.H degrees 
-  _a_ = [11/2].M - 30(_h_) 
-  _a_ = [11/2].M - _30*h_ 
-  [11/2].M = _30*h_ + _a_ 
-  [11/2].M = _30*h+a_ 
-  M = _m_ 
-  
- Answer: _m_ minutes
-''';
+}

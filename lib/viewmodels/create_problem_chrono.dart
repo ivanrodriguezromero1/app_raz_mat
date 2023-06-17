@@ -1,25 +1,25 @@
 import 'dart:math';
 import 'package:raz_mat/models/problema.dart';
 import 'package:raz_mat/viewmodels/providers.dart';
-import 'my_app_localizations.dart';
+import 'my_words.dart';
 
-Problema createProblemChrono(MyAppLocalizations localizations, DataModel dataModel) {
+Problema createProblemChrono(MyWords myWords, DataModel dataModel) {
   Random random = Random();
   int tipo = random.nextInt(4) + 1;
   dataModel.tipo = tipo;
   Problema problema;
   switch(tipo){
     case 1:
-      problema = createProblemChrono1(localizations.statementChrono1, localizations.solutionChrono1, dataModel.difficulty);
+      problema = createProblemChrono1(myWords.statementChrono1, myWords.solutionChrono1, dataModel.difficulty);
       break;
     case 2:
-      problema = createProblemChrono2(localizations.statementChrono2, localizations.solutionChrono2, dataModel.difficulty);
+      problema = createProblemChrono2(myWords.statementChrono2, myWords.solutionChrono2, dataModel.difficulty);
       break;
     case 3:
-      problema = createProblemChrono3(localizations.statementChrono3, localizations.solutionChrono3, dataModel.difficulty);
+      problema = createProblemChrono3(myWords.statementChrono3, myWords.solutionChrono3, dataModel.difficulty);
       break;
     default:
-      problema = createProblemChrono4(localizations.statementChrono4, localizations.solutionChrono4, dataModel.difficulty);
+      problema = createProblemChrono4(myWords.statementChrono4, myWords.solutionChrono4, dataModel.difficulty);
       break;
   }
   return problema;

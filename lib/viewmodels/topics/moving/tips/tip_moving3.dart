@@ -1,4 +1,5 @@
-const tipMoving3Es =
+class TipMoving3 {
+  static String text =
 '''
  Longitud total recorrida: 
   L + X = V.T
@@ -8,13 +9,4 @@ const tipMoving3Es =
   T: Tiempo para cruzar el túnel
   X: Longitud del túnel  
 ''';
-const tipMoving3En =
-'''
- Total distance traveled:
-  L + X = V.T 
- Where:
-  V: Velocity of the mobile
-  L: Length of the mobile
-  T: Time to cross the tunnel
-  X: Length of the tunnel
-''';
+}

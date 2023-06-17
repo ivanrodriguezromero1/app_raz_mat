@@ -1,4 +1,5 @@
-const theoryMovingEs =
+class TheoryMoving {
+  static String text =
 '''
 PROBLEMAS DE MOVILIDAD
 
@@ -32,37 +33,4 @@ En este tipo de problemas, se debe calcular la velocidad de un objeto que se mue
  
  Donde "V" es la velocidad del móvil, "L" la longitud del móvil, "T" el Tiempo para cruzar el túnel, y "X" la longitud del túnel. 
 ''';
-const theoryMovingEn =
-'''
-PROBLEMS OF MOVING OBJECTS
-
-In problems of moving objects, two or more objects are usually working that move in different directions, at constant or variable speeds. To solve this type of problems, it is necessary to know some fundamental formulas and concepts:
-
-▶ SPEED:
-
-Speed is defined as the change in distance with respect to time. If an object travels a distance "d" in a time "t", its average speed will be "d/t". Speed is measured in units of distance per unit of time, such as meters per second (m/s) or kilometers per hour (km/h).
-
-▶ ENCOUNTER TIME:
-
-The encounter time is the time that elapses from when two objects begin to move until they meet at the same point. To calculate the encounter time, the following formula can be used:
-
-T = d/[V₁ + V₂]
-
-Where "d" is the separation distance between both mobiles, "V₁" and "V₂" are the speeds of the mobiles.
-
-▶ OVERTAKE TIME:
-
-The overtake time is the time that elapses from when one object begins to move until it overtakes another object that is already in motion. To calculate the overtake time, the following formula can be used:
-
-T = d/[V₁ - V₂]
-
-Where "d" is the separation distance between both mobiles, "V₁" is the speed of the faster mobile and "V₂" is the speed of the slower mobile.
-
-▶ MOBILE PASSING THROUGH A TUNNEL:
-
-In this type of problem, the speed of an object that moves through a tunnel, whose length is known, must be calculated. To solve this type of problem, the following formula can be used:
-
-L + X = V.T
-
-Where "V" is the speed of the mobile, "L" the length of the mobile, "T" the time to cross the tunnel, and "X" the length of the tunnel.
-''';
+}

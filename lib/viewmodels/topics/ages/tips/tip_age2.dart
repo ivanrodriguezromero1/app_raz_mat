@@ -1,8 +1,6 @@
-const tipAge2Es =
+class TipAge2 {
+  static String text =
 '''
 Tomar como variable tu edad actual
 ''';
-const tipAge2En =
-'''
-Take your current age as the variable
-''';
+}

@@ -1,8 +1,6 @@
-const tipAge3Es =
+class TipAge3 {
+  static String text =
 '''
 Tomar como variable el tiempo transcurrido
 ''';
-const tipAge3En =
-'''
-Take elapsed time as the variable
-''';
+}

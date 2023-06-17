@@ -1,4 +1,5 @@
-const solutionMoving2Es = 
+class SolutionMoving2 {
+  static String text = 
 '''
  Velocidad del Móvil 1: 
   V₁ = _b_ m/s 
@@ -14,19 +15,4 @@ const solutionMoving2Es =
   
  Respuesta: _t_ segundos 
 ''';
-const solutionMoving2En = 
-'''
- Velocity of Mobile 1: 
-  V₁ = _b_ m/s 
- Velocity of Mobile 2: 
-  V₂ = _c_ m/s 
- Distance: _a_ m 
- 
- Time of catching up: 
-  T = Distance/[V₁ - V₂] 
-  T = _a_/[_b_ - _c_] 
-  T = _a_/_[b-c]_ 
-  T = _t_ 
-  
- Answer: _t_ seconds
-''';
+}
